@@ -11,17 +11,19 @@ fetch('data/data.json')
     console.error("載入資料失敗！", error);
   });
 
-// 綁定查詢按鈕
-document.getElementById('searchBtn').addEventListener('click', function () {
+// 綁定輸入框 input 事件（邊打邊查）
+document.getElementById('searchInput').addEventListener('input', function () {
   const input = document.getElementById('searchInput').value.trim().toLowerCase();
-  // 如果有 group 輸入框你可以改這邊拿 groupNo，這邊我先寫 null → 搜全部
-  const groupNo = null;
+  const groupNo = null; // 目前寫死搜全部
 
   const foundList = search(input, groupNo);
 
   if (foundList.length > 0) {
     document.getElementById('result').innerHTML = foundList
-      .map(item => `結果：${item.display} 👉 內容：「${item.keyword}」`)
+      .map(item => {
+        const displayClean = item.display.replace(/\.png$/i, '');
+        return `結果：${displayClean} 👉 內容：「${item.keyword}」`;
+      })
       .join('<br>');
   } else {
     document.getElementById('result').innerText = "❌ 找不到對應資料";
@@ -35,7 +37,7 @@ function search(keyword, groupNo = null) {
   if (groupNo && data[groupNo]) {
     // 搜特定組
     result = data[groupNo]
-      .filter(item => item.keyword.includes(keyword))
+      .filter(item => item.keyword.toLowerCase().includes(keyword))
       .map(item => ({
         display: `${groupNo} 的 ${item.no}`,
         keyword: item.keyword
@@ -44,7 +46,7 @@ function search(keyword, groupNo = null) {
     // 搜全部組
     for (let group in data) {
       const found = data[group]
-        .filter(item => item.keyword.includes(keyword))
+        .filter(item => item.keyword.toLowerCase().includes(keyword))
         .map(item => ({
           display: `${group} 的 ${item.no}`,
           keyword: item.keyword
