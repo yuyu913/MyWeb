@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="all.css">
+    <title>簡易查詢頁</title>
 </head>
+
 <body>
-    <h1><a href="./main.html">早安</a></h1>
+    <h1>關鍵字查詢 🔍</h1>
+    <input type="text" id="searchInput" placeholder="請輸入關鍵字">
+    <button onclick="search()">查詢</button>
+    <p id="result"></p>
+
+    <script>
+        // 你可以先把CSV轉成這樣的JSON，寫死在JS裡面，最簡單
+        const data = [
+            { display: "早安", keyword: "hello" },
+            { display: "午安", keyword: "good afternoon" },
+            { display: "晚安", keyword: "good night" }
+        ];
+
+        function search() {
+            const input = document.getElementById('searchInput').value.trim();
+            const found = data.find(item => item.keyword === input);
+
+            if (found) {
+                document.getElementById('result').innerText = `結果：${found.display}`;
+            } else {
+                document.getElementById('result').innerText = "❌ 找不到對應資料";
+            }
+        }
+    </script>
 </body>
+
 </html>
