@@ -1,7 +1,7 @@
 let data = {};
 
 // 先載入 JSON 檔
-fetch('data/data.json')
+fetch('./data/data.json')
   .then(response => response.json())
   .then(jsonData => {
     data = jsonData;
