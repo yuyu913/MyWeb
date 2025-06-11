@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "LINE STORE Sticker Helper",
+  "version": "1.0",
+  "description": "自動 highlight 貼圖區 + 複製建議檔名",
+  "permissions": [
+    "clipboardWrite",
+    "scripting",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://store.line.me/*"
+      ],
+      "js": [
+        "content.js"
+      ]
+    }
+  ],
+  "action": {
+    "default_title": "Run Sticker Helper",
+    "default_icon": "icon.png"
+  }
+}

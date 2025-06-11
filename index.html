@@ -3,34 +3,16 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>簡易查詢頁</title>
+    <title>關鍵字查詢</title>
 </head>
 
 <body>
     <h1>關鍵字查詢 🔍</h1>
     <input type="text" id="searchInput" placeholder="請輸入關鍵字">
-    <button onclick="search()">查詢</button>
+    <button id="searchBtn">查詢</button>
     <p id="result"></p>
 
-    <script>
-        // 你可以先把CSV轉成這樣的JSON，寫死在JS裡面，最簡單
-        const data = [
-            { display: "早安", keyword: "hello" },
-            { display: "午安", keyword: "good afternoon" },
-            { display: "晚安", keyword: "good night" }
-        ];
-
-        function search() {
-            const input = document.getElementById('searchInput').value.trim();
-            const found = data.find(item => item.keyword === input);
-
-            if (found) {
-                document.getElementById('result').innerText = `結果：${found.display}`;
-            } else {
-                document.getElementById('result').innerText = "❌ 找不到對應資料";
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
