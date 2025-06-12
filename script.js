@@ -1,6 +1,6 @@
 let data = {};
 
-// 先載入 JSON 檔
+// 先載入 JSON
 fetch('./data/data.json')
   .then(response => response.json())
   .then(jsonData => {
@@ -11,10 +11,10 @@ fetch('./data/data.json')
     console.error("載入資料失敗！", error);
   });
 
-// 綁定輸入框 input 事件（邊打邊查）
+// 綁定搜尋 input
 document.getElementById('searchInput').addEventListener('input', function () {
   const input = document.getElementById('searchInput').value.trim().toLowerCase();
-  const groupNo = null; // 目前寫死搜全部
+  const groupNo = null; // 搜全部
 
   const foundList = search(input, groupNo);
 
@@ -22,7 +22,18 @@ document.getElementById('searchInput').addEventListener('input', function () {
     document.getElementById('result').innerHTML = foundList
       .map(item => {
         const displayClean = item.display.replace(/\.png$/i, '');
-        return `結果：${displayClean} 👉 內容：「${item.keyword}」`;
+        const imgPath = `./data/OK/${displayClean}.png`; // 圖片路徑
+        const no = item.no;
+
+        return `
+          <span class="result-item" 
+                data-img="${imgPath}" 
+                data-no="${no}" 
+                onmouseover="showPreview(this)" 
+                onmouseout="hidePreview()">
+            結果：${displayClean} 的 ${no} 👉 內容：「${item.keyword}」
+          </span>
+        `;
       })
       .join('<br>');
   } else {
@@ -30,25 +41,25 @@ document.getElementById('searchInput').addEventListener('input', function () {
   }
 });
 
-// 搜尋函式
+// 搜尋 function
 function search(keyword, groupNo = null) {
   let result = [];
 
   if (groupNo && data[groupNo]) {
-    // 搜特定組
     result = data[groupNo]
       .filter(item => item.keyword.toLowerCase().includes(keyword))
       .map(item => ({
-        display: `${groupNo} 的 ${item.no}`,
+        display: `${groupNo}`,
+        no: item.no,
         keyword: item.keyword
       }));
   } else {
-    // 搜全部組
     for (let group in data) {
       const found = data[group]
         .filter(item => item.keyword.toLowerCase().includes(keyword))
         .map(item => ({
-          display: `${group} 的 ${item.no}`,
+          display: `${group}`,
+          no: item.no,
           keyword: item.keyword
         }));
       result = result.concat(found);
@@ -56,4 +67,31 @@ function search(keyword, groupNo = null) {
   }
 
   return result;
+}
+
+// hover 顯示預覽
+function showPreview(element) {
+  const imgPath = element.getAttribute('data-img');
+  const no = parseInt(element.getAttribute('data-no'), 10);
+
+  const preview = document.getElementById('hoverPreview');
+
+  const cellSize = 100; // 一格大小 px
+  const columns = 4;
+
+  const column = (no - 1) % columns;
+  const row = Math.floor((no - 1) / columns);
+
+  const posX = -column * cellSize;
+  const posY = -row * cellSize;
+
+  preview.style.backgroundImage = `url('${imgPath}')`;
+  preview.style.backgroundPosition = `${posX}px ${posY}px`;
+  preview.style.display = 'block';
+}
+
+// hover 離開
+function hidePreview() {
+  const preview = document.getElementById('hoverPreview');
+  preview.style.display = 'none';
 }

@@ -1,208 +1,7 @@
 {
   "LV.2 海豹怪怪獸.png": [],
   "LV1 海豹怪怪獸.png": [],
-  "LV1 野生鯊西米怪.png": [
-    {
-      "no": 1,
-      "keyword": "你沒有奶媽",
-      "action": ""
-    },
-    {
-      "no": 2,
-      "keyword": "你摸不到奇遇",
-      "action": ""
-    },
-    {
-      "no": 3,
-      "keyword": "你沒有情緣",
-      "action": ""
-    },
-    {
-      "no": 4,
-      "keyword": "你沒有親友不可燃",
-      "action": ""
-    },
-    {
-      "no": 5,
-      "keyword": "你邊緣到我看不見你",
-      "action": ""
-    },
-    {
-      "no": 6,
-      "keyword": "沒有奶媽愛你",
-      "action": "血條"
-    },
-    {
-      "no": 7,
-      "keyword": "你怎麼覺得我有剁手?",
-      "action": ""
-    },
-    {
-      "no": 8,
-      "keyword": "拜託養我養我",
-      "action": ""
-    },
-    {
-      "no": 9,
-      "keyword": "製杖。",
-      "action": ""
-    },
-    {
-      "no": 10,
-      "keyword": "看劍!",
-      "action": ""
-    },
-    {
-      "no": 11,
-      "keyword": "吃老孫一棒!",
-      "action": ""
-    },
-    {
-      "no": 12,
-      "keyword": "交粗乃!!",
-      "action": "出來/香蕉"
-    },
-    {
-      "no": 13,
-      "keyword": "抱抱",
-      "action": ""
-    },
-    {
-      "no": 14,
-      "keyword": "要抱抱!",
-      "action": ""
-    },
-    {
-      "no": 15,
-      "keyword": "唱歌唱歌唱歌",
-      "action": ""
-    },
-    {
-      "no": 16,
-      "keyword": "抱團",
-      "action": ""
-    },
-    {
-      "no": 17,
-      "keyword": "你的東西掉了",
-      "action": ""
-    },
-    {
-      "no": 18,
-      "keyword": "喵方認證黑純100%",
-      "action": "非洲"
-    },
-    {
-      "no": 19,
-      "keyword": "好人你是個好人",
-      "action": ""
-    },
-    {
-      "no": 20,
-      "keyword": "智商診斷書87不能再高",
-      "action": ""
-    },
-    {
-      "no": 21,
-      "keyword": "約嗎",
-      "action": ""
-    },
-    {
-      "no": 22,
-      "keyword": "不約。",
-      "action": ""
-    },
-    {
-      "no": 23,
-      "keyword": "(坐等吃瓜)",
-      "action": "西瓜"
-    },
-    {
-      "no": 24,
-      "keyword": "打本啊",
-      "action": ""
-    },
-    {
-      "no": 25,
-      "keyword": "(再300年)我等等就去睡了",
-      "action": "仙人"
-    },
-    {
-      "no": 26,
-      "keyword": "對方朝你發出了組隊邀請。",
-      "action": ""
-    },
-    {
-      "no": 27,
-      "keyword": "對方拒絕了你的邀請",
-      "action": ""
-    },
-    {
-      "no": 28,
-      "keyword": "對方對你開啟了仇殺",
-      "action": ""
-    },
-    {
-      "no": 29,
-      "keyword": "哼唧",
-      "action": ""
-    },
-    {
-      "no": 30,
-      "keyword": "退下",
-      "action": "符咒"
-    },
-    {
-      "no": 31,
-      "keyword": "你的鍋",
-      "action": ""
-    },
-    {
-      "no": 32,
-      "keyword": "(委屈)",
-      "action": ""
-    },
-    {
-      "no": 33,
-      "keyword": "吸附附",
-      "action": ""
-    },
-    {
-      "no": 34,
-      "keyword": "大爺行行好",
-      "action": "乞討"
-    },
-    {
-      "no": 35,
-      "keyword": "打碼",
-      "action": ""
-    },
-    {
-      "no": 36,
-      "keyword": "老司機帶帶我!初心者",
-      "action": "新手"
-    },
-    {
-      "no": 37,
-      "keyword": "司機我要上車肥宅卡",
-      "action": "悠遊卡"
-    },
-    {
-      "no": 38,
-      "keyword": "上車!!!速車老司機",
-      "action": "小黃瓜"
-    },
-    {
-      "no": 39,
-      "keyword": "來你的位置客用",
-      "action": ""
-    },
-    {
-      "no": 40,
-      "keyword": "超速了停車BI",
-      "action": "警察"
-    }
-  ],
+  "LV1 野生鯊西米怪.png": [],
   "LV10 野生喵喵怪♡♡♡.png": [],
   "LV11 野生喵喵怪 (內附口罩).png": [],
   "LV12 野生喵喵怪(訊息貼圖♡).png": [],
@@ -416,7 +215,208 @@
   "LV18 野生喵喵怪 (日文版30).png": [],
   "LV19 野生喵喵怪 (屬性幻肢)訊息貼圖♡.png": [],
   "LV19 野生喵喵怪(屬性幻肢-靜態貼圖版).png": [],
-  "LV1野生喵喵怪.png": [],
+  "LV1野生喵喵怪.png": [
+    {
+      "no": 1,
+      "keyword": "你沒有奶媽",
+      "action": ""
+    },
+    {
+      "no": 2,
+      "keyword": "你摸不到奇遇",
+      "action": ""
+    },
+    {
+      "no": 3,
+      "keyword": "你沒有情緣",
+      "action": ""
+    },
+    {
+      "no": 4,
+      "keyword": "你沒有親友不可燃",
+      "action": ""
+    },
+    {
+      "no": 5,
+      "keyword": "你邊緣到我看不見你",
+      "action": ""
+    },
+    {
+      "no": 6,
+      "keyword": "沒有奶媽愛你",
+      "action": "血條"
+    },
+    {
+      "no": 7,
+      "keyword": "你怎麼覺得我有剁手?",
+      "action": ""
+    },
+    {
+      "no": 8,
+      "keyword": "拜託養我養我",
+      "action": ""
+    },
+    {
+      "no": 9,
+      "keyword": "製杖。",
+      "action": ""
+    },
+    {
+      "no": 10,
+      "keyword": "看劍!",
+      "action": ""
+    },
+    {
+      "no": 11,
+      "keyword": "吃老孫一棒!",
+      "action": ""
+    },
+    {
+      "no": 12,
+      "keyword": "交粗乃!!",
+      "action": "出來/香蕉"
+    },
+    {
+      "no": 13,
+      "keyword": "抱抱",
+      "action": ""
+    },
+    {
+      "no": 14,
+      "keyword": "要抱抱!",
+      "action": ""
+    },
+    {
+      "no": 15,
+      "keyword": "唱歌唱歌唱歌",
+      "action": ""
+    },
+    {
+      "no": 16,
+      "keyword": "抱團",
+      "action": ""
+    },
+    {
+      "no": 17,
+      "keyword": "你的東西掉了",
+      "action": ""
+    },
+    {
+      "no": 18,
+      "keyword": "喵方認證黑純100%",
+      "action": "非洲"
+    },
+    {
+      "no": 19,
+      "keyword": "好人你是個好人",
+      "action": ""
+    },
+    {
+      "no": 20,
+      "keyword": "智商診斷書87不能再高",
+      "action": ""
+    },
+    {
+      "no": 21,
+      "keyword": "約嗎",
+      "action": ""
+    },
+    {
+      "no": 22,
+      "keyword": "不約。",
+      "action": ""
+    },
+    {
+      "no": 23,
+      "keyword": "(坐等吃瓜)",
+      "action": "西瓜"
+    },
+    {
+      "no": 24,
+      "keyword": "打本啊",
+      "action": ""
+    },
+    {
+      "no": 25,
+      "keyword": "(再300年)我等等就去睡了",
+      "action": "仙人"
+    },
+    {
+      "no": 26,
+      "keyword": "對方朝你發出了組隊邀請。",
+      "action": ""
+    },
+    {
+      "no": 27,
+      "keyword": "對方拒絕了你的邀請",
+      "action": ""
+    },
+    {
+      "no": 28,
+      "keyword": "對方對你開啟了仇殺",
+      "action": ""
+    },
+    {
+      "no": 29,
+      "keyword": "哼唧",
+      "action": ""
+    },
+    {
+      "no": 30,
+      "keyword": "退下",
+      "action": "符咒"
+    },
+    {
+      "no": 31,
+      "keyword": "你的鍋",
+      "action": ""
+    },
+    {
+      "no": 32,
+      "keyword": "(委屈)",
+      "action": ""
+    },
+    {
+      "no": 33,
+      "keyword": "吸附附",
+      "action": ""
+    },
+    {
+      "no": 34,
+      "keyword": "大爺行行好",
+      "action": "乞討"
+    },
+    {
+      "no": 35,
+      "keyword": "打碼",
+      "action": ""
+    },
+    {
+      "no": 36,
+      "keyword": "老司機帶帶我!初心者",
+      "action": "新手"
+    },
+    {
+      "no": 37,
+      "keyword": "司機我要上車肥宅卡",
+      "action": "悠遊卡"
+    },
+    {
+      "no": 38,
+      "keyword": "上車!!!速車老司機",
+      "action": "小黃瓜"
+    },
+    {
+      "no": 39,
+      "keyword": "來你的位置客用",
+      "action": ""
+    },
+    {
+      "no": 40,
+      "keyword": "超速了停車BI",
+      "action": "警察"
+    }
+  ],
   "LV20 野生喵喵怪.png": [],
   "LV21 野生喵喵怪.png": [],
   "LV22 野生喵喵怪.png": [],
