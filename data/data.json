@@ -2,8 +2,410 @@
   "LV.2 海豹怪怪獸.png": [],
   "LV1 海豹怪怪獸.png": [],
   "LV1 野生鯊西米怪.png": [],
-  "LV10 野生喵喵怪♡♡♡.png": [],
-  "LV11 野生喵喵怪 (內附口罩).png": [],
+  "LV10 野生喵喵怪♡♡♡.png": [
+    {
+      "no": 1,
+      "keyword": "你的小可愛來了",
+      "action": ""
+    },
+    {
+      "no": 2,
+      "keyword": "(舔舔)",
+      "action": ""
+    },
+    {
+      "no": 3,
+      "keyword": "蹭蹭",
+      "action": ""
+    },
+    {
+      "no": 4,
+      "keyword": "(貼住不放)",
+      "action": ""
+    },
+    {
+      "no": 5,
+      "keyword": "小孩子才做選擇",
+      "action": "香蕉小黃瓜"
+    },
+    {
+      "no": 6,
+      "keyword": "期待又怕受傷害本本",
+      "action": ""
+    },
+    {
+      "no": 7,
+      "keyword": "愛不愛我?",
+      "action": "威脅"
+    },
+    {
+      "no": 8,
+      "keyword": "愛你",
+      "action": ""
+    },
+    {
+      "no": 9,
+      "keyword": "你真是壞孩子",
+      "action": ""
+    },
+    {
+      "no": 10,
+      "keyword": "我我壞壞!!!",
+      "action": ""
+    },
+    {
+      "no": 11,
+      "keyword": "喜喜番",
+      "action": "喜歡"
+    },
+    {
+      "no": 12,
+      "keyword": "可可愛",
+      "action": ""
+    },
+    {
+      "no": 13,
+      "keyword": "(放置PALY嗎)已讀",
+      "action": ""
+    },
+    {
+      "no": 14,
+      "keyword": "我我可以!",
+      "action": ""
+    },
+    {
+      "no": 15,
+      "keyword": "(喘息)",
+      "action": ""
+    },
+    {
+      "no": 16,
+      "keyword": "你想做什麼?",
+      "action": ""
+    },
+    {
+      "no": 17,
+      "keyword": "不要啊",
+      "action": ""
+    },
+    {
+      "no": 18,
+      "keyword": "躺好了",
+      "action": ""
+    },
+    {
+      "no": 19,
+      "keyword": "好的",
+      "action": ""
+    },
+    {
+      "no": 20,
+      "keyword": "哇",
+      "action": ""
+    },
+    {
+      "no": 21,
+      "keyword": "你在引誘我嗎",
+      "action": ""
+    },
+    {
+      "no": 22,
+      "keyword": "不讓你睡",
+      "action": ""
+    },
+    {
+      "no": 23,
+      "keyword": "為什麼!!!",
+      "action": ""
+    },
+    {
+      "no": 24,
+      "keyword": "愛我你怕了嗎?",
+      "action": ""
+    },
+    {
+      "no": 25,
+      "keyword": "對不起我錯了",
+      "action": ""
+    },
+    {
+      "no": 26,
+      "keyword": "多罵罵人家嘛",
+      "action": ""
+    },
+    {
+      "no": 27,
+      "keyword": "再繼續責備我啊",
+      "action": ""
+    },
+    {
+      "no": 28,
+      "keyword": "再罵兇一點啊",
+      "action": ""
+    },
+    {
+      "no": 29,
+      "keyword": "",
+      "action": "丟愛心"
+    },
+    {
+      "no": 30,
+      "keyword": "",
+      "action": "心碎/拒絕"
+    },
+    {
+      "no": 31,
+      "keyword": "",
+      "action": "接愛心"
+    },
+    {
+      "no": 32,
+      "keyword": "",
+      "action": "滿滿愛心"
+    },
+    {
+      "no": 33,
+      "keyword": "我想你了",
+      "action": ""
+    },
+    {
+      "no": 34,
+      "keyword": "愛我用力一點",
+      "action": ""
+    },
+    {
+      "no": 35,
+      "keyword": "我不是工具",
+      "action": ""
+    },
+    {
+      "no": 36,
+      "keyword": "關懷我鼓勵我愛我",
+      "action": ""
+    },
+    {
+      "no": 37,
+      "keyword": "喝熱開水啊",
+      "action": ""
+    },
+    {
+      "no": 38,
+      "keyword": "怪我囉?",
+      "action": ""
+    },
+    {
+      "no": 39,
+      "keyword": "天下情侶皆兄弟",
+      "action": ""
+    },
+    {
+      "no": 40,
+      "keyword": "我一律建議分手",
+      "action": ""
+    }
+  ],
+  "LV11 野生喵喵怪 (內附口罩).png": [
+    {
+      "no": 1,
+      "keyword": "我覺得你應該吸一口消毒",
+      "action": ""
+    },
+    {
+      "no": 2,
+      "keyword": "可黏哪ㄌㄢˋ",
+      "action": "可憐/爛"
+    },
+    {
+      "no": 3,
+      "keyword": "別把你的87傳染給我",
+      "action": ""
+    },
+    {
+      "no": 4,
+      "keyword": "不想面對現實的我",
+      "action": ""
+    },
+    {
+      "no": 5,
+      "keyword": "我看你應該要喝滾水",
+      "action": "熱水"
+    },
+    {
+      "no": 6,
+      "keyword": "自我治療中",
+      "action": ""
+    },
+    {
+      "no": 7,
+      "keyword": "嗯...",
+      "action": ""
+    },
+    {
+      "no": 8,
+      "keyword": "沙小?",
+      "action": ""
+    },
+    {
+      "no": 9,
+      "keyword": "走開細菌人",
+      "action": ""
+    },
+    {
+      "no": 10,
+      "keyword": "糟了是血壓上升的感覺",
+      "action": ""
+    },
+    {
+      "no": 11,
+      "keyword": "細菌人",
+      "action": ""
+    },
+    {
+      "no": 12,
+      "keyword": "分享",
+      "action": "細菌/病毒"
+    },
+    {
+      "no": 13,
+      "keyword": "Don't touch me",
+      "action": ""
+    },
+    {
+      "no": 14,
+      "keyword": "別跟我說話",
+      "action": ""
+    },
+    {
+      "no": 15,
+      "keyword": "多喝熱水",
+      "action": ""
+    },
+    {
+      "no": 16,
+      "keyword": "熱水我已經喝夠了",
+      "action": ""
+    },
+    {
+      "no": 17,
+      "keyword": "戴上戴上",
+      "action": "口罩"
+    },
+    {
+      "no": 18,
+      "keyword": "暴露在危險之中",
+      "action": ""
+    },
+    {
+      "no": 19,
+      "keyword": "怎樣啦",
+      "action": ""
+    },
+    {
+      "no": 20,
+      "keyword": "可撥",
+      "action": ""
+    },
+    {
+      "no": 21,
+      "keyword": "把自己與人生隔離",
+      "action": ""
+    },
+    {
+      "no": 22,
+      "keyword": "隔離",
+      "action": ""
+    },
+    {
+      "no": 23,
+      "keyword": "咳合",
+      "action": "口水/痰"
+    },
+    {
+      "no": 24,
+      "keyword": "呸",
+      "action": "口水/痰"
+    },
+    {
+      "no": 25,
+      "keyword": "你誰啊",
+      "action": ""
+    },
+    {
+      "no": 26,
+      "keyword": "我不認識你",
+      "action": ""
+    },
+    {
+      "no": 27,
+      "keyword": "離我遠一點",
+      "action": ""
+    },
+    {
+      "no": 28,
+      "keyword": "SO?",
+      "action": ""
+    },
+    {
+      "no": 29,
+      "keyword": "開始在群組咳嗽咳咳",
+      "action": ""
+    },
+    {
+      "no": 30,
+      "keyword": "都是你傳染給我的",
+      "action": ""
+    },
+    {
+      "no": 31,
+      "keyword": "你太醜了快戴上",
+      "action": ""
+    },
+    {
+      "no": 32,
+      "keyword": "你還是戴上好了",
+      "action": ""
+    },
+    {
+      "no": 33,
+      "keyword": "自主邊緣",
+      "action": ""
+    },
+    {
+      "no": 34,
+      "keyword": "消毒",
+      "action": "酒精"
+    },
+    {
+      "no": 35,
+      "keyword": "污物消滅",
+      "action": "酒精"
+    },
+    {
+      "no": 36,
+      "keyword": "喝你需要消毒高粱",
+      "action": ""
+    },
+    {
+      "no": 37,
+      "keyword": "你想太多了",
+      "action": ""
+    },
+    {
+      "no": 38,
+      "keyword": "我又不出門的",
+      "action": ""
+    },
+    {
+      "no": 39,
+      "keyword": "要我出門是不可能的",
+      "action": ""
+    },
+    {
+      "no": 40,
+      "keyword": "感覺安全",
+      "action": "垃圾"
+    }
+  ],
   "LV12 野生喵喵怪(訊息貼圖♡).png": [],
   "LV13 野生喵喵怪.png": [],
   "LV14 野生喵喵怪 (附草泥馬).png": [],
@@ -637,10 +1039,613 @@
   "LV34 野生喵喵怪 (屬性精緻香喵).png": [],
   "LV35 野生喵喵怪 (屬性職場).png": [],
   "LV36 野生喵喵怪 (回覆技能補充包).png": [],
-  "LV37 野生喵喵怪 (屬性吃土).png": [],
+  "LV37 野生喵喵怪 (屬性吃土).png": [
+    {
+      "no": 1,
+      "keyword": "分我一點!!!",
+      "action": ""
+    },
+    {
+      "no": 2,
+      "keyword": "花錢買垃圾",
+      "action": "網購"
+    },
+    {
+      "no": 3,
+      "keyword": "(窮醒)",
+      "action": ""
+    },
+    {
+      "no": 4,
+      "keyword": "咿嗚嗚嗚",
+      "action": "窮/裝可憐"
+    },
+    {
+      "no": 5,
+      "keyword": "羨慕",
+      "action": ""
+    },
+    {
+      "no": 6,
+      "keyword": "賺爛了賺爛了",
+      "action": ""
+    },
+    {
+      "no": 7,
+      "keyword": "我想要這個",
+      "action": ""
+    },
+    {
+      "no": 8,
+      "keyword": "注意有人要花錢了",
+      "action": "敲鑼"
+    },
+    {
+      "no": 9,
+      "keyword": "我的錢包會哭但我會笑",
+      "action": ""
+    },
+    {
+      "no": 10,
+      "keyword": "有沒有想過我的感受",
+      "action": "錢包"
+    },
+    {
+      "no": 11,
+      "keyword": "(開心過後開始後悔)",
+      "action": ""
+    },
+    {
+      "no": 12,
+      "keyword": "(流下了買不起的眼淚)",
+      "action": ""
+    },
+    {
+      "no": 13,
+      "keyword": "雖然買了垃圾但是我很快樂",
+      "action": ""
+    },
+    {
+      "no": 14,
+      "keyword": "(國庫空虛)",
+      "action": "錢包"
+    },
+    {
+      "no": 15,
+      "keyword": "要花錢的活動都別找我",
+      "action": ""
+    },
+    {
+      "no": 16,
+      "keyword": "這點錢我還是出得起的",
+      "action": ""
+    },
+    {
+      "no": 17,
+      "keyword": "你為什麼不能節制點?",
+      "action": ""
+    },
+    {
+      "no": 18,
+      "keyword": "快住手吧咳咳",
+      "action": ""
+    },
+    {
+      "no": 19,
+      "keyword": "嚶嚶",
+      "action": ""
+    },
+    {
+      "no": 20,
+      "keyword": "嗚",
+      "action": "住院/點滴"
+    },
+    {
+      "no": 21,
+      "keyword": "(試著活過月底)",
+      "action": "土"
+    },
+    {
+      "no": 22,
+      "keyword": "真好~還有東西吃",
+      "action": ""
+    },
+    {
+      "no": 23,
+      "keyword": "好險空氣是免費的",
+      "action": ""
+    },
+    {
+      "no": 24,
+      "keyword": "這是免費的嗎",
+      "action": ""
+    },
+    {
+      "no": 25,
+      "keyword": "沒錢了...",
+      "action": ""
+    },
+    {
+      "no": 26,
+      "keyword": "沒錢買快樂...",
+      "action": ""
+    },
+    {
+      "no": 27,
+      "keyword": "不要再買了",
+      "action": ""
+    },
+    {
+      "no": 28,
+      "keyword": "你已經沒有錢了",
+      "action": ""
+    },
+    {
+      "no": 29,
+      "keyword": "最近窮的吃土了...",
+      "action": ""
+    },
+    {
+      "no": 30,
+      "keyword": "我需要錢",
+      "action": ""
+    },
+    {
+      "no": 31,
+      "keyword": "線上賣藝參考看看價可談",
+      "action": ""
+    },
+    {
+      "no": 32,
+      "keyword": "只要給錢包你滿意",
+      "action": ""
+    },
+    {
+      "no": 33,
+      "keyword": "拜託看看我",
+      "action": ""
+    },
+    {
+      "no": 34,
+      "keyword": "可以給我錢嗎燒點也可以",
+      "action": ""
+    },
+    {
+      "no": 35,
+      "keyword": "轉帳中",
+      "action": "燒紙錢"
+    },
+    {
+      "no": 36,
+      "keyword": "再撐一下就會有錢了",
+      "action": ""
+    },
+    {
+      "no": 37,
+      "keyword": "您的大恩大德小的沒齒難忘",
+      "action": ""
+    },
+    {
+      "no": 38,
+      "keyword": "那是什麼酷東西我要",
+      "action": ""
+    },
+    {
+      "no": 39,
+      "keyword": "準備掏錢",
+      "action": ""
+    },
+    {
+      "no": 40,
+      "keyword": "闔上錢包",
+      "action": ""
+    }
+  ],
   "LV38 野生喵喵怪 (※屬性失傳社群).png": [],
-  "LV38 野生喵喵怪 (泰語版).png": [],
-  "LV39 野生喵喵怪 (屬性魔法烤肉).png": [],
+  "LV38 野生喵喵怪 (泰語版).png": [
+    {
+      "no": 1,
+      "keyword": "`+1",
+      "action": ""
+    },
+    {
+      "no": 2,
+      "keyword": "你的小可愛已上線",
+      "action": ""
+    },
+    {
+      "no": 3,
+      "keyword": "歡迎新人!",
+      "action": ""
+    },
+    {
+      "no": 4,
+      "keyword": "請看記事本",
+      "action": ""
+    },
+    {
+      "no": 5,
+      "keyword": "有人在嗎",
+      "action": "開門"
+    },
+    {
+      "no": 6,
+      "keyword": "聽到請回答!",
+      "action": ""
+    },
+    {
+      "no": 7,
+      "keyword": "來來來上車上車~速車",
+      "action": ""
+    },
+    {
+      "no": 8,
+      "keyword": "(開始起鬨)",
+      "action": ""
+    },
+    {
+      "no": 9,
+      "keyword": "求推薦",
+      "action": ""
+    },
+    {
+      "no": 10,
+      "keyword": "求教學",
+      "action": ""
+    },
+    {
+      "no": 11,
+      "keyword": "謝老爺!!",
+      "action": ""
+    },
+    {
+      "no": 12,
+      "keyword": "愛了",
+      "action": ""
+    },
+    {
+      "no": 13,
+      "keyword": "推推",
+      "action": ""
+    },
+    {
+      "no": 14,
+      "keyword": "單兵注意!",
+      "action": "大聲公"
+    },
+    {
+      "no": 15,
+      "keyword": "你們說話啊!",
+      "action": ""
+    },
+    {
+      "no": 16,
+      "keyword": "(已離線)",
+      "action": ""
+    },
+    {
+      "no": 17,
+      "keyword": "(無法融入話題)",
+      "action": ""
+    },
+    {
+      "no": 18,
+      "keyword": "現在在聊什麼啊",
+      "action": ""
+    },
+    {
+      "no": 19,
+      "keyword": "(突然出現)",
+      "action": ""
+    },
+    {
+      "no": 20,
+      "keyword": "(直接消失)",
+      "action": ""
+    },
+    {
+      "no": 21,
+      "keyword": "訊息太多了",
+      "action": ""
+    },
+    {
+      "no": 22,
+      "keyword": "大會報告大會報告",
+      "action": "廣播"
+    },
+    {
+      "no": 23,
+      "keyword": "刷刷存在感",
+      "action": ""
+    },
+    {
+      "no": 24,
+      "keyword": "(進入旁觀模式)",
+      "action": ""
+    },
+    {
+      "no": 25,
+      "keyword": "我錯過了什麼",
+      "action": ""
+    },
+    {
+      "no": 26,
+      "keyword": "感覺自己錯過了一世紀",
+      "action": ""
+    },
+    {
+      "no": 27,
+      "keyword": "有懶人包嗎?",
+      "action": ""
+    },
+    {
+      "no": 28,
+      "keyword": "不客氣~",
+      "action": ""
+    },
+    {
+      "no": 29,
+      "keyword": "大家好啊!",
+      "action": ""
+    },
+    {
+      "no": 30,
+      "keyword": "早啊～大家！",
+      "action": ""
+    },
+    {
+      "no": 31,
+      "keyword": "大家晚安～",
+      "action": ""
+    },
+    {
+      "no": 32,
+      "keyword": "大家掰掰～",
+      "action": ""
+    },
+    {
+      "no": 33,
+      "keyword": "怎麼這麼安靜？",
+      "action": ""
+    },
+    {
+      "no": 34,
+      "keyword": "還有人活著嗎！",
+      "action": ""
+    },
+    {
+      "no": 35,
+      "keyword": "活人探頭",
+      "action": ""
+    },
+    {
+      "no": 36,
+      "keyword": "不敢出聲",
+      "action": ""
+    },
+    {
+      "no": 37,
+      "keyword": "(浮出水面）",
+      "action": "潛水"
+    },
+    {
+      "no": 38,
+      "keyword": "(下淺回去）",
+      "action": ""
+    },
+    {
+      "no": 39,
+      "keyword": "潛水的起來換氣了",
+      "action": ""
+    },
+    {
+      "no": 40,
+      "keyword": "(強制上岸）",
+      "action": ""
+    }
+  ],
+  "LV39 野生喵喵怪 (屬性魔法烤肉).png": [
+    {
+      "no": 1,
+      "keyword": "人類的關係真脆弱",
+      "action": "吃肉"
+    },
+    {
+      "no": 2,
+      "keyword": "啪沒了",
+      "action": ""
+    },
+    {
+      "no": 3,
+      "keyword": "幹話技能發動",
+      "action": ""
+    },
+    {
+      "no": 4,
+      "keyword": "快看是幹話獸",
+      "action": ""
+    },
+    {
+      "no": 5,
+      "keyword": "你竟敢用我的魔法對付我",
+      "action": ""
+    },
+    {
+      "no": 6,
+      "keyword": "魔法小偷就是我",
+      "action": ""
+    },
+    {
+      "no": 7,
+      "keyword": "論鬥法我可是不會輸的",
+      "action": ""
+    },
+    {
+      "no": 8,
+      "keyword": "頭過來幫你上BUFF囉",
+      "action": "精靈/榔頭"
+    },
+    {
+      "no": 9,
+      "keyword": "(物理攻擊）",
+      "action": "幻肢"
+    },
+    {
+      "no": 10,
+      "keyword": "召喚我的幻肢為攻擊狀態",
+      "action": ""
+    },
+    {
+      "no": 11,
+      "keyword": "吃我這招",
+      "action": ""
+    },
+    {
+      "no": 12,
+      "keyword": "(信任瓦解）",
+      "action": ""
+    },
+    {
+      "no": 13,
+      "keyword": "老師請教我戰法本本",
+      "action": ""
+    },
+    {
+      "no": 14,
+      "keyword": "讓我想想",
+      "action": ""
+    },
+    {
+      "no": 15,
+      "keyword": "戴上真理之環智力+8",
+      "action": ""
+    },
+    {
+      "no": 16,
+      "keyword": "我改變主意了",
+      "action": ""
+    },
+    {
+      "no": 17,
+      "keyword": "(捉捕獵物)",
+      "action": ""
+    },
+    {
+      "no": 18,
+      "keyword": "放過我啦",
+      "action": "綁架"
+    },
+    {
+      "no": 19,
+      "keyword": "烤肉",
+      "action": ""
+    },
+    {
+      "no": 20,
+      "keyword": "(塗上烤肉醬)",
+      "action": ""
+    },
+    {
+      "no": 21,
+      "keyword": "看起來好好吃",
+      "action": ""
+    },
+    {
+      "no": 22,
+      "keyword": "把食物交出來",
+      "action": "刀叉"
+    },
+    {
+      "no": 23,
+      "keyword": "(嚼嚼)",
+      "action": "吃"
+    },
+    {
+      "no": 24,
+      "keyword": "(施加變好吃的魔法)",
+      "action": ""
+    },
+    {
+      "no": 25,
+      "keyword": "天靈靈地靈靈",
+      "action": ""
+    },
+    {
+      "no": 26,
+      "keyword": "變胖吧你",
+      "action": ""
+    },
+    {
+      "no": 27,
+      "keyword": "哀號",
+      "action": "哀嚎"
+    },
+    {
+      "no": 28,
+      "keyword": "跟我的肚肚道歉",
+      "action": ""
+    },
+    {
+      "no": 29,
+      "keyword": "處理食材",
+      "action": "綁架/烤肉"
+    },
+    {
+      "no": 30,
+      "keyword": "要先剁哪呢",
+      "action": ""
+    },
+    {
+      "no": 31,
+      "keyword": "食材沒有說話的權利",
+      "action": ""
+    },
+    {
+      "no": 32,
+      "keyword": "打掉重練吧",
+      "action": ""
+    },
+    {
+      "no": 33,
+      "keyword": "上吧幹話獸",
+      "action": ""
+    },
+    {
+      "no": 34,
+      "keyword": "不要逼我",
+      "action": ""
+    },
+    {
+      "no": 35,
+      "keyword": "換我出招了",
+      "action": ""
+    },
+    {
+      "no": 36,
+      "keyword": "記憶消除魔法發動",
+      "action": ""
+    },
+    {
+      "no": 37,
+      "keyword": "召喚",
+      "action": ""
+    },
+    {
+      "no": 38,
+      "keyword": "召喚失敗",
+      "action": ""
+    },
+    {
+      "no": 39,
+      "keyword": "原地復活",
+      "action": ""
+    },
+    {
+      "no": 40,
+      "keyword": "召喚我幹嘛",
+      "action": ""
+    }
+  ],
   "LV3野生喵喵怪.png": [
     {
       "no": 1,
@@ -1046,7 +2051,208 @@
       "action": "長輩/蓮花"
     }
   ],
-  "LV40 野生喵喵怪(屬性猴子).png": [],
+  "LV40 野生喵喵怪(屬性猴子).png": [
+    {
+      "no": 1,
+      "keyword": "哪來的猴子",
+      "action": ""
+    },
+    {
+      "no": 2,
+      "keyword": "猴子閉嘴",
+      "action": ""
+    },
+    {
+      "no": 3,
+      "keyword": "猴子逆",
+      "action": ""
+    },
+    {
+      "no": 4,
+      "keyword": "吱吱",
+      "action": "猴子"
+    },
+    {
+      "no": 5,
+      "keyword": "猴子出現了",
+      "action": ""
+    },
+    {
+      "no": 6,
+      "keyword": "來看猴子",
+      "action": ""
+    },
+    {
+      "no": 7,
+      "keyword": "猴子乖吃香蕉",
+      "action": ""
+    },
+    {
+      "no": 8,
+      "keyword": "我用這個跟你換吧",
+      "action": "香蕉"
+    },
+    {
+      "no": 9,
+      "keyword": "猴子來了",
+      "action": ""
+    },
+    {
+      "no": 10,
+      "keyword": "吱",
+      "action": "猴生氣"
+    },
+    {
+      "no": 11,
+      "keyword": "猴子增生了",
+      "action": ""
+    },
+    {
+      "no": 12,
+      "keyword": "被猴群排擠",
+      "action": ""
+    },
+    {
+      "no": 13,
+      "keyword": "出現返祖現象",
+      "action": "猴"
+    },
+    {
+      "no": 14,
+      "keyword": "我是一隻笨猴子",
+      "action": ""
+    },
+    {
+      "no": 15,
+      "keyword": "你比我還糟糕",
+      "action": ""
+    },
+    {
+      "no": 16,
+      "keyword": "猴子做的都比你好",
+      "action": ""
+    },
+    {
+      "no": 17,
+      "keyword": "一群猴子",
+      "action": ""
+    },
+    {
+      "no": 18,
+      "keyword": "只會出一張嘴",
+      "action": ""
+    },
+    {
+      "no": 19,
+      "keyword": "真是猴子耶",
+      "action": ""
+    },
+    {
+      "no": 20,
+      "keyword": "跟猴子一樣",
+      "action": ""
+    },
+    {
+      "no": 21,
+      "keyword": "是誰給猴子鍵盤的",
+      "action": ""
+    },
+    {
+      "no": 22,
+      "keyword": "猴子學打字很辛苦吧",
+      "action": ""
+    },
+    {
+      "no": 23,
+      "keyword": "我不相信牠會那麼安分",
+      "action": "猴/他"
+    },
+    {
+      "no": 24,
+      "keyword": "我們沒辦法在猴子身上賭了",
+      "action": ""
+    },
+    {
+      "no": 25,
+      "keyword": "猴子都跑出來了",
+      "action": ""
+    },
+    {
+      "no": 26,
+      "keyword": "被猴子入侵了",
+      "action": ""
+    },
+    {
+      "no": 27,
+      "keyword": "身邊全是猴子",
+      "action": ""
+    },
+    {
+      "no": 28,
+      "keyword": "猴子到處都是猴子",
+      "action": ""
+    },
+    {
+      "no": 29,
+      "keyword": "現在的猴子都不怕人啊",
+      "action": ""
+    },
+    {
+      "no": 30,
+      "keyword": "小心被咬到會得破傷風",
+      "action": ""
+    },
+    {
+      "no": 31,
+      "keyword": "猴子是無法溝通的",
+      "action": ""
+    },
+    {
+      "no": 32,
+      "keyword": "來看同類互咬",
+      "action": "看戲"
+    },
+    {
+      "no": 33,
+      "keyword": "打不贏就加入",
+      "action": ""
+    },
+    {
+      "no": 34,
+      "keyword": "混入猴群",
+      "action": ""
+    },
+    {
+      "no": 35,
+      "keyword": "幫忙理毛",
+      "action": ""
+    },
+    {
+      "no": 36,
+      "keyword": "蕉綠",
+      "action": "焦慮"
+    },
+    {
+      "no": 37,
+      "keyword": "呼喚自己的猴子朋友",
+      "action": "香蕉/吸引"
+    },
+    {
+      "no": 38,
+      "keyword": "猴子人類朋友",
+      "action": ""
+    },
+    {
+      "no": 39,
+      "keyword": "猴子在一起強大",
+      "action": ""
+    },
+    {
+      "no": 40,
+      "keyword": "跳起快樂猴猴舞",
+      "action": ""
+    }
+  ],
   "LV41 野生喵喵怪(屬性鯊魚).png": [],
   "LV42 野生喵喵怪(屬性混沌).png": [],
   "LV43 野生喵喵怪(屬性年貨).png": [],
