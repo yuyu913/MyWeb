@@ -53,19 +53,44 @@
 
         /* Hero */
         .hero {
-            background-color: #fcd7e3;
+            background-image: url('/data/image/fishBG.jpg');
+            /* 換成你要的背景圖 */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
             padding: 5rem 2rem;
             text-align: center;
+            color: #fff;
+            /* 背景圖深的話可以用白字 */
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.8);
+            /* 可調深淺 */
+            z-index: 0;
+        }
+
+        .hero h1,
+        .hero p {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 1rem;
             color: #333;
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: #555;
         }
 
@@ -101,7 +126,7 @@
         .post img {
             width: 100%;
             height: 200px;
-            object-fit: cover;
+            object-fit: contain;
         }
 
         .post-content {
@@ -147,44 +172,44 @@
     </nav>
 
     <section class="hero">
-        <h1>吃吃魚の美食筆記</h1>
-        <p>🌟 真實分享每一口幸福與躁點！🌟</p>
+        <h1>吃吃魚🍴美食筆記❤️</h1>
+        <p>🌟 真實分享 新品開箱 美食記錄 🌟</p>
     </section>
 
     <section class="posts">
-        <h2>最新文章</h2>
+        <h2>最新分享</h2>
         <div class="post-grid">
             <!-- post 1 -->
             <div class="post">
-                <img src="https://via.placeholder.com/300x200?text=甜點1" alt="">
+                <img src="/data/image/post1.jpg" alt="">
                 <div class="post-content">
-                    <h3>香香光盈布丁黃麵</h3>
-                    <p>午後茶好有趣，甜而不膩！</p>
+                    <h3>Frigomio GELATERIA</h3>
+                    <p>濃郁的gelato 清爽的granita</p>
                 </div>
             </div>
 
             <!-- post 2 -->
             <div class="post">
-                <img src="https://via.placeholder.com/300x200?text=飲品1" alt="">
+                <img src="/data/image/post2.jpg" alt="">
                 <div class="post-content">
-                    <h3>果香奶茶推薦</h3>
-                    <p>奶香強，果香有小惊喜～</p>
+                    <h3>Pierre Hermé</h3>
+                    <p>精品法式甜點</p>
                 </div>
             </div>
 
             <!-- post 3 -->
             <div class="post">
-                <img src="https://via.placeholder.com/300x200?text=餐點1" alt="">
+                <img src="/data/image/post3.jpg" alt="">
                 <div class="post-content">
-                    <h3>玫瑰麵包推薦列表</h3>
-                    <p>最近發現好多可愛的新商品哦！</p>
+                    <h3>Sweetfull Cookie</h3>
+                    <p>最喜歡的軟餅乾🍪</p>
                 </div>
             </div>
         </div>
     </section>
 
     <footer>
-        &copy; 2025 吃吃魚の美食筆記. All rights reserved.
+        &copy; 2022 吃吃魚の美食筆記. All rights reserved.
     </footer>
 
 </body>
