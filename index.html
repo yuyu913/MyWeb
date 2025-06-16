@@ -3,66 +3,189 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>關鍵字查詢</title>
-    <!-- Bootstrap 引入 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>吃吃魚の美食筆記</title>
     <style>
-        #hoverPreview {
-            width: 100px;
-            height: 100px;
-            border: 2px solid #ccc;
+        body {
+            margin: 0;
+            font-family: "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+            background-color: #fffafc;
+            color: #333;
+        }
+
+        /* 導覽列 */
+        nav {
+            background-color: #fcd7e3;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff6699;
+        }
+
+        /* Hero */
+        .hero {
+            background-color: #fcd7e3;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* 最新文章 */
+        .posts {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .posts h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .post {
+            border: 1px solid #f3f3f3;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            background-image: url('');
-            background-repeat: no-repeat;
-            background-size: 400px auto;
-            /* 一排4格 → 4*100px 或你調整 */
-            background-position: 0 0;
-            display: none;
-            margin-top: 10px;
-            transition: all 0.3s ease;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+            transition: transform 0.3s;
         }
 
-        .result-item {
-            display: inline-block;
-            margin-bottom: 5px;
-            padding: 5px 10px;
-            border-radius: 5px;
-            background-color: #f8f9fa;
-            cursor: pointer;
-            transition: background-color 0.2s ease;
+        .post img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
 
-        .result-item:hover {
-            background-color: #e2e6ea;
+        .post-content {
+            padding: 1rem;
+        }
+
+        .post-content h3 {
+            margin: 0 0 0.5rem;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .post-content p {
+            font-size: 0.95rem;
+            color: #666;
+        }
+
+        .post:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #fcd7e3;
+            color: #555;
+            margin-top: 3rem;
         }
     </style>
 </head>
 
-<body class="p-4">
+<body>
+    <nav>
+        <div class="logo">吃吃魚</div>
+        <ul>
+            <li><a href="#">首頁</a></li>
+            <li><a href="#">最新分享</a></li>
+            <li><a href="#">關於我</a></li>
+            <li><a href="#">聯絡</a></li>
+        </ul>
+    </nav>
 
-    <div class="container mt-4">
-        <div class="row">
-            <!-- 左邊區塊 -->
-            <div class="col-md-8 mb-4 mb-md-0">
-                <h1>關鍵字查詢 🔍</h1>
-                <input type="text" id="searchInput" class="form-control mb-2" placeholder="請輸入關鍵字">
-                <button id="searchBtn" class="btn btn-primary mb-3">查詢</button>
-                <div id="result"></div>
+    <section class="hero">
+        <h1>吃吃魚の美食筆記</h1>
+        <p>🌟 真實分享每一口幸福與躁點！🌟</p>
+    </section>
+
+    <section class="posts">
+        <h2>最新文章</h2>
+        <div class="post-grid">
+            <!-- post 1 -->
+            <div class="post">
+                <img src="https://eateatfish.com/MEOW" alt="">
+                <div class="post-content">
+                    <h3>香香光盈布丁黃麵</h3>
+                    <p>午後茶好有趣，甜而不膩！</p>
+                </div>
             </div>
 
-            <!-- 右邊區塊 -->
-            <div class="col-md-4 mt-4 mt-md-0 d-flex flex-column align-items-center">
-                <h4 class="mb-3">預覽圖</h4>
-                <div id="hoverPreview"></div>
+            <!-- post 2 -->
+            <div class="post">
+                <img src="https://via.placeholder.com/300x200?text=飲品1" alt="">
+                <div class="post-content">
+                    <h3>果香奶茶推薦</h3>
+                    <p>奶香強，果香有小惊喜～</p>
+                </div>
+            </div>
+
+            <!-- post 3 -->
+            <div class="post">
+                <img src="https://via.placeholder.com/300x200?text=餐點1" alt="">
+                <div class="post-content">
+                    <h3>玫瑰麵包推薦列表</h3>
+                    <p>最近發現好多可愛的新商品哦！</p>
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
+    <footer>
+        &copy; 2025 吃吃魚の美食筆記. All rights reserved.
+    </footer>
 
-
-    <script src="script.js"></script>
 </body>
 
 </html>
