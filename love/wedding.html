@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>怡瑄 ❤ 建霆｜電子喜帖</title>
+  <meta name="theme-color" content="#c77a49">
+  <link rel="preload" href="assets/hero1.jpg" as="image">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <audio id="bgm" src="assets/bgm.mp3" preload="auto" loop></audio>
+  <button class="music-toggle" aria-label="音樂切換" title="音樂切換">♫</button>
+
+  <header class="topbar">
+    <div class="brand">怡瑄 ❤ 建霆</div>
+    <nav class="nav">
+      <a href="#hero">首頁</a>
+      <a href="#invite">敬邀</a>
+      <a href="#gallery">相片</a>
+      <a href="#transport">交通</a>
+    </nav>
+    <a class="rsvp-btn" href="https://forms.gle/your-google-form" target="_blank" rel="noopener">我要參加</a>
+  </header>
+
+  <main id="container">
+  <!-- ① 首屏：全幅背景 + 文字 -->
+  <section id="hero" class="panel active tone-cream">
+    <div class="hero-bg">
+      <img src="assets/hero1.jpg" alt="沙灘捧花合影">
+      <div class="vignette"></div>
+    </div>
+    <div class="hero-overlay clean">
+      <h1 class="hero-title">怡瑄 &amp; 建霆</h1>
+      <div class="countdown hero-count">
+        <div><span id="d">00</span><small>Days</small></div>
+        <div><span id="h">00</span><small>Hours</small></div>
+        <div><span id="m">00</span><small>Mins</small></div>
+      </div>
+      <div class="hero-meta">2026/02/28（六） 12:00 · 晶綺盛宴 台鋁館</div>
+    </div>
+    <a class="scroll-down" href="#invite" aria-label="往下捲動">↓</a>
+  </section>
+
+  <!-- ② 敬邀：無框、對稱、名字-only -->
+  <section id="invite" class="panel tone-clay">
+    <div class="invite-wrap simple">
+      <div class="en">Welcome To Our Wedding</div>
+      <div class="time">2026/02/28（六） 12:00</div>
+
+      <h2 class="couple-line">怡瑄　&　建霆</h2>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <div class="parents-names">
+        <div>陳先生</div>
+        <div>陳小姐</div>
+        <div>陳先生</div>
+        <div>陳小姐</div>
+      </div>
+
+      <div class="divider small" aria-hidden="true"></div>
+
+      <div class="invite-center">誠摯敬邀</div>
+    </div>
+  </section>
+
+  <!-- ③ 相片＋祝福文字（原創） -->
+  <section id="gallery" class="panel tone-clay-light">
+    <div class="content-wide gallery">
+      <p class="blessing">
+        把一路的日常折成一束光，<br>
+        在 2/28 的正午，邀您一起見證——<br>
+        我們的名字，從兩個人變成一家人。
+      </p>
+      <div class="main-photo">
+        <img id="mainImg" src="assets/sky4.jpg" alt="主圖">
+        <button class="arrow next" aria-label="下一張">→</button>
+      </div>
+      <div class="thumbs" role="tablist" aria-label="相片縮圖">
+        <button class="thumb active" aria-selected="true" role="tab"><img src="assets/sky4.jpg" alt="藍天下對望"></button>
+        <button class="thumb" role="tab"><img src="assets/hero1.jpg" alt="沙灘捧花"></button>
+        <button class="thumb" role="tab"><img src="assets/lean3.jpg" alt="欄杆前對望"></button>
+        <button class="thumb" role="tab"><img src="assets/table2.jpg" alt="室內求婚"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ 交通（晶綺盛宴 台鋁館） -->
+  <section id="transport" class="panel tone-clay">
+    <div class="content-wide transport">
+      <div class="travel-info">
+        <h2>交通方式｜晶綺盛宴 台鋁館</h2>
+        <ul class="bullets">
+          <li><strong>高鐵：</strong>台中站 → 計程車約 20 分鐘。</li>
+          <li><strong>台鐵：</strong>台中車站 → 公車至「台鋁生活商場」站，步行 3–5 分鐘。</li>
+          <li><strong>自行開車：</strong>導航「晶綺盛宴 台鋁館」，館內停車可折抵。</li>
+        </ul>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          id="gmap"
+          title="Google 地圖"
+          loading="lazy"
+          src="https://www.google.com/maps?q=%E6%99%B6%E7%B6%BA%E7%9B%9B%E5%AE%B4%20%E5%8F%B0%E9%8B%81%E9%A4%A8&output=embed"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+  </main>
+
+  <footer class="foot">
+    <p>期待與您共享此刻，謝謝您的祝福 🤍</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+:root{
+  --clay:#c77a49;
+  --clay-light:#f2e5dc;
+  --cream:#fff8f1;
+  --accent:#ff7dab;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,'Noto Sans TC',sans-serif; color:#2b2b2b; line-height:1.65; background:#fff7fb}
+
+/* 隱藏滾動條 */
+#container::-webkit-scrollbar{display:none}
+#container{scrollbar-width:none}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:1000;display:flex;align-items:center;gap:16px;padding:10px 16px;background:rgba(255,255,255,.85);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid #eee}
+.brand{font-weight:700;letter-spacing:.5px}
+.nav{display:none;gap:12px}
+.nav a{color:#555;text-decoration:none;font-size:14px}
+.rsvp-btn{margin-left:auto;background:var(--accent);color:#fff;padding:10px 14px;border-radius:999px;text-decoration:none;font-weight:700;box-shadow:0 6px 18px rgba(255,125,171,.28)}
+
+/* 音樂按鈕 */
+.music-toggle{position:fixed;right:16px;bottom:16px;z-index:1200;border:0;border-radius:999px;padding:12px 14px;font-size:18px;background:#ffffffcc;backdrop-filter:blur(6px);box-shadow:0 6px 18px rgba(0,0,0,.12);cursor:pointer}
+
+/* 容器 & 每屏 */
+#container{height:100%;scroll-snap-type:y mandatory;overflow-y:auto;background:#fff}
+.panel{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:84px 20px 40px;scroll-snap-align:start;opacity:0;transform:translateY(18px) scale(.985);transition:opacity .7s ease, transform .7s ease}
+.panel.active{opacity:1;transform:none}
+.tone-cream{background:var(--cream)}
+.tone-clay{background:var(--clay);color:#fff}
+.tone-clay-light{background:var(--clay-light)}
+
+/* 首屏 */
+.hero-bg{position:absolute;inset:0;overflow:hidden}
+.hero-bg img{width:100%;height:100%;object-fit:cover;filter:contrast(.95) saturate(.9)}
+.vignette{position:absolute;inset:0;background:linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,.1) 35%, rgba(0,0,0,0) 60%)}
+.hero-overlay{position:relative;text-align:center;color:#fff;z-index:1;margin-top:20vh}
+.hero-title{font-size:44px;letter-spacing:.5px;margin:0 0 10px}
+.countdown{display:flex;gap:12px;justify-content:center;margin:.4rem 0}
+.countdown div{background:rgba(255,255,255,.9);color:#333;border:1px solid #eee;padding:8px 10px;border-radius:12px;min-width:64px;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.countdown span{display:block;font-size:22px;font-weight:800}
+.hero-meta{opacity:.95}
+.scroll-down{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);text-decoration:none;color:#fff;font-size:22px;opacity:.8}
+
+/* 第二屏：無框、對稱 */
+.invite-wrap.simple{width:100%;max-width:860px;padding:0 18px;text-align:center}
+.invite-wrap .en{font-size:24px;opacity:.95}
+.invite-wrap .time{margin-top:4px;opacity:.85}
+.couple-line{font-size:26px;letter-spacing:.2em;margin:14px 0 12px}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.7),transparent);margin:10px auto;max-width:540px}
+.divider.small{max-width:360px}
+.parents-names{display:grid;grid-template-columns:1fr 1fr;gap:8px;justify-items:center;font-weight:700}
+.parents-names div{padding:4px 8px}
+.invite-center{margin-top:8px;font-weight:800;letter-spacing:.4em}
+
+/* 第三屏：祝福 + 相片 */
+.blessing{text-align:center;font-weight:600;margin:0 0 8px}
+.gallery{display:grid;gap:14px}
+.main-photo{position:relative}
+.main-photo img{width:100%;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+.arrow{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:#fff;border-radius:999px;padding:10px 12px;box-shadow:0 6px 16px rgba(0,0,0,.12);cursor:pointer}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.thumb{border:0;background:transparent;padding:0;cursor:pointer;opacity:.85;border-radius:10px}
+.thumb img{width:100%;border-radius:10px;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+.thumb.active,.thumb:hover{opacity:1;transform:translateY(-2px)}
+
+/* 第四屏：交通 */
+.transport{display:grid;gap:20px}
+.travel-info h2{margin:0 0 8px}
+.bullets{padding-left:18px;margin:0}
+.bullets li{margin:.4em 0}
+.map-wrap{min-height:340px}
+#gmap{width:100%;height:100%;min-height:340px;border:0;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,.06)}
+
+/* Footer */
+.foot{padding:30px 20px;text-align:center;color:#777}
+
+/* 桌機 */
+@media(min-width:900px){
+  .nav{display:flex}
+  .panel{padding-top:110px}
+  .hero-title{font-size:56px}
+  .transport{grid-template-columns:1.2fr 1fr}
+}
