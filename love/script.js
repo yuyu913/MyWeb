@@ -78,60 +78,70 @@ document.querySelector('.arrow.next').addEventListener('click', () => show(cur +
 // ['click','wheel','touchstart','keydown'].forEach(evt=>window.addEventListener(evt, tryPlay));
 // musicBtn.addEventListener('click', async ()=>{ if(music.paused){ await music.play(); musicOn=true; musicBtn.classList.add('on'); } else { music.pause(); musicOn=false; musicBtn.classList.remove('on'); } });
 
-// 音樂：預設嘗試連播，按一下暫停/繼續，暫停時圖標改變
+/// ===== 音樂播放控制（行動優化） =====
 const music = document.getElementById('bgm');
 const musicBtn = document.querySelector('.music-toggle');
 
-// 一定循環
 music.loop = true;
 
-// 切換按鈕圖示
-function updateMusicIcon() {
-  if (music.paused) {
-    musicBtn.textContent = '▶';
-    musicBtn.classList.add('paused');
-  } else {
-    musicBtn.textContent = '♫';
-    musicBtn.classList.remove('paused');
-  }
+let userMuted = false;          // 使用者有沒有「主動按暫停」
+let pausedByBackground = false; // 是否因為進入背景而暫停（可回前景自動續播）
+
+function updateBtn() {
+  // 不用改文字，改用 data-state 給 CSS 切圖示
+  musicBtn.dataset.state = music.paused ? 'paused' : 'playing';
 }
 
-// 嘗試自動播放（部分瀏覽器可能擋掉；下面還有互動後補啟）
 async function tryAutoplay() {
+  // 只有在「沒被使用者手動暫停」且「頁面在前景」才嘗試
+  if (userMuted || document.hidden) return;
   try {
     await music.play();
   } catch (e) {
-    // Autoplay 被擋就等使用者互動再播
+    // iOS 可能擋自動播放，等互動再試
   } finally {
-    updateMusicIcon();
+    updateBtn();
   }
 }
 
-// 初次載入就試著播放一次
+// 初載入：嘗試播放一次（若被擋就等互動）
 document.addEventListener('DOMContentLoaded', tryAutoplay);
 
-// 若頁面回到前景，再嘗試播放（避免 iOS 背景後暫停）
-document.addEventListener('visibilitychange', () => {
-  if (!document.hidden && music.paused) tryAutoplay();
-});
-
-// 任何一次互動也嘗試播放（當作 Autoplay 的保險）
+// 任一次互動後再嘗試播一次（僅一次；且不覆蓋使用者的暫停意願）
 ['click', 'touchstart', 'keydown'].forEach(evt => {
   window.addEventListener(evt, () => {
-    if (music.paused) tryAutoplay();
+    if (!userMuted && music.paused) tryAutoplay();
   }, { once: true, passive: true });
 });
 
-// 點按按鈕：暫停/繼續
-musicBtn.addEventListener('click', async () => {
-  if (music.paused) {
-    await music.play();
+// 進/出前景：進背景一律暫停；回前景若不是使用者手動暫停才續播
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    if (!music.paused) {
+      music.pause();
+      pausedByBackground = true;
+      updateBtn();
+    }
   } else {
-    music.pause();
+    if (pausedByBackground && !userMuted) {
+      pausedByBackground = false;
+      tryAutoplay();
+    }
   }
-  updateMusicIcon();
 });
 
-// 播放/暫停事件也同步圖示
-music.addEventListener('play', updateMusicIcon);
-music.addEventListener('pause', updateMusicIcon);
+// 按鈕：暫停/繼續（尊重使用者意願）
+musicBtn.addEventListener('click', async () => {
+  if (music.paused) {
+    userMuted = false;
+    await music.play();
+  } else {
+    userMuted = true;
+    music.pause();
+  }
+  updateBtn();
+});
+
+// 同步按鈕狀態
+music.addEventListener('play', updateBtn);
+music.addEventListener('pause', updateBtn);
