@@ -296,6 +296,7 @@ body {
 }
 
 .couple-line {
+
   font-size: 26px;
   letter-spacing: .2em;
   margin: 14px 0 12px
@@ -398,10 +399,10 @@ body {
   margin: 12px 0 6px;
   font-size: 24px;
   letter-spacing: .2em;
+  color: var(--clay);
 }
 
 .sub {
-  color: var(--clay);
   font-weight: 800;
   letter-spacing: .4em;
   margin: 30px 0 25px;
@@ -409,7 +410,6 @@ body {
 
 /* 兩欄名字：中間加垂直分隔線 */
 .parents-two {
-  color: var(--clay);
   position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -432,6 +432,10 @@ body {
   transform: translateX(-0.5px);
   background: linear-gradient(180deg, rgba(199, 122, 73, .15), rgba(199, 122, 73, .45), rgba(199, 122, 73, .15));
   pointer-events: none;
+}
+
+.parents-two .spacer {
+  height: 1.6em;
 }
 
 .invite-cta {
@@ -481,7 +485,7 @@ body {
 
 .thumbs {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px
 }
 
