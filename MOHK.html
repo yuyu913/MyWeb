@@ -1,0 +1,1421 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>港澳行程整理 🇲🇴🇭🇰</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fff7fb;
+      --card: rgba(255, 255, 255, .88);
+      --stroke: rgba(16, 24, 40, .08);
+      --text: #1f2937;
+      --muted: #6b7280;
+
+      /* 主色：粉 / 藍 / 黃 / 灰 */
+      --food-bg: rgba(255, 111, 177, .12);
+      --food-bd: rgba(255, 111, 177, .28);
+      --food-tx: #7a284f;
+
+      --spot-bg: rgba(107, 199, 255, .14);
+      --spot-bd: rgba(107, 199, 255, .32);
+      --spot-tx: #0f3a56;
+
+      --shop-bg: rgba(255, 211, 77, .20);
+      --shop-bd: rgba(255, 211, 77, .45);
+      --shop-tx: #6b4b00;
+
+      --note-bg: rgba(16, 24, 40, .05);
+      --note-bd: rgba(16, 24, 40, .10);
+      --note-tx: #374151;
+
+      --shadow: 0 10px 30px rgba(16, 24, 40, .08);
+    }
+
+    body {
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(255, 111, 177, .14), transparent 50%),
+        radial-gradient(900px 500px at 90% 10%, rgba(107, 199, 255, .16), transparent 50%),
+        radial-gradient(1000px 600px at 50% 100%, rgba(255, 211, 77, .14), transparent 50%),
+        var(--bg);
+      color: var(--text);
+    }
+
+    .app-shell {
+      max-width: 1100px;
+      margin: 24px auto 60px;
+      padding: 0 14px;
+    }
+
+    .hero {
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, .70);
+      backdrop-filter: blur(10px);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      background: linear-gradient(90deg, rgba(255, 111, 177, .22), rgba(107, 199, 255, .22), rgba(255, 211, 77, .22));
+      filter: blur(18px);
+      z-index: 0;
+    }
+
+    .hero-inner {
+      position: relative;
+      padding: 18px 18px 14px;
+      background: rgba(255, 255, 255, .78);
+    }
+
+    .title {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .sparkle {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(255, 111, 177, .18), rgba(107, 199, 255, .18));
+      border: 1px solid var(--stroke);
+      font-size: 22px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      border: 1px dashed rgba(255, 111, 177, .25);
+      background: rgba(255, 240, 247, .70);
+      color: #7a284f;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: .88rem;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .chip.blue {
+      border-color: rgba(107, 199, 255, .30);
+      background: rgba(107, 199, 255, .12);
+      color: #0f3a56;
+    }
+
+    .chip.yellow {
+      border-color: rgba(255, 211, 77, .45);
+      background: rgba(255, 211, 77, .18);
+      color: #6b4b00;
+    }
+
+    .chip.gray {
+      border-color: rgba(16, 24, 40, .12);
+      background: rgba(16, 24, 40, .04);
+      color: #374151;
+    }
+
+    .nav-pills .nav-link {
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, .7);
+      color: var(--muted);
+    }
+
+    .nav-pills .nav-link.active {
+      background: linear-gradient(135deg, rgba(255, 111, 177, .18), rgba(107, 199, 255, .18));
+      color: var(--text);
+      border-color: rgba(255, 111, 177, .24);
+      box-shadow: 0 8px 18px rgba(255, 111, 177, .12);
+    }
+
+    .day-card {
+      border: 1px solid var(--stroke);
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      box-shadow: 0 10px 26px rgba(16, 24, 40, .06);
+      overflow: hidden;
+    }
+
+    .day-header {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--stroke);
+      background: linear-gradient(90deg, rgba(255, 111, 177, .10), rgba(107, 199, 255, .10), rgba(255, 211, 77, .10));
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .day-title {
+      min-width: 260px;
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .day-title h5 {
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: .2px;
+    }
+
+    .day-sub {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .day-meta {
+      flex: 0 0 auto;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      justify-content: flex-end;
+    }
+
+    .meta-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: flex-end;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, .80);
+      color: #374151;
+      padding: 6px 10px;
+      font-size: .86rem;
+      white-space: nowrap;
+      display: inline-flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .pill.blue {
+      border-color: var(--spot-bd);
+      background: var(--spot-bg);
+      color: var(--spot-tx);
+    }
+
+    .pill.gray {
+      border-color: var(--note-bd);
+      background: var(--note-bg);
+      color: var(--note-tx);
+    }
+
+    /* ✅ 每天內容：左 timeline + 右圖片 */
+    .day-body {
+      display: grid;
+      grid-template-columns: 1fr 220px;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .day-aside {
+      padding: 12px 12px 14px;
+    }
+
+    .day-thumb {
+      width: 200px;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 16px;
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, .75);
+      box-shadow: 0 10px 22px rgba(16, 24, 40, .10);
+    }
+
+    /* Timeline */
+    .timeline {
+      padding: 10px 14px 14px;
+    }
+
+    .t-item {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 10px;
+      padding: 1px 0;
+      position: relative;
+    }
+
+    .t-item:not(:last-child)::after {
+      content: "";
+      position: absolute;
+      left: 54px;
+      top: 26px;
+      bottom: -6px;
+      width: 2px;
+      background: rgba(16, 24, 40, .08);
+    }
+
+    /* ✅ 時間縮小變精緻 */
+    .t-time {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .time-pill {
+      width: 200px;
+      font-size: .82rem;
+      font-weight: 800;
+      color: #374151;
+      padding: 5px 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(16, 24, 40, .10);
+      background: rgba(255, 255, 255, .85);
+      box-shadow: 0 6px 14px rgba(16, 24, 40, .06);
+      white-space: nowrap;
+      line-height: 1;
+    }
+
+    .t-bullet {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid rgba(16, 24, 40, .12);
+      background: rgba(255, 255, 255, .95);
+      box-shadow: 0 6px 12px rgba(16, 24, 40, .06);
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+
+    /* ✅ 框框 + 右側灰色備註（你要的） */
+    .t-content {
+      border-radius: 14px;
+      padding: 2px 10px;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      border-radius: 999px;
+      padding: 7px 11px;
+      font-size: .98rem;
+      /* ✅ 稍微大一點點 */
+      border: 1px solid var(--stroke);
+      background: rgba(255, 255, 255, .80);
+      color: var(--text);
+      display: inline-flex;
+      align-items: center;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .tag.food {
+      border-color: var(--food-bd);
+      background: var(--food-bg);
+      color: var(--food-tx);
+    }
+
+    .tag.spot {
+      border-color: var(--spot-bd);
+      background: var(--spot-bg);
+      color: var(--spot-tx);
+    }
+
+    .tag.shop {
+      border-color: var(--shop-bd);
+      background: var(--shop-bg);
+      color: var(--shop-tx);
+    }
+
+    .tag.note {
+      border-color: var(--note-bd);
+      background: var(--note-bg);
+      color: var(--note-tx);
+    }
+
+    .t-note {
+      color: var(--muted);
+      font-size: .92rem;
+      line-height: 1.25;
+    }
+
+    @media (max-width: 992px) {
+      .day-header {
+        flex-direction: column;
+      }
+
+      .day-meta {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .meta-stack {
+        align-items: flex-start;
+      }
+
+      .day-body {
+        grid-template-columns: 1fr;
+      }
+
+      .day-aside {
+        padding-top: 0;
+      }
+
+      .day-thumb {
+        width: 200px;
+        height: 140px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .t-item {
+        grid-template-columns: 104px 1fr;
+      }
+
+      .t-item:not(:last-child)::after {
+        left: 48px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- Hero -->
+    <div class="hero mb-4">
+      <div class="hero-inner">
+        <div class="title">
+          <div class="sparkle">✨</div>
+          <div>
+            <h2 class="mb-1 fw-bold">港澳行程整理 <span class="text-secondary">🇲🇴 + 🇭🇰</span></h2>
+          </div>
+        </div>
+
+        <!-- <div class="legend">
+          <div class="chip">⏰ 時間</div>
+          <div class="chip blue">📍 活動/景點</div>
+          <div class="chip">🍴 食物</div>
+          <div class="chip yellow">🛍 購物</div>
+          <div class="chip gray">📝 備註</div>
+          <div class="chip blue">🚇 交通</div>
+          <div class="chip blue">🚢/✈️ 船/飛機</div>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-pills gap-2 mb-3" id="tripTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="macau-tab" data-bs-toggle="pill" data-bs-target="#macau" type="button"
+          role="tab">
+          🇲🇴 澳門（Day 1-3）
+        </button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="hk-tab" data-bs-toggle="pill" data-bs-target="#hk" type="button" role="tab">
+          🇭🇰 香港（Day 0-5）
+        </button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="tripTabsContent">
+
+      <!-- ===================== Macau ===================== -->
+      <div class="tab-pane fade show active" id="macau" role="tabpanel" aria-labelledby="macau-tab">
+        <div class="row g-3">
+
+          <!-- Macau Day 1 -->
+          <div class="col-12">
+            <div class="day-card">
+              <div class="day-header">
+                <div class="day-title">
+                  <h5>🗓 澳門 Day 1｜官也街＋金光大道飯店群</h5>
+                  <div class="day-sub"> </div>
+                </div>
+
+                <div class="day-meta">
+                  <div class="meta-stack">
+                    <div class="pill blue">🧭 路線：官也街 → 氹仔 → 金光大道</div>
+                    <div class="pill gray">👣 步數：約 25,760</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="day-body">
+                <div class="timeline">
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">10:05</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">✈️</span><span class="t-note">抵達機場</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">📍新濠天地</span><span class="t-note">寄放行李 辦會員免費放</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:45-14:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 官也街</span><span class="t-note">12點開始湧入旅行團
+                        盡量早點到</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 澤賢記</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 莫義記</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 安德魯蛋塔</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 老 Day 牛雜</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 大利來記</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 長洲糯米糍</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 爆打檸檬茶</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 旺記咖啡</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 林高咖啡</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 買限定吉伊卡哇</span><span class="t-note">在林高隔壁</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 鉅記餅家</span><span class="t-note">試吃鳳凰肉鬆捲</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:00-15:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 氹仔晃晃</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 跛腳巷</span><span class="t-note">走過頭沒去🥲</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 嘉模斜巷</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 嘉模聖母教堂</span></div>
+                  </div>
+
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 龍環葡韻</span><span class="t-note">剛好遇到主題花卉</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">📝</span><span class="t-note">順著電動步道不知不覺就走到威尼斯人</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:00-19:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 金光大道飯店群</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 威尼斯人｜貢多拉船體驗</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">16:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 倫敦人｜皇家衛兵換崗</span><span class="t-note">要看場次</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">17:00-18:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">🎭 新濠天地｜水舞間</span><span class="t-note">KLOOK購票</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 永利皇宮｜永利纜車＋水舞秀</span><span
+                        class="t-note">纜車排1H</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 巴黎人｜鐵塔燈光秀</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">📍新濠天地</span><span class="t-note">拿行李&搭接駁車</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">22:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 贏到粥</span><span class="t-note">要訂位</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏</span><span class="t-note">藝舍酒店 Check in</span>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="day-aside">
+                  <img class="day-thumb" src="./mohk/mohk1.jpg" alt="Macau Day 1">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Macau Day 2 -->
+          <div class="col-12">
+            <div class="day-card">
+              <div class="day-header">
+                <div class="day-title">
+                  <h5>🗓 澳門 Day 2｜澳門半島</h5>
+                  <div class="day-sub"> </div>
+                </div>
+
+                <div class="day-meta">
+                  <div class="meta-stack">
+                    <div class="pill blue">🧭 路線：澳門半島</div>
+                    <div class="pill gray">👣 步數：約 18,658</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="day-body">
+                <div class="timeline">
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">07:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 新鴻發咖啡美食</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">08:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 滄洲咖啡小食</span><span class="t-note">剛好休息</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏 飯店休息</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">10:00-11:10</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 最香餅家</span><span class="t-note">11點開 提早排</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 議事亭前地</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 玫瑰聖母堂</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 澳門堂斜巷</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 大三巴牌坊</span><span class="t-note">附近很多冰箱貼</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 戀愛巷</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">12:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 大砲台</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 澳門博物館</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">12:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 盧家大屋</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">12:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 主教座堂</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 老人牌中葡沙甸魚文化專門店</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 瑪嘉烈蛋塔</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:35</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 Blooom Coffee House</span><span
+                        class="t-note">葡撻巧克力缺貨</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 義順牛奶</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 bamu</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 倫記軟滑腸粉</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 永吉檸檬</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏 飯店休息</span><span class="t-note"></span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">17:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 永利澳門｜吉祥樹</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 澳門美高梅</span><span class="t-note">喝珍奶＋看天幕廣場</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">18:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 澳門美高梅｜ 2F 博物館</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">19:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 金美食</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏 飯店休息</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">21:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 六記粥麵</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">22:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 康公夜市</span><span class="t-note">太晚去已收光</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏</span><span class="t-note">藝舍酒店</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="day-aside">
+                  <img class="day-thumb" src="./mohk/mohk2.jpg" alt="Macau Day 2">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Macau Day 3 -->
+          <div class="col-12">
+            <div class="day-card">
+              <div class="day-header">
+                <div class="day-title">
+                  <h5>🗓 澳門 Day 3｜路氹補逛＋去香港</h5>
+                  <div class="day-sub"> </div>
+                </div>
+
+                <div class="day-meta">
+                  <div class="meta-stack">
+                    <div class="pill blue">🧭 路線：路氹 → 碼頭</div>
+                    <div class="pill gray">👣 步數：約 20,865</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="day-body">
+                <div class="timeline">
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">📍 新濠天地</span><span class="t-note">寄放行李</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:05-12:10</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 澳門銀河｜水晶球</span><span
+                        class="t-note">走錯走到鑽石廳XD</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">12:15</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 檸檬車露</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">12:25</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 Goat bakers</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 倫敦人｜探索的士</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:10</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 倫敦人｜麥當勞</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 新濠天地｜賭場</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">📍 新濠天地</span><span class="t-note">拿行李</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">🚢 金光飛航</span><span class="t-note">KLOOK購票
+                        可以提早搭</span></div>
+                  </div>
+
+                </div>
+
+                <div class="day-aside">
+                  <img class="day-thumb" src="./mohk/mohk3.jpg" alt="Macau Day 3">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ===================== Hong Kong ===================== -->
+      <div class="tab-pane fade" id="hk" role="tabpanel" aria-labelledby="hk-tab">
+        <div class="row g-3">
+
+          <!-- HK Day 0 -->
+          <div class="col-12">
+            <div class="day-card">
+              <div class="day-header">
+                <div class="day-title">
+                  <h5>🗓 香港 Day 0｜12/22 抵港＋幻彩詠香江</h5>
+                  <div class="day-sub"> </div>
+                </div>
+
+                <div class="day-meta">
+                  <div class="meta-stack">
+                    <div class="pill blue">🧭 路線：上環 → 尖沙嘴</div>
+                    <div class="pill gray">👣 步數：約 20,865</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="day-body">
+                <div class="timeline">
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">17:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 港澳碼頭</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">18:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">📝</span><span class="t-note">面交 大耳狗八達通</span></div>
+                  </div>
+
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">18:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🧳</span><span class="t-note">寄放行李</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">19:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 富豪雪糕</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">19:30-20:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 幻彩詠香江</span><span class="t-note">KLOOK購票</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🧳</span><span class="t-note">拿行李</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">21:10</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 一點心</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏</span><span class="t-note">香港九龍CBD智選假日酒店 Check
+                        in</span></div>
+                  </div>
+
+                </div>
+
+                <div class="day-aside">
+                  <img class="day-thumb" src="./mohk/mohk3.jpg" alt="HK Day 0">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HK Day 1 -->
+          <div class="col-12">
+            <div class="day-card">
+              <div class="day-header">
+                <div class="day-title">
+                  <h5>🗓 香港 Day 1｜12/23 蛋撻＋太平山纜車＋賽馬</h5>
+                  <div class="day-sub"> </div>
+                </div>
+
+                <div class="day-meta">
+                  <div class="meta-stack">
+                    <div class="pill blue">🧭 路線：灣仔/銅鑼灣 → 中環 → 太平山 → 跑馬地</div>
+                    <div class="pill gray">👣 步數：約 18,991</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="day-body">
+                <div class="timeline">
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">08:15</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 我杯茶</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">09:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 M&S</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">09:45</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 Soft Thunder</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">09:45</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 初麥</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 Hashtag B</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:15</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 Bakehouse</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 甘牌燒鵝</span><span class="t-note">排 1H</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:35</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 蛋捲樂園</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 鴻興玩具</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:10</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 蘭芳園</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 公利真料竹蔗水</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 半山扶手電梯</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 VISSION BAKERY</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">16:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 祥興記上海湯包</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">16:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 中環街市</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 媽咪雞蛋仔</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 檸檬王</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">17:00-18:45</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 太平山纜車</span><span class="t-note">夜景超美</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">19:15-20:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 跑馬地賽馬</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">20:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 強記美食</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏</span><span class="t-note">香港九龍CBD智選假日酒店</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="day-aside">
+                  <img class="day-thumb" src="./mohk/mohk4.jpg" alt="HK Day 1">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HK Day 2 -->
+          <div class="col-12">
+            <div class="day-card">
+              <div class="day-header">
+                <div class="day-title">
+                  <h5>🗓 香港 Day 2｜12/24 買爆伴手禮＋落日飛車</h5>
+                  <div class="day-sub"> </div>
+                </div>
+
+                <div class="day-meta">
+                  <div class="meta-stack">
+                    <div class="pill blue">🧭 路線：佐敦 → 尖沙嘴 → 佐敦 → 尖沙嘴</div>
+                    <div class="pill gray">👣 步數：約 24,095</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="day-body">
+                <div class="timeline">
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">08:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 金華冰廳</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">09:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 珍妮曲奇</span><span class="t-note">10:00</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 錦繡唐朝</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">10:45</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 曲奇四重奏</span></div>
+                  </div>
+
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">10:45</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 Glory Bakery</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 marouf Puff Bake</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 曲奇童話</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 蛋捲皇后</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:40-13:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 K11</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">12:05</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 THE MATCHA TOKYO</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 Läderach</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 Dood Bottega Gelateria</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:10</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 瑰麗酒店</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:15</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 帝苑蝴蝶酥</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:15</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 Valerie pastry</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 Owl’s Choux</span><span class="t-note">排40分</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">16:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 半島酒店</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">17:20-18:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 落日飛車 H2</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">19:10</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🛍 香港東方文華</span><span class="t-note">買果醬</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">19:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 三麗鷗</span><span class="t-note">新開幕人超多</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏</span><span class="t-note">沒吃到坤記…回去吃泡麵 QQ</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏</span><span class="t-note">香港九龍CBD智選假日酒店</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="day-aside">
+                  <img class="day-thumb" src="./mohk/mohk5.jpg" alt="HK Day 2">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HK Day 3 -->
+          <div class="col-12">
+            <div class="day-card">
+              <div class="day-header">
+                <div class="day-title">
+                  <h5>🗓 香港 Day 3｜12/25 迪士尼</h5>
+                  <div class="day-sub"> </div>
+                </div>
+
+                <div class="day-meta">
+                  <div class="meta-stack">
+                    <div class="pill blue">🧭 路線：迪士尼 → 佐敦</div>
+                    <div class="pill gray">👣 步數：約 23,649</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="day-body">
+                <div class="timeline">
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">08:00-22:15</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 迪士尼</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 麥文記麵家</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:25</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 麥當勞聖代冰</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:35</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 佳佳甜品</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏</span><span class="t-note">香港九龍CBD智選假日酒店</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="day-aside">
+                  <img class="day-thumb" src="./mohk/mohk6.jpg" alt="HK Day 3">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HK Day 4 -->
+          <div class="col-12">
+            <div class="day-card">
+              <div class="day-header">
+                <div class="day-title">
+                  <h5>🗓 香港 Day 4｜12/26 旺角油麻地＋中環＋煲仔飯</h5>
+                  <div class="day-sub"> </div>
+                </div>
+
+                <div class="day-meta">
+                  <div class="meta-stack">
+                    <div class="pill blue">🧭 路線：油麻地/旺角 → 中環 → 西環</div>
+                    <div class="pill gray">👣 步數：約 16,130</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="day-body">
+                <div class="timeline">
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">09:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 妹記生滾粥品</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">10:05</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 奇趣餅家</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">10:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 車厘哥夫</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">10:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 巧佳小巴用品</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">11:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 澳洲牛奶公司</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">12:25</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 嘉多娜</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">📍</span><span class="t-note">中環站面交</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:25</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 林香檸</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:25</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 石板街</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 沾仔記</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">📍 兆成行</span><span class="t-note">沒開</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">15:40</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 安記海味</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">16:10</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag shop">🛍 有記粉麵廠</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">16:45</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 坤記煲仔小菜</span><span class="t-note">17:30開
+                        提早排隊</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">19:45</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 地茂館</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">23:30</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🛏</span><span class="t-note">香港九龍CBD智選假日酒店</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="day-aside">
+                  <img class="day-thumb" src="./mohk/mohk7.jpg" alt="HK Day 4">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- HK Day 5 -->
+          <div class="col-12">
+            <div class="day-card">
+              <div class="day-header">
+                <div class="day-title">
+                  <h5>🗓 香港 Day 5｜12/27 合味道＋逛逛＋回台</h5>
+                  <div class="day-sub"> </div>
+                </div>
+
+                <div class="day-meta">
+                  <div class="meta-stack">
+                    <div class="pill blue">🧭 路線：旺角 → 尖沙咀 → 機場</div>
+                    <div class="pill gray">👣 步數：約 15,279</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="day-body">
+                <div class="timeline">
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">09:00-11:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">🧳</span><span class="t-note">行李寄送</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">10:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 蓮香樓</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">12:50</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 椰汁大王</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 肥姐</span></div>
+                  </div>
+
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:45</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 粒粒冰</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">14:00-15:20</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 合味道紀念館</span><span class="t-note">已暫停營業</span>
+                    </div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">13:15</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">📍 逛逛</span><span
+                        class="t-note">花墟／雀仔街／金魚街／波鞋街／女人街／通菜街</span></div>
+                  </div>
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">16:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag food">🍴 Pie & Tart</span><span class="t-note">尖沙咀店</span>
+                    </div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">-</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag spot">🚇 機場快線</span></div>
+                  </div>
+
+                  <div class="t-item">
+                    <div class="t-time"><span class="time-pill">17:00</span><span class="t-bullet"></span></div>
+                    <div class="t-content"><span class="tag note">✈️</span><span class="t-note">機場</span></div>
+                  </div>
+
+                </div>
+
+                <div class="day-aside">
+                  <img class="day-thumb" src="./mohk/mohk8.jpg" alt="HK Day 5">
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
