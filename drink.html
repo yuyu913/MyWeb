@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>隨機抽飲料 🎲🧋</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans TC",
+                "PingFang TC", "Microsoft JhengHei",
+                "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", sans-serif;
+            margin: 0;
+            background: #f6f7fb;
+            color: #1f2937;
+        }
+
+        .wrap {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 24px 16px 40px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: 22px;
+            letter-spacing: .5px;
+        }
+
+        .hint {
+            margin: 0 0 14px;
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 18px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, .06);
+            border: 1px solid rgba(0, 0, 0, .06);
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            border: 0;
+            border-radius: 14px;
+            padding: 14px 16px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #2563eb;
+            color: #fff;
+            font-weight: 700;
+            transition: transform .06s ease, opacity .2s ease;
+        }
+
+        .btn:active {
+            transform: scale(.99);
+        }
+
+        .btn:hover {
+            opacity: .95;
+        }
+
+        .btn.secondary {
+            background: #111827;
+            opacity: .9;
+        }
+
+        .btn:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .subinfo {
+            margin-top: 10px;
+            font-size: 13px;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .result {
+            margin-top: 14px;
+            padding: 14px;
+            border-radius: 14px;
+            background: #f3f4f6;
+            border: 1px dashed rgba(0, 0, 0, .12);
+            min-height: 78px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+
+        .drink {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: 800;
+        }
+
+        .meta {
+            font-size: 13px;
+            color: #6b7280;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 999px;
+            background: rgba(37, 99, 235, .10);
+            color: #1d4ed8;
+            font-weight: 700;
+            font-size: 12px;
+            width: fit-content;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>隨機抽飲料 🎲</h1>
+        <!-- <p class="hint">不重複抽～抽到全部都用完就會提醒你 👍</p> -->
+
+        <div class="card">
+            <div class="row">
+                <button class="btn" id="pickBtn">🎯 幫我隨機選一杯</button>
+                <button class="btn secondary" id="resetBtn" type="button">🔄 重置</button>
+            </div>
+
+            <div class="subinfo">
+                <div>剩餘：<b id="remainText">—</b></div>
+                <div id="statusText">按「隨機」開始 🎲</div>
+            </div>
+
+            <div class="result" aria-live="polite">
+                <div class="drink">
+                    <div class="tag" id="catText">—</div>
+                    <div class="name" id="nameText">尚未抽選</div>
+                    <div class="meta" id="metaText">按上面的按鈕開始 🎲</div>
+                </div>
+                <div class="price" id="priceText">—</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 你的品項清單（品名 + 價格 + 分類）
+        // 你貼的最上面有一個 "$ 590" 看起來不像單一飲品品項，所以這裡先不放進去
+        var items = [
+            { name: "緋烏龍", price: 35, category: "新品上市-緋烏龍系列" },
+            { name: "馥莓緋烏龍", price: 50, category: "新品上市-緋烏龍系列" },
+            { name: "緋烏龍奶茶", price: 50, category: "新品上市-緋烏龍系列" },
+            { name: "緋烏龍鮮奶", price: 60, category: "新品上市-緋烏龍系列" },
+
+            { name: "紅茶", price: 25, category: "Original TEA" },
+            { name: "綠茶", price: 25, category: "Original TEA" },
+            { name: "春烏龍", price: 30, category: "Original TEA" },
+            { name: "輕烏龍", price: 30, category: "Original TEA" },
+            { name: "焙烏龍", price: 30, category: "Original TEA" },
+
+            { name: "奶茶", price: 45, category: "Classic MILK TEA" },
+            { name: "焙烏龍奶茶", price: 45, category: "Classic MILK TEA" },
+            { name: "珍珠奶茶", price: 55, category: "Classic MILK TEA" },
+            { name: "黃金珍珠奶綠", price: 55, category: "Classic MILK TEA" },
+            { name: "烘吉奶茶", price: 50, category: "Classic MILK TEA" },
+
+            { name: "紅茶鮮奶", price: 55, category: "Fresh MILK" },
+            { name: "輕烏龍鮮奶", price: 55, category: "Fresh MILK" },
+            { name: "焙烏龍鮮奶", price: 55, category: "Fresh MILK" },
+            { name: "烘吉鮮奶", price: 70, category: "Fresh MILK" },
+
+            { name: "檸檬春烏龍", price: 55, category: "Double FRUIT" },
+            { name: "香橙春烏龍", price: 60, category: "Double FRUIT" },
+            { name: "甘蔗春烏龍", price: 60, category: "Double FRUIT" },
+            { name: "青梅春烏龍", price: 50, category: "Double FRUIT" },
+            { name: "優酪春烏龍", price: 55, category: "Double FRUIT" },
+            { name: "雙柚金烏龍", price: 55, category: "Double FRUIT" }
+        ];
+
+        // DOM
+        var pickBtn = document.getElementById("pickBtn");
+        var resetBtn = document.getElementById("resetBtn");
+        var remainText = document.getElementById("remainText");
+        var statusText = document.getElementById("statusText");
+
+        var catText = document.getElementById("catText");
+        var nameText = document.getElementById("nameText");
+        var metaText = document.getElementById("metaText");
+        var priceText = document.getElementById("priceText");
+
+        // 不重複：用 remaining 當抽籤池
+        var remaining = [];
+
+        function updateRemain() {
+            remainText.textContent = remaining.length + " / " + items.length;
+        }
+
+        function render(item) {
+            catText.textContent = item.category;
+            nameText.textContent = "🧋 " + item.name;
+            metaText.textContent = "祝你喝到心情變好的一杯 ✨";
+            priceText.textContent = "NT$ " + item.price;
+        }
+
+        function resetPool() {
+            remaining = items.slice(); // 複製一份
+            pickBtn.disabled = false;
+            statusText.textContent = "🎲";
+            catText.textContent = "—";
+            nameText.textContent = "尚未抽選";
+            metaText.textContent = "按上面的按鈕開始 🎲";
+            priceText.textContent = "—";
+            updateRemain();
+        }
+
+        function pickOne() {
+            if (remaining.length === 0) {
+                // 全部抽完了：跳提示
+                alert("全部品項都抽完囉！🎉\n按「重置」可以再抽一次～");
+                statusText.textContent = "已全部抽完 ✅（按重置再抽）";
+                pickBtn.disabled = true;
+                return;
+            }
+
+            var idx = Math.floor(Math.random() * remaining.length);
+            var picked = remaining.splice(idx, 1)[0]; // 抽出並移除，確保不重複
+            render(picked);
+            updateRemain();
+
+            if (remaining.length === 0) {
+                // 最後一杯抽完就提示（也可等下次點才提示，但你說要抽完就跳提示）
+                alert("你是不是不想喝別間");
+                statusText.textContent = "已全部抽完 ✅（按重置再抽）";
+                pickBtn.disabled = true;
+            } else {
+                statusText.textContent = "🎲";
+            }
+        }
+
+        pickBtn.addEventListener("click", pickOne);
+        resetBtn.addEventListener("click", resetPool);
+
+        // 初始
+        resetPool();
+    </script>
+</body>
+
+</html>
