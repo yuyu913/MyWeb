@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>動物食物圖鑑</title>
+    <title>動物總表</title>
 
     <style>
         * {
@@ -23,9 +23,9 @@
         }
 
         .title {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-size: 28px;
-            font-weight: 800;
+            font-weight: 900;
         }
 
         .subtitle {
@@ -33,209 +33,35 @@
             color: #666;
             font-size: 14px;
             line-height: 1.7;
-        }
-
-        .toolbar {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 16px;
-            padding: 14px;
-            background: #fff;
-            border-radius: 14px;
-            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
-        }
-
-        .search-input {
-            width: 220px;
-            max-width: 100%;
-            padding: 10px 12px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 14px;
-            outline: none;
-        }
-
-        .search-input:focus,
-        .animal-edit-input:focus {
-            border-color: #7aa7ff;
-            box-shadow: 0 0 0 3px rgba(122, 167, 255, 0.16);
-        }
-
-        .stamp-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .stamp-btn,
-        .action-btn {
-            border: 0;
-            border-radius: 999px;
-            padding: 9px 13px;
-            font-size: 14px;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.15s ease;
-            white-space: nowrap;
-        }
-
-        .stamp-btn:hover,
-        .action-btn:hover {
-            transform: translateY(-1px);
-        }
-
-        .stamp-btn.like,
-        .cell-status.like {
-            background: #e7f8ed;
-            color: #16833a;
-        }
-
-        .stamp-btn.dislike,
-        .cell-status.dislike {
-            background: #f1f3f5;
-            color: #495057;
-        }
-
-        .stamp-btn.normal,
-        .cell-status.normal {
-            background: #eef2ff;
-            color: #3757c9;
-        }
-
-        .stamp-btn.unknown,
-        .cell-status.unknown {
-            background: #fff7df;
-            color: #9a6b00;
-        }
-
-        .stamp-btn.active {
-            outline: 3px solid #9bbcff;
-            box-shadow: 0 0 0 4px rgba(155, 188, 255, 0.25);
-        }
-
-        .action-btn {
-            background: #2f6fed;
-            color: #fff;
-        }
-
-        .action-btn.secondary {
-            background: #eef2ff;
-            color: #2f4fc9;
-        }
-
-        .hint {
-            color: #666;
-            font-size: 13px;
             font-weight: 700;
         }
 
-        .hint strong {
-            color: #2f6fed;
-        }
-
-        .message {
-            min-height: 20px;
-            font-size: 13px;
-            color: #666;
-            font-weight: 700;
-        }
-
-        .table-wrap {
-            width: 100%;
-            overflow: auto;
+        .summary-panel {
+            padding: 18px;
             background: #fff;
             border-radius: 16px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-            max-height: calc(100vh - 190px);
         }
 
-        table {
-            border-collapse: separate;
-            border-spacing: 0;
-            min-width: 3000px;
-            width: 100%;
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
+            gap: 12px;
         }
 
-        th,
-        td {
-            border-bottom: 1px solid #eee;
-            border-right: 1px solid #eee;
-            padding: 8px;
+        .summary-card {
+            position: relative;
+            padding: 12px 8px;
+            border: 1px solid #edf0f6;
+            border-radius: 14px;
+            background: #fbfcff;
             text-align: center;
-            vertical-align: middle;
-            background: #fff;
-        }
-
-        thead th {
-            position: sticky;
-            top: 0;
-            z-index: 5;
-            background: #f0f4ff;
-            font-size: 14px;
-            font-weight: 800;
-            white-space: nowrap;
-        }
-
-        .col-food {
-            position: sticky;
-            left: 0;
-            z-index: 4;
-            width: 180px;
-            min-width: 180px;
-            background: #fff;
-            font-weight: 800;
-            text-align: left;
-        }
-
-        thead .col-food {
-            z-index: 8;
-            background: #dfe8ff;
-            text-align: center;
-        }
-
-        .animal-head {
-            width: 128px;
-            min-width: 128px;
-            cursor: grab;
-            user-select: none;
-        }
-
-        .animal-head:active {
-            cursor: grabbing;
-        }
-
-        .animal-head.dragging {
-            opacity: 0.55;
-        }
-
-        .animal-head.drag-over {
-            outline: 3px solid #9bbcff;
-            outline-offset: -3px;
-            background: #edf4ff;
-        }
-
-        .animal-drag-handle {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            margin-bottom: 5px;
-            padding: 3px 8px;
-            border-radius: 999px;
-            background: #eef2ff;
-            color: #3757c9;
-            font-size: 11px;
-            font-weight: 900;
-            cursor: grab;
         }
 
         .animal-img-box {
             width: 58px;
             height: 58px;
-            margin: 0 auto 6px;
+            margin: 0 auto 8px;
             border-radius: 14px;
             border: 2px dashed #cbd5e1;
             background: #f8fafc;
@@ -245,6 +71,7 @@
             color: #94a3b8;
             font-size: 12px;
             overflow: hidden;
+            cursor: help;
         }
 
         .animal-img-box img {
@@ -253,99 +80,29 @@
             object-fit: cover;
         }
 
-        .animal-edit-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            align-items: stretch;
-        }
-
-        .animal-edit-input {
-            width: 108px;
-            margin: auto;
-            padding: 6px 7px;
-            border: 1px solid #d7dce8;
-            border-radius: 8px;
-            background: #fff;
-            font-size: 12px;
-            font-weight: 700;
-            outline: none;
-            text-align: center;
-        }
-
-        .animal-img-input {
-            color: #666;
-            font-weight: 600;
-        }
-
-        .food-cell {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            width: 100%;
-        }
-
-        .food-index {
-            width: 24px;
-            min-width: 24px;
-            height: 24px;
-            border-radius: 999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background: #eef2ff;
-            color: #3757c9;
-            font-size: 12px;
+        .summary-name {
+            font-size: 13px;
             font-weight: 900;
-        }
-
-        .food-emoji {
-            width: 24px;
-            min-width: 24px;
-            display: inline-flex;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .food-name {
+            color: #333;
             line-height: 1.35;
+            word-break: break-word;
         }
 
-        .food-note {
-            margin-left: auto;
+        .completed-animal {
+            border: 3px solid #40c978 !important;
+            box-shadow: 0 0 0 4px rgba(64, 201, 120, 0.18);
+        }
+
+        .completed-animal::after {
+            content: "已完成";
+            display: inline-block;
+            margin-top: 6px;
+            padding: 2px 7px;
+            border-radius: 999px;
+            background: #e7f8ed;
+            color: #16833a;
             font-size: 11px;
-            color: #999;
-            font-weight: 700;
-            white-space: nowrap;
-        }
-
-        .cell-btn {
-            width: 42px;
-            height: 42px;
-            padding: 0;
-            border: 0;
-            border-radius: 14px;
-            cursor: pointer;
-            font-size: 20px;
-            font-weight: 800;
-            transition: 0.12s ease;
-        }
-
-        .cell-btn:hover {
-            transform: scale(1.07);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-        }
-
-        .cell-btn.no-stamp:hover {
-            cursor: default;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .empty-row {
-            padding: 30px;
-            color: #777;
-            font-weight: 700;
+            font-weight: 900;
         }
 
         .animal-tooltip {
@@ -418,55 +175,14 @@
             font-weight: 900;
         }
 
-        .animal-summary {
-            margin-top: 22px;
+        .message {
             padding: 18px;
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
-            scroll-margin-top: 18px;
-        }
-
-        .summary-title {
-            font-size: 20px;
-            font-weight: 900;
-            margin-bottom: 6px;
-        }
-
-        .summary-subtitle {
-            color: #666;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 14px;
-        }
-
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
-            gap: 12px;
-        }
-
-        .summary-card {
-            padding: 12px 8px;
-            border: 1px solid #edf0f6;
             border-radius: 14px;
-            background: #fbfcff;
-            text-align: center;
+            background: #fff7df;
+            color: #9a6b00;
+            font-weight: 800;
+            line-height: 1.7;
         }
-
-        .summary-card .animal-img-box {
-            margin-bottom: 8px;
-            cursor: help;
-        }
-
-        .summary-name {
-            font-size: 13px;
-            font-weight: 900;
-            color: #333;
-            line-height: 1.35;
-            word-break: break-word;
-        }
-
 
         @media (max-width: 768px) {
             .page {
@@ -477,8 +193,8 @@
                 font-size: 24px;
             }
 
-            .table-wrap {
-                max-height: calc(100vh - 240px);
+            .summary-grid {
+                grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
             }
         }
     </style>
@@ -486,54 +202,16 @@
 
 <body>
     <div class="page">
-        <div class="title">動物食物圖鑑 🐾</div>
+        <div class="title">動物總表 🐾</div>
 
-        <div class="toolbar">
-            <input id="foodSearch" class="search-input" type="text" placeholder="搜尋食物..." />
-            <input id="animalSearch" class="search-input" type="text" placeholder="搜尋動物..." />
-
-            <div id="stampButtons" class="stamp-buttons"></div>
-
-            <button id="downloadBtn" class="action-btn" type="button">儲存 JSON（下載）</button>
-            <button id="clearStampBtn" class="action-btn secondary" type="button">取消狀態</button>
-            <button id="summaryBtn" class="action-btn secondary" type="button">總表</button>
-
-            <div id="stampHint" class="hint">目前：尚未選擇狀態</div>
-            <div id="message" class="message"></div>
-        </div>
-
-        <div class="table-wrap">
-            <table>
-                <thead id="tableHead"></thead>
-                <tbody id="tableBody"></tbody>
-            </table>
-        </div>
-
-        <section id="animalSummary" class="animal-summary">
-            <div class="summary-title">動物總表 🐾</div>
-            <div class="summary-subtitle">只讀整理區：顯示動物圖片與名稱，滑鼠移到圖片可查看喜歡 / 不喜歡 / 蒐集狀態。</div>
+        <section class="summary-panel">
             <div id="summaryGrid" class="summary-grid"></div>
         </section>
     </div>
 
     <script>
         let data = null;
-        let activeStatus = null;
-        let draggedAnimalId = null;
-        let currentFoods = [];
-        let currentAnimals = [];
 
-        const tableHead = document.getElementById("tableHead");
-        const tableBody = document.getElementById("tableBody");
-        const foodSearch = document.getElementById("foodSearch");
-        const animalSearch = document.getElementById("animalSearch");
-        const stampButtons = document.getElementById("stampButtons");
-        const stampHint = document.getElementById("stampHint");
-        const message = document.getElementById("message");
-        const downloadBtn = document.getElementById("downloadBtn");
-        const clearStampBtn = document.getElementById("clearStampBtn");
-        const summaryBtn = document.getElementById("summaryBtn");
-        const animalSummary = document.getElementById("animalSummary");
         const summaryGrid = document.getElementById("summaryGrid");
         const animalTooltip = document.createElement("div");
         animalTooltip.className = "animal-tooltip";
@@ -549,33 +227,31 @@
 
                 data = await res.json();
                 normalizeAnimalImages();
-                currentFoods = [...data.foods];
-                currentAnimals = [...data.animals];
-
-                renderStampButtons();
-                renderTable();
+                renderSummary();
             } catch (error) {
-                message.textContent = "讀不到 animal-data.json，請確認檔案跟 HTML 放在同一個資料夾，並用 localhost 或 Live Server 開啟。";
+                summaryGrid.innerHTML = `
+                    <div class="message">
+                        讀不到 animal-data.json，請確認檔案跟 HTML 放在同一個資料夾，並用 localhost 或 Live Server 開啟。
+                    </div>
+                `;
                 console.error(error);
             }
-        }
-
-        function getStatusOption(status) {
-            return data.statusOptions[status] || data.statusOptions.unknown;
         }
 
         function getPreference(animal, foodId) {
             return animal.preferences?.[foodId] || data.defaultStatus || "unknown";
         }
 
+        function isAnimalCompleted(animal) {
+            return data.foods.every(food => {
+                return getPreference(animal, food.id) !== "unknown";
+            });
+        }
+
         function getFoodsByStatus(animal, status) {
             return data.foods
                 .filter(food => getPreference(animal, food.id) === status)
                 .map(food => `${food.emoji || ""} ${food.name || ""}`.trim());
-        }
-
-        function isAnimalComplete(animal) {
-            return data.foods.every(food => getPreference(animal, food.id) !== "unknown");
         }
 
         function escapeHtml(value) {
@@ -600,7 +276,7 @@
         function showAnimalTooltip(event, animal) {
             const likeFoods = getFoodsByStatus(animal, "like");
             const dislikeFoods = getFoodsByStatus(animal, "dislike");
-            const completeText = isAnimalComplete(animal)
+            const completeText = isAnimalCompleted(animal)
                 ? '<div class="tooltip-complete">✅ 已蒐集完成</div>'
                 : "";
 
@@ -643,18 +319,6 @@
             animalTooltip.classList.remove("show");
         }
 
-        function setPreference(animalId, foodId, status) {
-            const animal = data.animals.find(item => item.id === animalId);
-
-            if (!animal) return;
-
-            if (!animal.preferences) {
-                animal.preferences = {};
-            }
-
-            animal.preferences[foodId] = status;
-        }
-
         function getAnimalImagePath(animal) {
             const name = (animal.name || "").trim();
 
@@ -666,214 +330,6 @@
         function normalizeAnimalImages() {
             data.animals.forEach(animal => {
                 animal.image = getAnimalImagePath(animal);
-            });
-        }
-
-        function syncAnimalEditInputs() {
-            document.querySelectorAll(".animal-name-input").forEach(input => {
-                const animal = data.animals.find(item => item.id === input.dataset.animalId);
-
-                if (animal) {
-                    animal.name = input.value.trim();
-                    animal.image = getAnimalImagePath(animal);
-                }
-            });
-        }
-
-        function clearDragStyles() {
-            document.querySelectorAll(".animal-head").forEach(head => {
-                head.classList.remove("dragging", "drag-over");
-            });
-        }
-
-        function reorderAnimal(dragId, targetId, insertAfter) {
-            if (!dragId || !targetId || dragId === targetId) return;
-
-            syncAnimalEditInputs();
-
-            const fromIndex = data.animals.findIndex(item => item.id === dragId);
-            const movedAnimal = data.animals[fromIndex];
-
-            if (fromIndex === -1 || !movedAnimal) return;
-
-            data.animals.splice(fromIndex, 1);
-
-            let targetIndex = data.animals.findIndex(item => item.id === targetId);
-
-            if (targetIndex === -1) {
-                data.animals.push(movedAnimal);
-            } else {
-                if (insertAfter) targetIndex += 1;
-                data.animals.splice(targetIndex, 0, movedAnimal);
-            }
-
-            applyFilters();
-            message.textContent = "已調整動物排序，記得下載 JSON 覆蓋原檔。";
-        }
-
-        function renderStampButtons() {
-            stampButtons.innerHTML = "";
-
-            Object.entries(data.statusOptions).forEach(([key, option]) => {
-                const button = document.createElement("button");
-                button.type = "button";
-                button.className = `stamp-btn ${key}`;
-                button.dataset.status = key;
-                button.textContent = `${option.icon} ${option.label}`;
-
-                button.addEventListener("click", () => {
-                    activeStatus = activeStatus === key ? null : key;
-                    updateStampButtons();
-                });
-
-                stampButtons.appendChild(button);
-            });
-        }
-
-        function updateStampButtons() {
-            document.querySelectorAll(".stamp-btn").forEach(button => {
-                button.classList.toggle("active", button.dataset.status === activeStatus);
-            });
-
-            if (activeStatus) {
-                const option = getStatusOption(activeStatus);
-                stampHint.innerHTML = `目前：<strong>${option.icon} ${option.label}</strong>，可以連續點表格設定`;
-            } else {
-                stampHint.textContent = "目前：尚未選擇狀態";
-            }
-
-            document.querySelectorAll(".cell-btn").forEach(button => {
-                button.classList.toggle("no-stamp", !activeStatus);
-            });
-        }
-
-        function renderTable() {
-            renderHeader();
-            renderBody();
-            renderSummary();
-            updateStampButtons();
-        }
-
-        function renderHeader() {
-            const tr = document.createElement("tr");
-
-            const foodTh = document.createElement("th");
-            foodTh.className = "col-food";
-            foodTh.textContent = "食物 / 動物";
-            tr.appendChild(foodTh);
-
-            currentAnimals.forEach(animal => {
-                const th = document.createElement("th");
-                th.className = "animal-head";
-                th.draggable = true;
-                th.dataset.animalId = animal.id;
-
-                th.addEventListener("dragstart", event => {
-                    if (event.target.classList.contains("animal-name-input")) {
-                        event.preventDefault();
-                        return;
-                    }
-
-                    draggedAnimalId = animal.id;
-                    th.classList.add("dragging");
-                    event.dataTransfer.effectAllowed = "move";
-                    event.dataTransfer.setData("text/plain", animal.id);
-                    hideAnimalTooltip();
-                });
-
-                th.addEventListener("dragover", event => {
-                    if (!draggedAnimalId || draggedAnimalId === animal.id) return;
-                    event.preventDefault();
-                    th.classList.add("drag-over");
-                    event.dataTransfer.dropEffect = "move";
-                });
-
-                th.addEventListener("dragleave", () => {
-                    th.classList.remove("drag-over");
-                });
-
-                th.addEventListener("drop", event => {
-                    event.preventDefault();
-                    const rect = th.getBoundingClientRect();
-                    const insertAfter = event.clientX > rect.left + rect.width / 2;
-                    reorderAnimal(draggedAnimalId, animal.id, insertAfter);
-                    draggedAnimalId = null;
-                    clearDragStyles();
-                });
-
-                th.addEventListener("dragend", () => {
-                    draggedAnimalId = null;
-                    clearDragStyles();
-                });
-
-                const dragHandle = document.createElement("div");
-                dragHandle.className = "animal-drag-handle";
-                dragHandle.textContent = "↔ 拖曳";
-
-                const imgBox = document.createElement("div");
-                imgBox.className = "animal-img-box";
-                updateImagePreview(imgBox, animal);
-
-                imgBox.addEventListener("mouseenter", event => showAnimalTooltip(event, animal));
-                imgBox.addEventListener("mousemove", moveAnimalTooltip);
-                imgBox.addEventListener("mouseleave", hideAnimalTooltip);
-
-                const editGroup = document.createElement("div");
-                editGroup.className = "animal-edit-group";
-
-                const nameInput = document.createElement("input");
-                nameInput.className = "animal-edit-input animal-name-input";
-                nameInput.dataset.animalId = animal.id;
-                nameInput.value = animal.name || "";
-                nameInput.placeholder = "動物名稱";
-                nameInput.title = "可直接修改動物名稱";
-
-                nameInput.addEventListener("input", () => {
-                    animal.name = nameInput.value.trim();
-                    animal.image = getAnimalImagePath(animal);
-                    updateImagePreview(imgBox, animal);
-                    renderSummary();
-                    message.textContent = "已修改名稱與圖片，記得下載 JSON 覆蓋原檔。";
-                });
-
-                editGroup.appendChild(nameInput);
-
-                th.appendChild(dragHandle);
-                th.appendChild(imgBox);
-                th.appendChild(editGroup);
-                tr.appendChild(th);
-            });
-
-            tableHead.innerHTML = "";
-            tableHead.appendChild(tr);
-        }
-
-
-
-        function renderSummary() {
-            if (!summaryGrid || !data) return;
-
-            summaryGrid.innerHTML = "";
-
-            data.animals.forEach(animal => {
-                const card = document.createElement("div");
-                card.className = "summary-card";
-
-                const imgBox = document.createElement("div");
-                imgBox.className = "animal-img-box";
-                updateImagePreview(imgBox, animal);
-
-                imgBox.addEventListener("mouseenter", event => showAnimalTooltip(event, animal));
-                imgBox.addEventListener("mousemove", moveAnimalTooltip);
-                imgBox.addEventListener("mouseleave", hideAnimalTooltip);
-
-                const name = document.createElement("div");
-                name.className = "summary-name";
-                name.textContent = animal.name || "未命名動物";
-
-                card.appendChild(imgBox);
-                card.appendChild(name);
-                summaryGrid.appendChild(card);
             });
         }
 
@@ -897,119 +353,34 @@
             }
         }
 
-        function renderBody() {
-            tableBody.innerHTML = "";
+        function renderSummary() {
+            summaryGrid.innerHTML = "";
 
-            if (currentFoods.length === 0 || currentAnimals.length === 0) {
-                const tr = document.createElement("tr");
-                const td = document.createElement("td");
-                td.className = "empty-row";
-                td.colSpan = currentAnimals.length + 1;
-                td.textContent = "找不到符合的資料 🥺";
-                tr.appendChild(td);
-                tableBody.appendChild(tr);
-                return;
-            }
+            data.animals.forEach(animal => {
+                const card = document.createElement("div");
+                card.className = "summary-card";
 
-            currentFoods.forEach((food, index) => {
-                const tr = document.createElement("tr");
+                if (isAnimalCompleted(animal)) {
+                    card.classList.add("completed-animal");
+                }
 
-                const foodTd = document.createElement("td");
-                foodTd.className = "col-food";
-                foodTd.innerHTML = `
-           <div class="food-cell">
-    <span class="food-index">${index + 1}</span>
-    <span class="food-emoji">${food.emoji || ""}</span>
-    <span class="food-name">${food.name}</span>
-    <span class="food-note">${food.note || ""}</span>
-  </div>
-        `;
-                tr.appendChild(foodTd);
+                const imgBox = document.createElement("div");
+                imgBox.className = "animal-img-box";
+                updateImagePreview(imgBox, animal);
 
-                currentAnimals.forEach(animal => {
-                    const td = document.createElement("td");
-                    const status = getPreference(animal, food.id);
-                    const option = getStatusOption(status);
+                imgBox.addEventListener("mouseenter", event => showAnimalTooltip(event, animal));
+                imgBox.addEventListener("mousemove", moveAnimalTooltip);
+                imgBox.addEventListener("mouseleave", hideAnimalTooltip);
 
-                    const button = document.createElement("button");
-                    button.type = "button";
-                    button.className = `cell-btn cell-status ${status}`;
-                    button.textContent = option.icon;
-                    button.title = `${animal.name} / ${food.emoji || ""} ${food.name}：${option.label}`;
-                    button.dataset.animalId = animal.id;
-                    button.dataset.foodId = food.id;
+                const name = document.createElement("div");
+                name.className = "summary-name";
+                name.textContent = animal.name || "未命名動物";
 
-                    button.addEventListener("click", () => {
-                        if (!activeStatus) {
-                            message.textContent = "請先選上方的狀態按鈕，再點表格。";
-                            return;
-                        }
-
-                        setPreference(animal.id, food.id, activeStatus);
-                        updateCellButton(button, activeStatus, animal.name, `${food.emoji || ""} ${food.name}`);
-                        message.textContent = "已更新，記得下載 JSON 覆蓋原檔。";
-                    });
-
-                    td.appendChild(button);
-                    tr.appendChild(td);
-                });
-
-                tableBody.appendChild(tr);
+                card.appendChild(imgBox);
+                card.appendChild(name);
+                summaryGrid.appendChild(card);
             });
         }
-
-        function updateCellButton(button, status, animalName, foodName) {
-            const option = getStatusOption(status);
-            button.className = `cell-btn cell-status ${status}`;
-            button.textContent = option.icon;
-            button.title = `${animalName} / ${foodName}：${option.label}`;
-            button.classList.toggle("no-stamp", !activeStatus);
-        }
-
-        function applyFilters() {
-            const foodKeyword = foodSearch.value.trim().toLowerCase();
-            const animalKeyword = animalSearch.value.trim().toLowerCase();
-
-            currentFoods = data.foods.filter(food =>
-                `${food.emoji || ""} ${food.name || ""}`.toLowerCase().includes(foodKeyword)
-            );
-
-            currentAnimals = data.animals.filter(animal =>
-                `${animal.name || ""}`.toLowerCase().includes(animalKeyword)
-            );
-
-            renderTable();
-        }
-
-        function downloadJson() {
-            syncAnimalEditInputs();
-            const jsonText = JSON.stringify(data, null, 2);
-            const blob = new Blob([jsonText], { type: "application/json" });
-            const url = URL.createObjectURL(blob);
-
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "animal-data.json";
-            a.click();
-
-            URL.revokeObjectURL(url);
-            message.textContent = "已下載 animal-data.json，覆蓋原本檔案後重新整理就會保留修改。";
-        }
-
-        foodSearch.addEventListener("input", applyFilters);
-        animalSearch.addEventListener("input", applyFilters);
-        downloadBtn.addEventListener("click", downloadJson);
-        clearStampBtn.addEventListener("click", () => {
-            activeStatus = null;
-            updateStampButtons();
-            message.textContent = "已取消目前狀態。";
-        });
-
-        summaryBtn.addEventListener("click", () => {
-            if (!animalSummary) return;
-
-            animalSummary.scrollIntoView({ behavior: "smooth", block: "start" });
-        });
 
         loadData();
     </script>
