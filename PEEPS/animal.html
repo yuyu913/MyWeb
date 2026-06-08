@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>動物總表</title>
+    <title>動物喜好一眼總覽</title>
 
     <style>
         * {
@@ -19,57 +19,92 @@
         }
 
         .page {
-            padding: 24px;
+            padding: 12px;
+        }
+
+        .title-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 10px;
         }
 
         .title {
-            margin-bottom: 6px;
-            font-size: 28px;
+            font-size: 22px;
             font-weight: 900;
         }
 
         .subtitle {
-            margin-bottom: 18px;
             color: #666;
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 12px;
             font-weight: 700;
         }
 
-        .summary-panel {
-            padding: 18px;
+        .compact-panel {
+            padding: 12px;
             background: #fff;
             border-radius: 16px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
         }
 
-        .summary-grid {
+        .animal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(118px, 1fr));
-            gap: 12px;
+            grid-template-columns: repeat(auto-fill, minmax(128px, 1fr));
+            gap: 8px;
         }
 
-        .summary-card {
+        .animal-card {
             position: relative;
-            padding: 12px 8px;
+            min-height: 108px;
+            padding: 7px;
             border: 1px solid #edf0f6;
-            border-radius: 14px;
+            border-radius: 12px;
             background: #fbfcff;
+            overflow: visible;
+        }
+
+        .animal-card.completed-animal {
+            border: 2px solid #40c978;
+            box-shadow: 0 0 0 2px rgba(64, 201, 120, 0.16);
+        }
+
+        .animal-card.completed-animal::after {
+            content: "✓";
+            position: absolute;
+            top: 5px;
+            right: 6px;
+            width: 17px;
+            height: 17px;
+            border-radius: 999px;
+            background: #40c978;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 900;
+            line-height: 17px;
             text-align: center;
         }
 
+        .animal-head {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            min-width: 0;
+            margin-bottom: 5px;
+        }
+
         .animal-img-box {
-            width: 58px;
-            height: 58px;
-            margin: 0 auto 8px;
-            border-radius: 14px;
-            border: 2px dashed #cbd5e1;
+            width: 34px;
+            height: 34px;
+            flex: 0 0 auto;
+            border-radius: 10px;
+            border: 1px dashed #cbd5e1;
             background: #f8fafc;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #94a3b8;
-            font-size: 12px;
+            font-size: 10px;
             overflow: hidden;
             cursor: help;
         }
@@ -80,29 +115,54 @@
             object-fit: cover;
         }
 
-        .summary-name {
-            font-size: 13px;
+        .animal-name {
+            min-width: 0;
+            font-size: 12px;
             font-weight: 900;
             color: #333;
+            line-height: 1.2;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .pref-line {
+            display: flex;
+            gap: 4px;
+            align-items: flex-start;
+            min-width: 0;
+            margin-top: 4px;
+            font-size: 10px;
+            font-weight: 800;
             line-height: 1.35;
+            color: #555;
+        }
+
+        .pref-label {
+            flex: 0 0 auto;
+            line-height: 1.35;
+        }
+
+        .pref-text {
+            flex: 1 1 auto;
+            min-width: 0;
+            white-space: normal;
+            overflow: visible;
+            text-overflow: clip;
             word-break: break-word;
         }
 
-        .completed-animal {
-            border: 3px solid #40c978 !important;
-            box-shadow: 0 0 0 4px rgba(64, 201, 120, 0.18);
+        .pref-text.empty {
+            color: #aaa;
         }
 
-        .completed-animal::after {
-            content: "已完成";
-            display: inline-block;
-            margin-top: 6px;
-            padding: 2px 7px;
-            border-radius: 999px;
-            background: #e7f8ed;
-            color: #16833a;
-            font-size: 11px;
-            font-weight: 900;
+        .message {
+            padding: 18px;
+            border-radius: 14px;
+            background: #fff7df;
+            color: #9a6b00;
+            font-weight: 800;
+            line-height: 1.7;
         }
 
         .animal-tooltip {
@@ -175,26 +235,33 @@
             font-weight: 900;
         }
 
-        .message {
-            padding: 18px;
-            border-radius: 14px;
-            background: #fff7df;
-            color: #9a6b00;
-            font-weight: 800;
-            line-height: 1.7;
+        @media (min-width: 1500px) {
+            .animal-grid {
+                grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
             .page {
-                padding: 14px;
+                padding: 8px;
+            }
+
+            .title-row {
+                display: block;
             }
 
             .title {
-                font-size: 24px;
+                font-size: 20px;
+                margin-bottom: 4px;
             }
 
-            .summary-grid {
-                grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
+            .compact-panel {
+                padding: 8px;
+            }
+
+            .animal-grid {
+                grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
+                gap: 6px;
             }
         }
     </style>
@@ -202,17 +269,20 @@
 
 <body>
     <div class="page">
-        <div class="title">動物總表 🐾</div>
+        <div class="title-row">
+            <div class="title">動物喜好一眼總覽 🐾</div>
+            <div class="subtitle">小卡版：滑鼠移到照片可看完整喜歡 / 不喜歡 / 蒐集狀態</div>
+        </div>
 
-        <section class="summary-panel">
-            <div id="summaryGrid" class="summary-grid"></div>
+        <section class="compact-panel">
+            <div id="animalGrid" class="animal-grid"></div>
         </section>
     </div>
 
     <script>
         let data = null;
 
-        const summaryGrid = document.getElementById("summaryGrid");
+        const animalGrid = document.getElementById("animalGrid");
         const animalTooltip = document.createElement("div");
         animalTooltip.className = "animal-tooltip";
         document.body.appendChild(animalTooltip);
@@ -227,9 +297,9 @@
 
                 data = await res.json();
                 normalizeAnimalImages();
-                renderSummary();
+                renderAnimals();
             } catch (error) {
-                summaryGrid.innerHTML = `
+                animalGrid.innerHTML = `
                     <div class="message">
                         讀不到 animal-data.json，請確認檔案跟 HTML 放在同一個資料夾，並用 localhost 或 Live Server 開啟。
                     </div>
@@ -353,32 +423,61 @@
             }
         }
 
-        function renderSummary() {
-            summaryGrid.innerHTML = "";
+        function compactText(items) {
+            if (items.length === 0) return "無";
+            return items.join(" ");
+        }
+
+        function renderAnimals() {
+            animalGrid.innerHTML = "";
 
             data.animals.forEach(animal => {
+                const likeFoods = getFoodsByStatus(animal, "like");
+                const dislikeFoods = getFoodsByStatus(animal, "dislike");
+
                 const card = document.createElement("div");
-                card.className = "summary-card";
+                card.className = "animal-card";
 
                 if (isAnimalCompleted(animal)) {
                     card.classList.add("completed-animal");
                 }
 
+                const head = document.createElement("div");
+                head.className = "animal-head";
+
                 const imgBox = document.createElement("div");
                 imgBox.className = "animal-img-box";
                 updateImagePreview(imgBox, animal);
-
                 imgBox.addEventListener("mouseenter", event => showAnimalTooltip(event, animal));
                 imgBox.addEventListener("mousemove", moveAnimalTooltip);
                 imgBox.addEventListener("mouseleave", hideAnimalTooltip);
 
                 const name = document.createElement("div");
-                name.className = "summary-name";
+                name.className = "animal-name";
                 name.textContent = animal.name || "未命名動物";
+                name.title = animal.name || "未命名動物";
 
-                card.appendChild(imgBox);
-                card.appendChild(name);
-                summaryGrid.appendChild(card);
+                head.appendChild(imgBox);
+                head.appendChild(name);
+
+                const likeLine = document.createElement("div");
+                likeLine.className = "pref-line";
+                likeLine.innerHTML = `
+                    <span class="pref-label">❤️</span>
+                    <span class="pref-text ${likeFoods.length === 0 ? "empty" : ""}" title="${escapeHtml(compactText(likeFoods))}">${escapeHtml(compactText(likeFoods))}</span>
+                `;
+
+                const dislikeLine = document.createElement("div");
+                dislikeLine.className = "pref-line";
+                dislikeLine.innerHTML = `
+                    <span class="pref-label">🚫</span>
+                    <span class="pref-text ${dislikeFoods.length === 0 ? "empty" : ""}" title="${escapeHtml(compactText(dislikeFoods))}">${escapeHtml(compactText(dislikeFoods))}</span>
+                `;
+
+                card.appendChild(head);
+                card.appendChild(likeLine);
+                card.appendChild(dislikeLine);
+                animalGrid.appendChild(card);
             });
         }
 
