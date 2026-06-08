@@ -1,0 +1,615 @@
+{
+  "statusOptions": {
+    "like": {
+      "label": "喜歡",
+      "icon": "❤️"
+    },
+    "dislike": {
+      "label": "不喜歡",
+      "icon": "🚫"
+    },
+    "normal": {
+      "label": "普通",
+      "icon": "🙂"
+    },
+    "unknown": {
+      "label": "沒吃過",
+      "icon": "❔"
+    }
+  },
+  "foods": [
+    {
+      "id": "carrot",
+      "emoji": "🥕",
+      "name": "紅蘿蔔",
+      "note": "０🥩"
+    },
+    {
+      "id": "lettuce",
+      "emoji": "🥬",
+      "name": "生菜",
+      "note": "０🥩"
+    },
+    {
+      "id": "corn",
+      "emoji": "🌽",
+      "name": "玉米",
+      "note": "０🥩"
+    },
+    {
+      "id": "bread",
+      "emoji": "🍞",
+      "name": "麵包",
+      "note": "０🥩"
+    },
+    {
+      "id": "berries",
+      "emoji": "🍓",
+      "name": "莓果",
+      "note": "０🥩"
+    },
+    {
+      "id": "apple",
+      "emoji": "🍎",
+      "name": "蘋果",
+      "note": "０🥩"
+    },
+    {
+      "id": "banana",
+      "emoji": "🍌",
+      "name": "香蕉",
+      "note": "０🥩"
+    },
+    {
+      "id": "orange",
+      "emoji": "🍊",
+      "name": "橘子",
+      "note": "０🥩"
+    },
+    {
+      "id": "watermelon",
+      "emoji": "🍉",
+      "name": "西瓜",
+      "note": "０🥩"
+    },
+    {
+      "id": "worm_strip",
+      "emoji": "🐛",
+      "name": "蟲子(粉)",
+      "note": "０🥩"
+    },
+    {
+      "id": "pollen",
+      "emoji": "🌼",
+      "name": "花粉",
+      "note": "０🥩"
+    },
+    {
+      "id": "worm_green",
+      "emoji": "🦗",
+      "name": "蟲子(綠)",
+      "note": "０🥩"
+    },
+    {
+      "id": "egg",
+      "emoji": "🥚",
+      "name": "雞蛋",
+      "note": "０🥩"
+    },
+    {
+      "id": "fish",
+      "emoji": "🐟",
+      "name": "魚",
+      "note": "０🥩"
+    },
+    {
+      "id": "chicken",
+      "emoji": "🍗",
+      "name": "雞肉",
+      "note": "０🥩"
+    },
+    {
+      "id": "cheese",
+      "emoji": "🧀",
+      "name": "起司",
+      "note": "０🥩"
+    },
+    {
+      "id": "meet",
+      "emoji": "🍖",
+      "name": "肉",
+      "note": "０🥩"
+    },
+    {
+      "id": "honey",
+      "emoji": "🍯",
+      "name": "蜂蜜",
+      "note": "０🥩"
+    },
+    {
+      "id": "candy",
+      "emoji": "🍬",
+      "name": "糖果",
+      "note": "０🥩"
+    },
+    {
+      "id": "cookie",
+      "emoji": "🍪",
+      "name": "餅乾",
+      "note": "０🥩"
+    },
+    {
+      "id": "ice_cream",
+      "emoji": "🍦",
+      "name": "冰淇淋",
+      "note": "０🥩"
+    },
+    {
+      "id": "chocolate",
+      "emoji": "🍫",
+      "name": "巧克力",
+      "note": "０🥩"
+    },
+    {
+      "id": "cake",
+      "emoji": "🍰",
+      "name": "蛋糕",
+      "note": "０🥩"
+    },
+    {
+      "id": "sushi",
+      "emoji": "🍣",
+      "name": "壽司",
+      "note": "０🥩"
+    },
+    {
+      "id": "pizza",
+      "emoji": "🍕",
+      "name": "披薩",
+      "note": "０🥩"
+    },
+    {
+      "id": "fuel",
+      "emoji": "⛽",
+      "name": "燃料",
+      "note": "3🥩"
+    },
+    {
+      "id": "star_snack",
+      "emoji": "⭐",
+      "name": "星星點心",
+      "note": "０🥩"
+    }
+  ],
+  "animals": [
+    {
+      "id": "animal_01",
+      "name": "石頭",
+      "image": "IMG/石頭.png",
+      "preferences": {
+        "carrot": "dislike",
+        "lettuce": "normal",
+        "chocolate": "normal",
+        "sushi": "like",
+        "cake": "like",
+        "pizza": "like",
+        "fuel": "like",
+        "star_snack": "dislike",
+        "corn": "normal",
+        "bread": "normal",
+        "berries": "normal",
+        "apple": "normal",
+        "banana": "normal",
+        "orange": "normal",
+        "watermelon": "normal",
+        "worm_strip": "normal",
+        "pollen": "normal",
+        "worm_green": "normal",
+        "egg": "normal",
+        "chicken": "normal",
+        "fish": "normal",
+        "cheese": "normal",
+        "meet": "normal",
+        "honey": "normal",
+        "candy": "normal",
+        "cookie": "normal",
+        "ice_cream": "normal"
+      }
+    },
+    {
+      "id": "animal_02",
+      "name": "雞",
+      "image": "IMG/雞.png",
+      "preferences": {
+        "fish": "unknown",
+        "pizza": "normal",
+        "watermelon": "like",
+        "worm_green": "like",
+        "worm_strip": "like",
+        "chocolate": "dislike",
+        "cookie": "normal",
+        "candy": "normal",
+        "honey": "normal",
+        "meet": "normal",
+        "cheese": "normal",
+        "carrot": "normal",
+        "sushi": "normal",
+        "cake": "normal",
+        "banana": "normal",
+        "fuel": "normal",
+        "star_snack": "normal",
+        "berries": "normal",
+        "bread": "normal",
+        "apple": "normal",
+        "egg": "like"
+      }
+    },
+    {
+      "id": "animal_03",
+      "name": "黑白貓",
+      "image": "IMG/黑白貓.png",
+      "preferences": {
+        "fish": "like",
+        "chicken": "like",
+        "lettuce": "dislike",
+        "orange": "dislike",
+        "candy": "normal",
+        "egg": "normal",
+        "star_snack": "normal",
+        "corn": "normal",
+        "watermelon": "normal",
+        "worm_green": "normal",
+        "honey": "normal",
+        "chocolate": "normal",
+        "ice_cream": "normal",
+        "worm_strip": "normal",
+        "bread": "normal",
+        "berries": "normal",
+        "pollen": "normal",
+        "sushi": "normal",
+        "carrot": "normal",
+        "banana": "normal",
+        "apple": "normal",
+        "cheese": "normal"
+      }
+    },
+    {
+      "id": "animal_04",
+      "name": "黑貓",
+      "image": "IMG/黑貓.png",
+      "preferences": {
+        "fish": "like",
+        "chicken": "like",
+        "lettuce": "dislike",
+        "orange": "dislike",
+        "candy": "normal",
+        "egg": "normal",
+        "star_snack": "normal",
+        "corn": "normal",
+        "watermelon": "normal",
+        "worm_green": "normal",
+        "honey": "normal",
+        "chocolate": "normal",
+        "ice_cream": "normal",
+        "worm_strip": "normal",
+        "bread": "normal",
+        "berries": "normal",
+        "pollen": "normal",
+        "sushi": "normal",
+        "carrot": "normal",
+        "banana": "normal",
+        "apple": "normal",
+        "cheese": "normal"
+      }
+    },
+    {
+      "id": "animal_05",
+      "name": "浣熊",
+      "image": "IMG/浣熊.png",
+      "preferences": {
+        "apple": "like",
+        "honey": "like",
+        "meet": "dislike",
+        "fish": "dislike",
+        "cake": "like",
+        "worm_green": "dislike",
+        "carrot": "normal",
+        "lettuce": "normal",
+        "corn": "normal",
+        "bread": "normal",
+        "berries": "normal",
+        "banana": "normal",
+        "orange": "normal",
+        "watermelon": "normal",
+        "worm_strip": "normal",
+        "pollen": "normal",
+        "egg": "normal",
+        "chicken": "normal",
+        "cheese": "normal",
+        "candy": "normal",
+        "cookie": "normal",
+        "ice_cream": "normal",
+        "chocolate": "normal",
+        "sushi": "normal",
+        "pizza": "normal",
+        "fuel": "normal",
+        "star_snack": "normal"
+      }
+    },
+    {
+      "id": "animal_06",
+      "name": "黑狗",
+      "image": "IMG/黑狗.png",
+      "preferences": {
+        "meet": "like",
+        "pizza": "like",
+        "cheese": "like",
+        "fuel": "dislike",
+        "orange": "dislike",
+        "chocolate": "dislike",
+        "star_snack": "normal",
+        "sushi": "normal",
+        "cake": "normal",
+        "cookie": "normal",
+        "ice_cream": "normal",
+        "candy": "normal",
+        "honey": "normal",
+        "chicken": "normal",
+        "fish": "normal",
+        "egg": "normal",
+        "worm_green": "normal",
+        "pollen": "normal",
+        "worm_strip": "normal",
+        "watermelon": "normal",
+        "apple": "normal",
+        "banana": "normal",
+        "berries": "normal",
+        "bread": "normal",
+        "corn": "normal",
+        "lettuce": "normal",
+        "carrot": "normal"
+      }
+    },
+    {
+      "id": "animal_07",
+      "name": "企鵝",
+      "image": "IMG/企鵝.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_08",
+      "name": "藍色車",
+      "image": "IMG/藍色車.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_09",
+      "name": "紫色車",
+      "image": "IMG/紫色車.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_18",
+      "name": "紅色車",
+      "image": "IMG/紅色車.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_10",
+      "name": "乳牛",
+      "image": "IMG/乳牛.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_11",
+      "name": "使萊姆",
+      "image": "IMG/使萊姆.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_12",
+      "name": "松鼠",
+      "image": "IMG/松鼠.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_13",
+      "name": "哥布林",
+      "image": "IMG/哥布林.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_14",
+      "name": "蝙蝠",
+      "image": "IMG/蝙蝠.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_15",
+      "name": "貓頭鷹",
+      "image": "IMG/貓頭鷹.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_16",
+      "name": "鴿子",
+      "image": "IMG/鴿子.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_17",
+      "name": "鸚鵡",
+      "image": "IMG/鸚鵡.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_19",
+      "name": "動物 19",
+      "image": "IMG/動物 19.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_20",
+      "name": "動物 20",
+      "image": "IMG/動物 20.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_21",
+      "name": "動物 21",
+      "image": "IMG/動物 21.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_22",
+      "name": "動物 22",
+      "image": "IMG/動物 22.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_23",
+      "name": "動物 23",
+      "image": "IMG/動物 23.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_24",
+      "name": "動物 24",
+      "image": "IMG/動物 24.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_25",
+      "name": "動物 25",
+      "image": "IMG/動物 25.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_26",
+      "name": "動物 26",
+      "image": "IMG/動物 26.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_27",
+      "name": "動物 27",
+      "image": "IMG/動物 27.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_28",
+      "name": "動物 28",
+      "image": "IMG/動物 28.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_29",
+      "name": "動物 29",
+      "image": "IMG/動物 29.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_30",
+      "name": "動物 30",
+      "image": "IMG/動物 30.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_31",
+      "name": "動物 31",
+      "image": "IMG/動物 31.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_32",
+      "name": "動物 32",
+      "image": "IMG/動物 32.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_33",
+      "name": "動物 33",
+      "image": "IMG/動物 33.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_34",
+      "name": "動物 34",
+      "image": "IMG/動物 34.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_35",
+      "name": "動物 35",
+      "image": "IMG/動物 35.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_36",
+      "name": "動物 36",
+      "image": "IMG/動物 36.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_37",
+      "name": "動物 37",
+      "image": "IMG/動物 37.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_38",
+      "name": "動物 38",
+      "image": "IMG/動物 38.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_39",
+      "name": "動物 39",
+      "image": "IMG/動物 39.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_40",
+      "name": "動物 40",
+      "image": "IMG/動物 40.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_41",
+      "name": "動物 41",
+      "image": "IMG/動物 41.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_42",
+      "name": "動物 42",
+      "image": "IMG/動物 42.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_43",
+      "name": "動物 43",
+      "image": "IMG/動物 43.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_44",
+      "name": "動物 44",
+      "image": "IMG/動物 44.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_45",
+      "name": "動物 45",
+      "image": "IMG/動物 45.png",
+      "preferences": {}
+    },
+    {
+      "id": "animal_46",
+      "name": "動物 46",
+      "image": "IMG/動物 46.png",
+      "preferences": {}
+    }
+  ],
+  "defaultStatus": "unknown"
+}
