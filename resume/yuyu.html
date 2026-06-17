@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>張馨予｜履歷網站</title>
+  <meta name="description" content="張馨予的履歷網站，包含個人資料、學歷、工作經驗、求職條件、語言能力、專長、工作技能、資格認證、自傳與專案成就。" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <svg aria-hidden="true" class="svg-sprite">
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <path d="M12 12.2a4.1 4.1 0 1 0 0-8.2 4.1 4.1 0 0 0 0 8.2Zm-7.2 7.4c.7-3.6 3.4-5.6 7.2-5.6s6.5 2 7.2 5.6" />
+    </symbol>
+    <symbol id="i-work" viewBox="0 0 24 24">
+      <path
+        d="M9 7V5.8C9 4.8 9.8 4 10.8 4h2.4C14.2 4 15 4.8 15 5.8V7M5.7 7h12.6c1 0 1.7.7 1.7 1.7v8.6c0 1-.7 1.7-1.7 1.7H5.7c-1 0-1.7-.7-1.7-1.7V8.7C4 7.7 4.7 7 5.7 7Zm6.3 4.4v.2" />
+    </symbol>
+    <symbol id="i-school" viewBox="0 0 24 24">
+      <path d="m3.2 8.8 8.8-4 8.8 4-8.8 4-8.8-4Zm3.4 2.3v4.7c1.6 1.5 3.4 2.2 5.4 2.2s3.8-.7 5.4-2.2v-4.7" />
+    </symbol>
+    <symbol id="i-target" viewBox="0 0 24 24">
+      <path
+        d="M12 20a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm0-3.8a4.2 4.2 0 1 0 0-8.4 4.2 4.2 0 0 0 0 8.4Zm0-3a1.2 1.2 0 1 0 0-2.4 1.2 1.2 0 0 0 0 2.4Z" />
+    </symbol>
+    <symbol id="i-lang" viewBox="0 0 24 24">
+      <path
+        d="M4 5.6h8.2M8.1 4v1.6m2.5 0c-.9 3.3-3.2 5.9-6.2 7.4m2.4-4.5c.8 1.6 2 2.8 3.6 3.7m2.5 7.2 4.1-10 4.1 10m-6.7-3h5.2" />
+    </symbol>
+    <symbol id="i-tool" viewBox="0 0 24 24">
+      <path
+        d="M14.8 6.1a4.5 4.5 0 0 0 5.1 5.1l-8.3 8.3a2.2 2.2 0 0 1-3.1 0l-4-4a2.2 2.2 0 0 1 0-3.1l8.3-8.3Zm-8.6 7.7 4 4" />
+    </symbol>
+    <symbol id="i-badge" viewBox="0 0 24 24">
+      <path d="M8 4h8l2 3.5-6 12.5L6 7.5 8 4Zm-2 3.5h12M12 4v16" />
+    </symbol>
+    <symbol id="i-book" viewBox="0 0 24 24">
+      <path d="M5.5 4.5h8.4c1.8 0 3.1 1.3 3.1 3.1v11.9H8.1a2.6 2.6 0 0 1-2.6-2.6V4.5Zm11.5 3.1h1.5v11.9" />
+    </symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24">
+      <path
+        d="M13.5 14.8c3.7-1.7 5.9-5.3 6.1-10.4-5.1.2-8.7 2.4-10.4 6.1L5 9.8 3.6 14l5 .4 1 1 .4 5 4.2-1.4-.7-4.2Zm2-5.8a1.7 1.7 0 1 0 0-3.4 1.7 1.7 0 0 0 0 3.4Z" />
+    </symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24">
+      <path d="M4.5 6.5h15v11h-15v-11Zm.8.6 6.7 5.3 6.7-5.3" />
+    </symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24">
+      <path
+        d="M12 21s6.2-5.7 6.2-11.1A6.2 6.2 0 1 0 5.8 9.9C5.8 15.3 12 21 12 21Zm0-8.7a2.4 2.4 0 1 0 0-4.8 2.4 2.4 0 0 0 0 4.8Z" />
+    </symbol>
+  </svg>
+
+  <header class="topbar">
+    <nav class="nav" aria-label="主導覽">
+      <button class="nav-toggle" type="button" aria-label="開啟選單" aria-expanded="false">☰</button>
+      <div class="nav-links">
+        <a href="#profile">個人資料</a>
+        <a href="#experience">工作經驗</a>
+        <a href="#education">學歷</a>
+        <a href="#job">求職條件</a>
+        <a href="#skills">專長技能</a>
+        <a href="#about">自傳</a>
+        <a href="#projects">專案成就</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section class="hero reveal" id="top">
+      <div class="hero-photo">
+        <img src="assets/yu.png" alt="個人照片預留圖" />
+      </div>
+      <div class="hero-main">
+        <p class="eyebrow">公司名暫不公開｜開發工程師</p>
+        <h1>張馨予</h1>
+        <div class="intro-lines">
+          <span>國立勤益科技大學｜資訊工程系 碩士畢業</span>
+          <span>6~7年工作經歷｜希望職稱：軟體工程師</span>
+        </div>
+        <p class="hero-desc">在 GUI、網頁、資料處理等各個領域中，依需求找到合適解法。</p>
+        <p>希望做出實用的工具，幫助更多人。</p>
+        <div class="pill-row">
+          <span>#善於溝通</span>
+          <span>#認真負責</span>
+          <span>#待人溫和有禮</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="profile">
+      <div class="section-title">
+        <span class="icon"><svg>
+            <use href="#i-user" />
+          </svg></span>
+        <div>
+          <h2>個人資料</h2>
+        </div>
+      </div>
+      <div class="data-grid compact">
+        <div><b>性別年齡</b><span>女 、 29歲</span></div>
+        <div><b>手機</b><span>0973-008-015</span></div>
+        <div><b>就業狀態</b><span>在職中</span></div>
+        <div><b>最快入職日</b><span>2026/8/1</span></div>
+        <div><b>E-mail</b><span>x793041@gmail.com</span></div>
+        <div><b>交通工具</b><span>普通重型機車</span></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="experience">
+      <div class="section-title">
+        <span class="icon"><svg>
+            <use href="#i-work" />
+          </svg></span>
+        <div>
+          <h2>工作經驗</h2>
+        </div>
+      </div>
+
+      <article class="work-card featured">
+        <div class="work-head">
+          <div>
+            <h3>開發工程師</h3>
+            <p>公司名暫不公開（光電產業 100~500人）</p>
+          </div>
+          <span>2020/12~仍在職</span>
+        </div>
+        <p class="meta">全端工程師 | 台中市西屯區</p>
+        <ul class="resume-list">
+          <li>擔任軟體工程師，負責 GUI 開發、網頁工具、嵌入式 UI 與專案整合。</li>
+          <li>使用 C# WPF 開發 GUI 軟體，將設計後的專案轉換為可供開發板讀取的格式。</li>
+          <li>使用 HTML、CSS、Bootstrap、JavaScript 製作參展DEMO。</li>
+          <li>開發公司內部腳位查詢工具，使用 Python 整理原始資料，並以網頁呈現。</li>
+          <li>使用 LVGL 進行嵌入式 UI 排版與電測小工具開發，協助產品畫面配置、測試流程操作、裝置狀態讀取與參數調整。</li>
+          <li>參與裝置數值監測專案，負責資料接收、資料儲存與前端視覺化呈現。</li>
+          <li>開發與維護部門網站，負責頁面製作、後台功能調整、SQL 查詢與資料管理。</li>
+          <li>協助 Linux 環境操作與開發板燒錄支援，包含基本指令操作、系統測試與問題排查。</li>
+          <li>具備快速學習與跨領域整合能力，能依專案需求完成實際可用的軟體成果。</li>
+        </ul>
+        <div class="pill-row small">
+          <span>#C#</span><span>#HTML</span><span>#CSS</span><span>#JavaScript</span><span>#Python</span><span>#MS
+            SQL</span>
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="work-head">
+          <div>
+            <h3>課堂助教</h3>
+            <p>國立勤益科技大學（其他教育服務業）</p>
+          </div>
+          <span>2019/1~2019/12・1年</span>
+        </div>
+        <p class="meta">助教 | 台中市太平區</p>
+        <ul class="resume-list three">
+          <li>指導課業、批改學生作業。</li>
+          <li>值班、監考。</li>
+          <li>協助老師教學。</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section reveal" id="education">
+      <div class="section-title">
+        <span class="icon"><svg>
+            <use href="#i-school" />
+          </svg></span>
+        <div>
+          <h2>學歷</h2>
+        </div>
+      </div>
+      <div class="edu-list">
+        <article><b>國立勤益科技大學</b><span>資訊工程系 碩士畢業</span><time>2018/8~2020/8</time></article>
+        <article><b>國立勤益科技大學</b><span>資訊工程系 大學畢業</span><time>2014/9~2018/6</time></article>
+        <article><b>高雄高商</b><span>會計科 高職畢業</span><time>2011/9~2014/6</time></article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="job">
+      <div class="section-title tight">
+        <span class="icon"><svg>
+            <use href="#i-target" />
+          </svg></span>
+        <div>
+          <h2>求職條件</h2>
+        </div>
+      </div>
+      <div class="data-grid job-grid">
+        <div><b>希望性質</b><span>全職工作</span></div>
+        <div><b>上班時段</b><span>日班</span></div>
+        <div><b>可上班日</b><span>錄取後一個月可上班</span></div>
+        <div><b>希望職稱</b><span>軟體工程師、開發工程師</span></div>
+        <div><b>希望待遇</b><span>依公司規定</span></div>
+        <div><b>希望地點</b><span>台中市</span></div>
+      </div>
+      <div class="number-card">
+        <h3>工作內容</h3>
+        <ol>
+          <li>負責軟體之分析、設計以及程式撰寫。</li>
+          <li>規劃執行軟體架構及模組之設計，並控管軟體設計進度。</li>
+          <li>進行軟體之測試與修改。</li>
+          <li>規劃、執行與維護量產的產品。</li>
+          <li>協助研發軟體新技術與新工具。</li>
+          <li>管控軟體開發成本。</li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section reveal" id="language">
+      <div class="section-title tight">
+        <span class="icon"><svg>
+            <use href="#i-lang" />
+          </svg></span>
+        <div>
+          <h2>語言能力</h2>
+        </div>
+      </div>
+      <div class="language-grid">
+        <article><b>中文</b><span>聽/精通　說/精通　讀/精通　寫/精通</span></article>
+        <article><b>英文</b><span>聽/略懂　說/略懂　讀/略懂　寫/略懂</span></article>
+        <article><b>台語</b><span>略懂</span></article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="skills">
+      <div class="section-title">
+        <span class="icon"><svg>
+            <use href="#i-tool" />
+          </svg></span>
+        <div>
+          <h2>專長</h2>
+        </div>
+      </div>
+      <div class="skill-table">
+        <div><b>程式設計</b><span>C#、PHP、JavaScript、LVGL</span></div>
+        <div><b>資料庫</b><span>MS SQL、MySQL</span></div>
+        <div><b>網頁技術</b><span>HTML、CSS、Bootstrap、JavaScript、PHP、ASP.NET</span></div>
+        <div><b>辦公應用</b><span>Excel、PowerPoint、Word、Visio</span></div>
+        <div><b>作業系統</b><span>Windows、Linux</span></div>
+      </div>
+      <div class="pill-row small"><span>C#</span><span>ASP.NET</span><span>MS
+          SQL</span><span>CSS</span><span>JavaScript</span><span>資料庫程式設計</span><span>軟體工程系統開發</span><span>Linux</span><span>HTML</span>
+      </div>
+      <!-- 
+      <div class="mini-block">
+        <h3>工作技能</h3>
+        <p>軟體程式設計、文書處理軟體操作、流程圖軟體操作、簡報軟體操作、行政事務處理、作業系統基本操作</p>
+        <div class="pill-row small">
+          <span>#軟體程式設計</span><span>#文書處理軟體操作</span><span>#流程圖軟體操作</span><span>#簡報軟體操作</span><span>#行政事務處理</span><span>#作業系統基本操作</span>
+        </div>
+      </div> -->
+    </section>
+
+    <section class="section reveal" id="certificates">
+      <div class="section-title">
+        <span class="icon"><svg>
+            <use href="#i-badge" />
+          </svg></span>
+        <div>
+          <h2>資格認證</h2>
+        </div>
+      </div>
+      <div class="cert-grid">
+        <article><b>門市服務相關證照</b>
+          <p>丙級門市服務技術士</p><small>勞動部勞動力發展署技能檢定中心</small>
+        </article>
+        <article><b>財務會計相關證照</b>
+          <p>會計能力測驗三級合格證書</p><small>中華民國商業職業教育學會</small>
+          <p>會計能力測驗一級合格證書</p><small>中華民國商業職業教育學會</small>
+          <p>丙級會計事務技術士</p><small>勞動部勞動力發展署技能檢定中心</small>
+        </article>
+        <article><b>勞動部勞動力發展署技能檢定中心</b>
+          <p>丙級電腦軟體應用技術士</p><small>勞動部勞動力發展署技能檢定中心</small>
+        </article>
+        <article><b>Certiport</b>
+          <p>Microsoft Office Specialist Master Instructor (Formerly MOUS MI)</p><small>Microsoft</small>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="about">
+      <div class="section-title">
+        <span class="icon"><svg>
+            <use href="#i-book" />
+          </svg></span>
+        <div>
+          <h2>自傳</h2>
+        </div>
+      </div>
+      <div class="story-list">
+        <article>
+          <h3>//成長背景</h3>
+          <p>我是張馨予，來自高雄市鹽埕區，畢業於國立勤益科技大學資訊工程所，從小家庭對我教育嚴謹，養成我努力且認真的個性。</p>
+        </article>
+        <article>
+          <h3>//求學過程</h3>
+          <p>高中就讀會計科的我無意間接觸到程式語言，引發了我的好奇心與學習的慾望，使我大學報考資訊工程系，追逐我成為工程師的夢想。</p>
+          <p>就學期間為了減少家庭的負擔與擔憂，我曾做過櫃台、行政工讀生及助教等兼職打工，這些經驗磨練我處理事情的耐心以及獨立的性格，並且在兼顧課業的壓力下培養抗壓性。</p>
+          <p>為了增進專業能力，我選擇就讀研究所，在規劃架構、設計與開發中，訓練獨立思考及解決問題的能力。</p>
+        </article>
+        <article>
+          <h3>//進入職場</h3>
+          <p>我的工作內容涵蓋 GUI 開發、網頁系統、資料處理、內部工具與專案整合。這些經驗讓我累積了跨領域整合與快速學習能力。比起侷限於單一工具，我更重視理解需求、整理資料、拆解問題，並選擇合適的方法完成真正可用的成果。
+          </p>
+        </article>
+        <article>
+          <h3>//職涯規劃</h3>
+          <p>短期目標為熟悉公司運作模式並累積經驗與能力，中期目標為持續進修，增加自己的專業能力提高工作效率，長期目標則希望應用自己在職場上所歷練的學到的技術，為公司創造更高的價值。</p>
+          <p>感謝您從百忙之中看我的履歷，若有幸進入貴公司服務，我會秉持精益求精的精神，增強自己不足的地方，提高競爭力，並全力發揮所長，為公司奉獻。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section reveal" id="projects">
+      <div class="section-title">
+        <span class="icon"><svg>
+            <use href="#i-rocket" />
+          </svg></span>
+        <div>
+          <h2>專案成就</h2>
+        </div>
+      </div>
+      <div class="project-stack">
+        <article class="project-card">
+          <div class="project-image"><img src="assets/1.png" alt="部門官方網站圖片預留圖" /></div>
+          <div class="project-body">
+            <div class="project-head">
+              <h3>部門官方網站</h3><span>2025/6~仍在進行</span>
+            </div>
+            <p>部門網站開發與維護，包含前台頁面、後台管理、資料庫設計與功能流程整合。</p>
+            <p>網站功能包含產品篩選與詳情、布告欄、客戶詢問表單、信件通知、文件下載、IP 訪問紀錄統計與後台資料管理。</p>
+            <p class="tech"><b>技術：</b>PHP、HTML、CSS、Bootstrap、JavaScript、Chart.js、SQL、MySQL、Synology NAS</p>
+            <a class="view-link" href="#" aria-disabled="true">前往查看</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"><img src="assets/2.png" alt="裝置數值監測系統圖片預留圖" /></div>
+          <div class="project-body">
+            <div class="project-head">
+              <h3>裝置數值監測系統</h3><span>2026/1~仍在進行</span>
+            </div>
+            <p>Python 藍牙資料接收、JSON / SQL 資料儲存，以及前端視覺化呈現。</p>
+            <p>將裝置量測資料整理成可查看、可分析的網頁介面，協助掌握即時數值與資料變化。</p>
+            <p class="tech"><b>技術：</b>Python、BLE、JSON、SQL、HTML、JavaScript</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"><img src="assets/3.png" alt="GUI 設計軟體圖片預留圖" /></div>
+          <div class="project-body">
+            <div class="project-head">
+              <h3>GUI 設計軟體</h3><span>2021/3~2023/3</span>
+            </div>
+            <p>從零開發 GUI 設計工具，支援畫布物件新增、配置與屬性編輯。</p>
+            <p>以 JSON 儲存畫面物件、座標與資源資料，並將專案輸出成嵌入式可讀取的格式。</p>
+            <p class="tech"><b>技術：</b>C# WPF、JSON</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"><img src="assets/4.png" alt="腳位查詢工具圖片預留圖" /></div>
+          <div class="project-body">
+            <div class="project-head">
+              <h3>腳位查詢工具</h3>
+            </div>
+            <p>使用 Python 整理原始腳位資料，分析資料規則並轉換成可使用的格式。</p>
+            <p>最後以網頁介面呈現查詢結果，讓同事能快速查找腳位資訊與對應資料。</p>
+            <p class="tech"><b>技術：</b>Python、HTML、CSS、JavaScript、MySQL</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"><img src="assets/5.png" alt="LVGL 電測小工具圖片預留圖" /></div>
+          <div class="project-body">
+            <div class="project-head">
+              <h3>LVGL 電測小工具</h3>
+            </div>
+            <p>可透過按鈕取得裝置狀態，並調整裝置設定，例如亮度控制。</p>
+            <p>協助同事更快速進行產品測試，降低重複操作時間。</p>
+            <p class="tech"><b>技術：</b>LVGL、C、LINUX</p>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-image"><img src="assets/6.png" alt="參展 Demo 圖片預留圖" /></div>
+          <div class="project-body">
+            <div class="project-head">
+              <h3>參展 Demo</h3>
+            </div>
+            <p>依照展示需求快速完成畫面設計、操作流程與前端效果。</p>
+            <p class="tech"><b>技術：</b>HTML、CSS、JavaScript</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">© 張馨予 Resume Website</footer>
+  <script src="js/script.js"></script>
+</body>
+
+</html>
