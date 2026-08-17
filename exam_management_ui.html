@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>職能考試管理系統 V6</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+:root{--p:#3559d6;--ps:#eef2ff;--g:#208c68;--gs:#e9f7f1;--r:#cf5261;--rs:#fff0f2;--y:#d68a28;--ys:#fff5e6;--txt:#283249;--mut:#7b8497;--nav:#19233c;--bg:#f5f6fa;--bd:#e5e8f0;--shadow:0 10px 27px rgba(38,51,91,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--txt);font-family:"Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif}.sidebar{position:fixed;inset:0 auto 0 0;width:255px;padding:20px 14px;background:radial-gradient(circle at 0 0,rgba(105,89,255,.24),transparent 30%),var(--nav);color:#fff;z-index:1040}.brand{display:flex;align-items:center;gap:12px;padding:7px 10px 22px}.brand-icon{width:43px;height:43px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(135deg,#735dff,#416cff)}.brand-title{font-weight:800}.brand-sub{font-size:.71rem;color:#9da9c3}.side-label{padding:13px 12px 7px;color:#7785a5;font-size:.69rem;font-weight:800}.sidebar .nav-link{width:100%;border:0;background:none;color:#cbd3e6;display:flex;align-items:center;gap:11px;padding:11px 12px;margin:3px 0;border-radius:11px;text-align:left}.sidebar .nav-link.active,.sidebar .nav-link:hover{background:rgba(255,255,255,.1);color:#fff}.main{margin-left:255px;min-height:100vh}.topbar{position:sticky;top:0;z-index:1020;min-height:76px;padding:15px 26px;background:rgba(255,255,255,.92);border-bottom:1px solid #e7eaf0;display:flex;justify-content:space-between;align-items:center;gap:16px}.page-title{font-size:1.25rem;font-weight:800;margin:0}.page-sub{font-size:.8rem;color:var(--mut);margin-top:3px}.content{padding:26px}.page{display:none}.page.active{display:block}.cardx{background:#fff;border:1px solid var(--bd);border-radius:17px;box-shadow:var(--shadow)}.cardx-head{padding:19px 21px 12px}.cardx-body{padding:16px 21px 21px}.btn{border-radius:10px}.btn-primary{--bs-btn-bg:var(--p);--bs-btn-border-color:var(--p)}.form-control,.form-select{min-height:42px;border-radius:10px;border-color:#dfe3ed}.search{position:relative;min-width:235px}.search i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:#8993a7}.search input{padding-left:38px}.table{margin:0;vertical-align:middle}.table thead th{background:#f8f9fc;color:#6d778a;padding:12px 13px;font-size:.76rem;font-weight:800;white-space:nowrap}.table tbody td{padding:14px 13px;font-size:.87rem;border-bottom-color:#edf0f5}.badge-soft{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;font-size:.74rem;font-weight:800}.b-primary{background:var(--ps);color:#3656bb}.b-success{background:var(--gs);color:#176d50}.b-danger{background:var(--rs);color:#a83c49}.b-warning{background:var(--ys);color:#95631d}.b-muted{background:#f0f2f6;color:#707888}.version{font-size:.68rem;font-weight:800;padding:3px 7px;border-radius:7px;background:var(--ps);color:#4862b7}.skill-chip{display:inline-flex;padding:5px 8px;margin:2px 3px 2px 0;border-radius:999px;background:#f0f3ff;color:#405cb9;font-size:.72rem;font-weight:700}.status-select{min-height:35px!important;width:112px;font-size:.8rem;font-weight:700}.status-select.using{background:var(--gs);color:#176d50}.status-select.ended{background:var(--rs);color:#9d3d49}.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--bd);padding-bottom:12px;margin-bottom:22px}.tab-btn{border:0;background:transparent;padding:9px 13px;border-radius:9px;font-size:.86rem;font-weight:800;color:#717b90}.tab-btn.active{background:var(--ps);color:var(--p)}.detail-tab{display:none}.detail-tab.active{display:block}.section-note{padding:13px 15px;border-left:4px solid var(--p);border-radius:0 11px 11px 0;background:var(--ps);color:#445174;font-size:.84rem}.question-card{position:relative;background:#fff;border:1px solid var(--bd);border-radius:15px;overflow:hidden;margin-bottom:16px}.question-card:before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--p)}.question-head{display:flex;justify-content:space-between;align-items:center;padding:14px 17px;border-bottom:1px solid #edf0f5}.question-body{padding:17px}.qnum{width:29px;height:29px;display:inline-grid;place-items:center;border-radius:9px;background:var(--ps);color:var(--p);font-size:.78rem;font-weight:800}.upload{min-height:92px;display:grid;place-items:center;text-align:center;border:2px dashed #cfd6e4;border-radius:12px;background:#fafbfe;color:#818b9e}.option-row{display:grid;grid-template-columns:28px 36px 1fr 42px 42px;gap:8px;align-items:center;margin-bottom:9px}.option-letter{height:42px;display:grid;place-items:center;border:1px solid #dfe3ed;border-radius:10px;background:#f8f9fc;font-weight:800}.answer-chip{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;margin:3px 4px 3px 0;border:1px solid #dfe4ef;border-radius:999px;background:#f8f9fc;font-size:.78rem}.answer-chip button{border:0;background:none;color:#a44;padding:0}.answer-summary{border:1px solid var(--bd);border-radius:14px;overflow:hidden;margin-bottom:14px}.answer-summary-head{padding:15px 17px;background:#fbfcfe;border-bottom:1px solid var(--bd)}.answer-summary-body{padding:15px 17px}.answer-item{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 13px;margin-bottom:8px;border:1px solid var(--bd);border-radius:11px}.answer-text{font-family:Consolas,monospace;font-weight:800}.result-bar{height:9px;border-radius:999px;background:#edf0f5;overflow:hidden}.result-fill{height:100%;background:linear-gradient(90deg,#3559d6,#6c5df6)}.person-grid-wrap{overflow:auto}.person-grid{min-width:920px}.person-grid th,.person-grid td{text-align:center}.person-grid th:first-child,.person-grid td:first-child{text-align:left;position:sticky;left:0;background:#fff;z-index:2}.cell-ok{background:#eaf8f2!important;color:#176c4f;font-weight:800}.cell-no{background:#fff0f2!important;color:#a93b49;font-weight:800}.cell-wait{background:#fff6e7!important;color:#94631c;font-weight:800}.score-pill{display:inline-flex;min-width:54px;justify-content:center;padding:5px 8px;border-radius:999px;background:var(--ps);color:var(--p);font-size:.74rem;font-weight:800}.assigned-list{display:flex;flex-direction:column;align-items:flex-start;gap:5px}.assigned-item{display:inline-flex;align-items:center;gap:7px;padding:5px 8px;border-radius:8px;background:#f7f8fc;font-size:.78rem}.assigned-item .version{font-size:.60rem;padding:2px 5px}.skill-box{padding:13px;border:1px solid var(--bd);border-radius:12px;background:#fafbfe}.employee-banner{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;margin-bottom:20px;border:1px solid var(--bd);border-radius:14px;background:#fff;box-shadow:var(--shadow)}.avatar{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:var(--ps);color:var(--p);font-weight:800}.student-card{height:100%;padding:18px;border:1px solid var(--bd);border-radius:15px;background:#fff;box-shadow:var(--shadow)}.sticky-card{position:sticky;top:96px}.filter-row input,.filter-row select{min-height:34px;font-size:.78rem}.mobile-menu{display:none}@media(max-width:991.98px){.sidebar{transform:translateX(-100%);transition:.25s}.sidebar.show{transform:none}.main{margin-left:0}.content{padding:17px}.topbar{padding:13px 17px}.mobile-menu{display:inline-flex}.sticky-card{position:static}}
+
+.admin-top-nav{display:flex;align-items:center;gap:22px}.admin-top-nav .btn{position:relative;border:0!important;background:transparent!important;padding:8px 1px;border-radius:0;font-weight:800;color:#697388;box-shadow:none!important;white-space:nowrap}.admin-top-nav .btn:hover{color:var(--p)}.admin-top-nav .btn::after{content:"";position:absolute;left:0;right:0;bottom:2px;height:2px;border-radius:99px;background:transparent}.admin-top-nav .btn.active-admin-nav{color:var(--p)}.admin-top-nav .btn.active-admin-nav::after{background:var(--p)}
+.skill-match-row td{background:#f5f8ff!important}.skill-match-row td:first-child{box-shadow:inset 4px 0 0 var(--p)}.skill-match-label{font-size:.66rem;font-weight:800;color:var(--p);background:var(--ps);padding:3px 7px;border-radius:999px;margin-left:6px}
+.employee-exam-table .exam-title{font-weight:800}.employee-exam-table td{padding-top:16px;padding-bottom:16px}.exam-taking{max-width:920px;margin:0 auto}.taking-head{padding:18px 20px;margin-bottom:18px;background:#fff;border:1px solid var(--bd);border-radius:15px;box-shadow:var(--shadow)}.taking-q{padding:20px;margin-bottom:16px;background:#fff;border:1px solid var(--bd);border-radius:15px;box-shadow:var(--shadow)}.choice{display:flex;align-items:flex-start;gap:9px;padding:12px 13px;margin-bottom:9px;border:1px solid #e0e5ee;border-radius:11px;cursor:pointer}.choice:hover{background:#f9faff;border-color:#9aabe8}.mock-img{min-height:125px;display:grid;place-items:center;margin:12px 0;border-radius:12px;background:repeating-linear-gradient(45deg,#f5f6fa,#f5f6fa 10px,#eef0f5 10px,#eef0f5 20px);color:#6f7b94}
+body.employee-mode .sidebar{display:none}body.employee-mode .main{margin-left:0}body.employee-mode #adminTopNav,body.employee-mode #createExamBtn{display:none!important}body.employee-mode #employeeLogoutBtn{display:inline-flex!important}body:not(.employee-mode) #employeeLogoutBtn{display:none!important}
+@media(max-width:1100px){.admin-top-nav{gap:12px}.admin-top-nav .btn{font-size:.86rem}}
+
+.skill-list{display:flex;flex-direction:column;align-items:flex-start;gap:5px}.skill-list .skill-chip{margin:0}.employee-overview{max-width:1000px;margin:0 auto}.employee-profile-card{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:20px 22px;margin-bottom:18px;border:1px solid var(--bd);border-radius:17px;background:#fff;box-shadow:var(--shadow)}.employee-profile-main{display:flex;align-items:center;gap:14px}.employee-profile-main .avatar{width:46px;height:46px}.employee-profile-name{font-size:1.05rem;font-weight:800}.exam-overview-card{overflow:hidden;border:1px solid var(--bd);border-radius:17px;background:#fff;box-shadow:var(--shadow)}.exam-overview-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:20px 22px;border-bottom:1px solid #edf0f5}.exam-task-row{display:grid;grid-template-columns:minmax(0,1fr) 130px 120px;align-items:center;gap:18px;padding:18px 22px;border-bottom:1px solid #edf0f5}.exam-task-row:last-child{border-bottom:0}.exam-task-row:hover{background:#fafbfe}.exam-task-main{display:flex;align-items:center;gap:14px;min-width:0}.exam-task-icon{width:42px;height:42px;display:grid;place-items:center;flex:0 0 auto;border-radius:12px;background:var(--ps);color:var(--p);font-size:1.05rem}.exam-task-title{font-weight:800}.exam-task-note{margin-top:3px;color:var(--mut);font-size:.78rem}.exam-task-status{text-align:center}.exam-task-action{text-align:right}.taking-head{display:block!important}.taking-head>div{width:100%}@media(max-width:700px){.exam-task-row{grid-template-columns:1fr;gap:10px}.exam-task-status,.exam-task-action{text-align:left}.employee-profile-card{align-items:flex-start}.admin-top-nav{gap:10px}.admin-top-nav .btn{font-size:.8rem}}
+</style>
+
+<style>
+  body.exam-mode .topbar{display:none!important}
+  body.exam-mode .content{padding-top:26px}
+  #employeeBarInfo{line-height:1.2}
+</style>
+
+
+<style>
+.exam-note{color:#5f687b}
+.exam-metrics{display:flex;flex-wrap:wrap;gap:8px;margin-left:10px}
+.metric-inline{display:inline-flex;align-items:center;gap:5px;padding:5px 9px;border-radius:999px;background:#f3f5f9;color:#606a7d;font-size:.75rem;font-weight:700}
+.metric-inline strong{color:#283249}
+.score-edit{width:86px!important;min-height:34px!important;text-align:center;font-weight:800}
+.attempt-pill{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:.69rem;font-weight:800}
+.attempt-first{background:#f0f2f6;color:#687184}
+.attempt-re{background:#fff2e4;color:#9a6218}
+.assigned-status{font-size:.64rem;font-weight:800;padding:2px 6px;border-radius:999px;margin-left:4px}
+.assigned-wait{background:#fff5e6;color:#95631d}
+.assigned-done{background:#e9f7f1;color:#176d50}
+.assigned-re{background:#fff0f2;color:#a83c49}
+.exam-basic-row .form-label{margin-bottom:6px}
+.exam-title-field{margin-top:2px}
+.reexam-select{min-width:110px}
+.exam-detail-title{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.exam-detail-note{font-size:.82rem;color:#6e778b;margin-top:7px}
+.person-grid .attempt-row td:first-child{background:#fffaf3}
+</style>
+
+
+<style>
+.status-stack{display:flex;flex-wrap:wrap;gap:4px}
+</style>
+
+</head>
+<body>
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><div class="brand-icon"><i class="bi bi-mortarboard-fill"></i></div><div><div class="brand-title">職能考試管理系統</div><div class="brand-sub">Competency Exam</div></div></div>
+  <div class="side-label">管理者選單</div>
+  <button class="nav-link active" data-page="exams" data-title="考卷管理" data-sub="依職能、年度與狀態管理考卷"><i class="bi bi-file-earmark-text-fill"></i>考卷管理</button>
+  <button class="nav-link" data-page="exam-editor" data-title="考卷編輯" data-sub="建立年度考卷與設定題目答案"><i class="bi bi-ui-checks-grid"></i>考卷編輯</button>
+  <button class="nav-link" data-page="employees" data-title="員工管理" data-sub="管理員工職能與目前指定考卷"><i class="bi bi-people-fill"></i>員工管理</button>
+  <div class="side-label">員工畫面預覽</div>
+  <button class="nav-link" data-page="employee-home" data-title="我的考試" data-sub="依員工職能列出本年度應考項目"><i class="bi bi-person-badge-fill"></i>我的考試</button>
+</aside>
+<main class="main">
+<header class="topbar" id="topbar"><div class="d-flex align-items-center gap-3"><button class="btn btn-light mobile-menu" id="menuBtn"><i class="bi bi-list"></i></button><div class="admin-top-nav" id="adminTopNav"><button class="btn btn-sm active-admin-nav" data-go="exams"><i class="bi bi-file-earmark-text me-1"></i><span>考卷管理</span></button><button class="btn btn-sm" data-go="employees"><i class="bi bi-people me-1"></i><span>員工管理</span></button></div></div><div class="d-flex align-items-center gap-2"><div id="employeeBarInfo" class="d-none ms-auto me-3 text-end"><div class="fw-bold">王小明</div><div class="small text-secondary">PD0015</div></div><button class="btn btn-primary" id="createExamBtn" data-go="exam-editor"><i class="bi bi-plus-lg me-1"></i>建立考卷</button><button class="btn btn-light" id="employeeLogoutBtn" data-go="employee-home"><i class="bi bi-box-arrow-right me-1"></i>登出</button></div></header>
+<div class="content">
+
+<section class="page active" id="exams">
+<div class="mb-4"><h4 class="fw-bold mb-0">考卷管理</h4></div>
+<div class="cardx">
+  <div class="cardx-head">
+    <div class="d-flex flex-wrap gap-2">
+      <div class="search"><i class="bi bi-search"></i><input class="form-control" placeholder="搜尋職能、年度或備註"></div>
+      <select class="form-select" style="width:180px"><option>全部職能</option><option>K-TYPE繞線</option><option>P-TYPE繞線</option><option>有機溶劑</option><option>焊接1</option><option>焊接2</option><option>焊接理論</option><option>電動起子與扭力</option><option>點膠機</option></select>
+      <select class="form-select" style="width:135px"><option>全部年度</option><option>2026</option><option>2025</option></select>
+      <select class="form-select" style="width:145px"><option>全部狀態</option><option>使用中</option><option>已結束</option></select>
+    </div>
+  </div>
+  <div class="cardx-body pt-1">
+    <div class="table-responsive">
+      <table class="table">
+        <thead><tr><th>職能</th><th>年度</th><th>備註</th><th>應考人數</th><th>已完成</th><th>狀態</th><th class="text-end">操作</th></tr></thead>
+        <tbody>
+          <tr><td>K-TYPE繞線</td><td>2026</td><td class="exam-note">年度定期考核</td><td>18</td><td>14</td><td><select class="form-select status-select using"><option selected>使用中</option><option>已結束</option></select></td><td class="text-end"><div class="d-flex flex-wrap justify-content-end gap-1"><button class="btn btn-sm btn-outline-secondary demo-action"><i class="bi bi-copy me-1"></i>複製考卷</button><button class="btn btn-sm btn-outline-success demo-action"><i class="bi bi-file-earmark-spreadsheet me-1"></i>輸出成績</button><button class="btn btn-sm btn-outline-danger demo-action"><i class="bi bi-file-earmark-text me-1"></i>輸出考題</button><button class="btn btn-sm btn-primary enter-exam">進入考卷</button></div></td></tr>
+          <tr><td>焊接理論</td><td>2026</td><td class="exam-note">年度職能鑑定</td><td>26</td><td>26</td><td><select class="form-select status-select using"><option selected>使用中</option><option>已結束</option></select></td><td class="text-end"><div class="d-flex flex-wrap justify-content-end gap-1"><button class="btn btn-sm btn-outline-secondary demo-action"><i class="bi bi-copy me-1"></i>複製考卷</button><button class="btn btn-sm btn-outline-success demo-action"><i class="bi bi-file-earmark-spreadsheet me-1"></i>輸出成績</button><button class="btn btn-sm btn-outline-danger demo-action"><i class="bi bi-file-earmark-text me-1"></i>輸出考題</button><button class="btn btn-sm btn-primary enter-exam">進入考卷</button></div></td></tr>
+          <tr><td>有機溶劑</td><td>2026</td><td class="exam-note">現場人員年度複訓</td><td>12</td><td>7</td><td><select class="form-select status-select using"><option selected>使用中</option><option>已結束</option></select></td><td class="text-end"><div class="d-flex flex-wrap justify-content-end gap-1"><button class="btn btn-sm btn-outline-secondary demo-action"><i class="bi bi-copy me-1"></i>複製考卷</button><button class="btn btn-sm btn-outline-success demo-action"><i class="bi bi-file-earmark-spreadsheet me-1"></i>輸出成績</button><button class="btn btn-sm btn-outline-danger demo-action"><i class="bi bi-file-earmark-text me-1"></i>輸出考題</button><button class="btn btn-sm btn-primary enter-exam">進入考卷</button></div></td></tr>
+          <tr><td>K-TYPE繞線</td><td>2025</td><td class="exam-note">年度定期考核</td><td>17</td><td>17</td><td><select class="form-select status-select ended"><option>使用中</option><option selected>已結束</option></select></td><td class="text-end"><div class="d-flex flex-wrap justify-content-end gap-1"><button class="btn btn-sm btn-outline-secondary demo-action"><i class="bi bi-copy me-1"></i>複製考卷</button><button class="btn btn-sm btn-outline-success demo-action"><i class="bi bi-file-earmark-spreadsheet me-1"></i>輸出成績</button><button class="btn btn-sm btn-outline-danger demo-action"><i class="bi bi-file-earmark-text me-1"></i>輸出考題</button><button class="btn btn-sm btn-primary enter-exam">進入考卷</button></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<section class="page" id="exam-detail">
+<div class="d-flex flex-wrap justify-content-between align-items-start gap-3 mb-4">
+  <div>
+    <div class="exam-detail-title">
+      <h4 class="fw-bold mb-0">K-TYPE繞線</h4>
+      <div class="exam-metrics">
+        <span class="metric-inline"><strong>18</strong> 人符合職能</span>
+        <span class="metric-inline"><strong>14</strong> 人通過考試</span>
+      </div>
+    </div>
+    <div class="exam-detail-note">備註：年度定期考核　｜　年度：2026</div>
+  </div>
+  <div class="d-flex flex-wrap gap-2">
+    <button class="btn btn-outline-success demo-action"><i class="bi bi-file-earmark-spreadsheet me-1"></i>輸出成績</button>
+    <button class="btn btn-outline-danger demo-action"><i class="bi bi-file-earmark-text me-1"></i>輸出考題</button>
+    <button class="btn btn-outline-primary" data-go="exam-editor"><i class="bi bi-pencil me-1"></i>編輯考卷</button>
+  </div>
+</div>
+
+<div class="cardx"><div class="cardx-body">
+  <div class="tabs">
+    <button class="tab-btn active" data-tab="people">應考人員</button>
+    <button class="tab-btn" data-tab="summary">每題回答統計</button>
+    <button class="tab-btn" data-tab="individual">每人作答狀況</button>
+  </div>
+
+  <div class="detail-tab active" id="tab-people">
+    <div class="d-flex flex-wrap justify-content-between gap-3 mb-3">
+      <div><h6 class="fw-bold mb-0">應考人員</h6></div>
+      <div class="d-flex gap-2">
+        <button class="btn btn-outline-primary" id="addSkillAll"><i class="bi bi-stars me-1"></i>加入此職能所有員工</button>
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#peopleModal"><i class="bi bi-person-plus me-1"></i>管理應考人員</button>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+        <thead><tr><th>姓名</th><th>工號</th><th>職能</th><th>考試狀態</th><th>完成日期</th><th class="text-end">操作</th></tr></thead>
+        <tbody>
+          <tr class="skill-match-row"><td class="fw-bold">王小明 <span class="skill-match-label">符合考卷職能</span></td><td>PD0015</td><td><span class="skill-chip">K-TYPE繞線</span><span class="skill-chip">焊接理論</span></td><td><span class="badge-soft b-success">已通過</span></td><td>2026/08/05</td><td class="text-end"><button class="btn btn-sm btn-light">移除</button></td></tr>
+          <tr class="skill-match-row"><td class="fw-bold">陳美玲 <span class="skill-match-label">符合考卷職能</span></td><td>PD0023</td><td><span class="skill-chip">K-TYPE繞線</span><span class="skill-chip">P-TYPE繞線</span></td><td><div class="d-flex flex-wrap gap-1"><span class="badge-soft b-success">已考</span><span class="badge-soft b-danger">補考</span></div></td><td>2026/08/05</td><td class="text-end"><button class="btn btn-sm btn-light">移除</button></td></tr>
+          <tr class="skill-match-row"><td class="fw-bold">林志偉 <span class="skill-match-label">符合考卷職能</span></td><td>PD0148</td><td><span class="skill-chip">K-TYPE繞線</span><span class="skill-chip">點膠機</span></td><td><span class="badge-soft b-warning">待考</span></td><td>—</td><td class="text-end"><button class="btn btn-sm btn-light">移除</button></td></tr>
+          <tr><td class="fw-semibold">黃怡君</td><td>PD0201</td><td><span class="skill-chip">點膠機</span></td><td><span class="badge-soft b-warning">待考</span></td><td>—</td><td class="text-end"><button class="btn btn-sm btn-light">移除</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="detail-tab" id="tab-summary">
+    <div class="answer-summary">
+      <div class="answer-summary-head"><span class="badge-soft b-primary mb-2">第 1 題｜是非題</span><div class="fw-bold">啟動設備前必須先確認安全裝置是否正常。</div></div>
+      <div class="answer-summary-body"><div class="row g-3"><div class="col-md-6"><div class="d-flex justify-content-between mb-1"><strong>是</strong><span>30 人</span></div><div class="result-bar"><div class="result-fill" style="width:75%"></div></div></div><div class="col-md-6"><div class="d-flex justify-content-between mb-1"><strong>否</strong><span>10 人</span></div><div class="result-bar"><div class="result-fill" style="width:25%"></div></div></div></div></div>
+    </div>
+    <div class="answer-summary">
+      <div class="answer-summary-head"><span class="badge-soft b-primary mb-2">第 3 題｜簡答題</span><div class="fw-bold">請輸入正確操作順序代號。</div></div>
+      <div class="answer-summary-body">
+        <div class="small text-secondary mb-2">建立考卷時設定的正確答案</div>
+        <div class="mb-3"><span class="answer-chip">ABC</span><span class="answer-chip">A.B.C</span></div>
+        <div class="answer-item"><div><div class="answer-text">ABC</div><div class="text-secondary small">原始設定答案</div></div><div class="d-flex gap-2 align-items-center"><strong>18 人</strong><span class="badge-soft b-success">正確</span></div></div>
+        <div class="answer-item"><div><div class="answer-text">A.B.C</div><div class="text-secondary small">原始設定答案</div></div><div class="d-flex gap-2 align-items-center"><strong>8 人</strong><span class="badge-soft b-success">正確</span></div></div>
+        <div class="answer-item dynamic-answer"><div><div class="answer-text">abc</div><div class="text-secondary small answer-note">未設定為正確答案</div></div><div class="d-flex gap-2 align-items-center"><strong>5 人</strong><span class="badge-soft b-danger state-badge">錯誤</span><button class="btn btn-sm btn-outline-primary add-correct">加入正確答案</button></div></div>
+        <div class="answer-item dynamic-answer"><div><div class="answer-text">A B C</div><div class="text-secondary small answer-note">未設定為正確答案</div></div><div class="d-flex gap-2 align-items-center"><strong>4 人</strong><span class="badge-soft b-danger state-badge">錯誤</span><button class="btn btn-sm btn-outline-primary add-correct">加入正確答案</button></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="detail-tab" id="tab-individual">
+    <div class="mb-3"><h6 class="fw-bold mb-0">每人作答狀況</h6></div>
+    <div class="person-grid-wrap">
+      <table class="table person-grid">
+        <thead><tr><th>員工</th><th>第1題<br><small>是非</small></th><th>第2題<br><small>多選</small></th><th>第3題<br><small>簡答</small></th><th>第4題<br><small>多選</small></th><th>第5題<br><small>是非</small></th></tr></thead>
+        <tbody>
+          <tr><td><strong>王小明</strong><span class="score-pill ms-2">85 分</span><span class="attempt-pill attempt-first ms-2">第 1 次</span></td><td class="cell-ok">是</td><td class="cell-ok">A、C</td><td class="cell-ok">ABC</td><td class="cell-ok">B、D</td><td class="cell-ok">否</td></tr>
+          <tr><td><strong>陳美玲</strong><span class="score-pill ms-2">58 分</span><span class="attempt-pill attempt-first ms-2">第 1 次</span></td><td class="cell-ok">是</td><td class="cell-no">A</td><td class="cell-no">abc</td><td class="cell-no">B</td><td class="cell-ok">否</td></tr>
+          <tr class="attempt-row"><td><strong>陳美玲</strong><span class="score-pill ms-2">88 分</span><span class="attempt-pill attempt-re ms-2">補考</span></td><td class="cell-ok">是</td><td class="cell-ok">A、C</td><td class="cell-ok">ABC</td><td class="cell-ok">B、D</td><td class="cell-no">是</td></tr>
+          <tr><td><strong>林志偉</strong><span class="score-pill ms-2">—</span><span class="attempt-pill attempt-first ms-2">待考</span></td><td class="cell-wait">—</td><td class="cell-wait">—</td><td class="cell-wait">—</td><td class="cell-wait">—</td><td class="cell-wait">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div></div>
+</section>
+
+
+
+<section class="page" id="exam-editor">
+<div class="mb-4"><h4 class="fw-bold mb-0">考卷編輯</h4></div>
+<div class="row g-4">
+  <div class="col-xl-8">
+    <div class="cardx mb-4">
+      <div class="cardx-head"><h5 class="fw-bold mb-0">考卷基本資料</h5></div>
+      <div class="cardx-body pt-1">
+        <div class="row g-3 exam-basic-row">
+          <div class="col-md-4"><label class="form-label fw-semibold">職能</label><select class="form-select"><option>K-TYPE繞線</option><option>P-TYPE繞線</option><option>有機溶劑</option><option>焊接1</option><option>焊接2</option><option>焊接理論</option><option>電動起子與扭力</option><option>點膠機</option></select></div>
+          <div class="col-md-2"><label class="form-label fw-semibold">年度</label><input class="form-control" type="number" min="2000" max="2099" value="2026"></div>
+          <div class="col-md-6"><label class="form-label fw-semibold">備註</label><input class="form-control" value="年度定期考核"></div>
+          <div class="col-12 exam-title-field"><label class="form-label fw-semibold">考卷標題</label><input class="form-control" value="K-TYPE繞線年度考核"></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="questionList">
+      <div class="question-card">
+        <div class="question-head">
+          <div class="d-flex align-items-center gap-2"><span class="qnum">1</span><strong>是非題</strong></div>
+          <div class="d-flex align-items-center gap-2"><span class="small text-secondary">配分</span><input class="form-control score-edit" type="number" min="0" value="5"><button class="btn btn-sm btn-light"><i class="bi bi-trash"></i></button></div>
+        </div>
+        <div class="question-body">
+          <label class="form-label fw-semibold">題目</label><textarea class="form-control mb-3" rows="2">啟動設備前必須先確認安全裝置是否正常。</textarea>
+          <label class="form-label fw-semibold">正確答案</label>
+          <div class="d-flex gap-4"><label class="form-check"><input class="form-check-input" type="radio" name="tf" checked> 是</label><label class="form-check"><input class="form-check-input" type="radio" name="tf"> 否</label></div>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-head">
+          <div class="d-flex align-items-center gap-2"><span class="qnum">2</span><strong>多選題</strong></div>
+          <div class="d-flex align-items-center gap-2"><span class="small text-secondary">配分</span><input class="form-control score-edit" type="number" min="0" value="10"><button class="btn btn-sm btn-light"><i class="bi bi-trash"></i></button></div>
+        </div>
+        <div class="question-body">
+          <label class="form-label fw-semibold">題目</label><textarea class="form-control mb-3" rows="2">下列哪些為正確操作？</textarea>
+          <label class="form-label fw-semibold">題目圖片</label><div class="upload mb-3"><div><i class="bi bi-image fs-4 d-block"></i>加入題目圖片</div></div>
+          <label class="form-label fw-semibold">選項與正確答案</label>
+          <div class="multi-options">
+            <div class="option-row"><input class="form-check-input" type="checkbox" checked><div class="option-letter">A</div><input class="form-control" value="確認治具固定"><button class="btn btn-outline-secondary"><i class="bi bi-image"></i></button><button class="btn btn-outline-danger delete-option"><i class="bi bi-trash"></i></button></div>
+            <div class="option-row"><input class="form-check-input" type="checkbox"><div class="option-letter">B</div><input class="form-control" value="跳過安全檢查"><button class="btn btn-outline-secondary"><i class="bi bi-image"></i></button><button class="btn btn-outline-danger delete-option"><i class="bi bi-trash"></i></button></div>
+          </div>
+          <button class="btn btn-sm btn-outline-primary add-option"><i class="bi bi-plus-lg me-1"></i>增加選項</button>
+        </div>
+      </div>
+
+      <div class="question-card">
+        <div class="question-head">
+          <div class="d-flex align-items-center gap-2"><span class="qnum">3</span><strong>簡答題</strong></div>
+          <div class="d-flex align-items-center gap-2"><span class="small text-secondary">配分</span><input class="form-control score-edit" type="number" min="0" value="15"><button class="btn btn-sm btn-light"><i class="bi bi-trash"></i></button></div>
+        </div>
+        <div class="question-body">
+          <label class="form-label fw-semibold">題目</label><textarea class="form-control mb-3" rows="2">請輸入正確操作順序代號。</textarea>
+          <label class="form-label fw-semibold">題目圖片</label><div class="upload mb-3"><div><i class="bi bi-image fs-4 d-block"></i>加入題目圖片</div></div>
+          <label class="form-label fw-semibold">可接受答案</label>
+          <div class="accepted mb-2"><span class="answer-chip">ABC <button class="remove-answer"><i class="bi bi-x-circle"></i></button></span><span class="answer-chip">A.B.C <button class="remove-answer"><i class="bi bi-x-circle"></i></button></span></div>
+          <div class="input-group"><input class="form-control answer-input" placeholder="輸入另一種可接受答案"><button class="btn btn-outline-primary add-answer">加入</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-xl-4">
+    <div class="sticky-card">
+      <div class="cardx mb-4">
+        <div class="cardx-head"><h5 class="fw-bold mb-0">新增題目</h5></div>
+        <div class="cardx-body pt-1 d-grid gap-2">
+          <button class="btn btn-light text-start add-question" data-type="是非題"><i class="bi bi-check2-circle text-primary me-2"></i>是非題</button>
+          <button class="btn btn-light text-start add-question" data-type="多選題"><i class="bi bi-ui-checks text-success me-2"></i>多選題</button>
+          <button class="btn btn-light text-start add-question" data-type="簡答題"><i class="bi bi-textarea-t text-warning me-2"></i>簡答題</button>
+        </div>
+      </div>
+      <div class="cardx">
+        <div class="cardx-head"><h5 class="fw-bold mb-0">考卷操作</h5></div>
+        <div class="cardx-body pt-1 d-grid gap-2">
+          <button class="btn btn-primary"><i class="bi bi-save me-1"></i>儲存考卷</button>
+          <button class="btn btn-light" data-go="exam-detail"><i class="bi bi-eye me-1"></i>查看考卷資料</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+
+
+<section class="page" id="employees">
+<div class="mb-4"><h4 class="fw-bold mb-0">員工管理</h4></div>
+<div class="cardx">
+  <div class="cardx-head">
+    <div class="d-flex justify-content-between gap-3 flex-wrap">
+      <div class="d-flex gap-2 flex-wrap">
+        <div class="search"><i class="bi bi-search"></i><input class="form-control" id="employeeSearch" placeholder="搜尋姓名或工號"></div>
+        <select class="form-select" id="employeeSkillFilter" style="width:190px"><option>全部職能</option><option>K-TYPE繞線</option><option>P-TYPE繞線</option><option>有機溶劑</option><option>焊接1</option><option>焊接2</option><option>焊接理論</option><option>電動起子與扭力</option><option>點膠機</option></select>
+        <select class="form-select" id="employeeExamFilter" style="width:160px"><option value="">全部考試狀態</option><option value="待考">待考</option><option value="已考">已考</option><option value="補考">補考</option></select>
+      </div>
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#employeeModal"><i class="bi bi-person-plus me-1"></i>新增員工</button>
+    </div>
+  </div>
+  <div class="cardx-body pt-1">
+    <div class="table-responsive">
+      <table class="table" id="employeeTable">
+        <thead><tr><th>姓名</th><th>工號／登入帳號</th><th>職能</th><th>目前指定考卷</th><th>狀態</th><th class="text-end">操作</th></tr></thead>
+        <tbody>
+          <tr data-exam-status="補考"><td class="fw-semibold">王小明</td><td>PD0015</td><td><div class="skill-list"><span class="skill-chip">K-TYPE繞線</span><span class="skill-chip">焊接理論</span><span class="skill-chip">電動起子與扭力</span></div></td><td><div class="assigned-list"><span class="assigned-item">K-TYPE繞線年度考核 <span class="version">2026</span><span class="assigned-status assigned-done">已考</span><span class="assigned-status assigned-re">補考</span></span><span class="assigned-item">焊接理論年度考核 <span class="version">2026</span><span class="assigned-status assigned-done">已考</span></span><span class="assigned-item">電動起子與扭力年度考核 <span class="version">2026</span><span class="assigned-status assigned-wait">待考</span></span></div></td><td><span class="badge-soft b-success">啟用</span></td><td class="text-end"><button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#employeeModal"><i class="bi bi-pencil"></i></button></td></tr>
+          <tr data-exam-status="待考"><td class="fw-semibold">陳美玲</td><td>PD0023</td><td><div class="skill-list"><span class="skill-chip">K-TYPE繞線</span><span class="skill-chip">P-TYPE繞線</span></div></td><td><div class="assigned-list"><span class="assigned-item">K-TYPE繞線年度考核 <span class="version">2026</span><span class="assigned-status assigned-done">已考</span></span><span class="assigned-item">P-TYPE繞線年度考核 <span class="version">2026</span><span class="assigned-status assigned-wait">待考</span></span></div></td><td><span class="badge-soft b-success">啟用</span></td><td class="text-end"><button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#employeeModal"><i class="bi bi-pencil"></i></button></td></tr>
+          <tr data-exam-status="已考"><td class="fw-semibold">林佳蓉</td><td>PD0088</td><td><div class="skill-list"><span class="skill-chip">焊接1</span></div></td><td><div class="assigned-list"><span class="assigned-item">焊接1年度考核 <span class="version">2026</span><span class="assigned-status assigned-done">已考</span></span></div></td><td><span class="badge-soft b-success">啟用</span></td><td class="text-end"><button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#employeeModal"><i class="bi bi-pencil"></i></button></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</section>
+
+
+<section class="page" id="employee-home">
+<div class="employee-overview">
+  <div class="employee-profile-card">
+    <div class="employee-profile-main">
+      <div class="avatar">王</div>
+      <div>
+        <div class="employee-profile-name">王小明</div>
+        <div class="text-secondary small">工號／登入帳號：PD0015</div>
+      </div>
+    </div>
+    <button class="btn btn-light btn-sm"><i class="bi bi-box-arrow-right me-1"></i>登出</button>
+  </div>
+
+  <div class="exam-overview-card">
+    <div class="exam-overview-head">
+      <div>
+        <h5 class="fw-bold mb-1">我的考試</h5>
+        
+      </div>
+      <span class="text-secondary small">共 3 項</span>
+    </div>
+
+    <div class="exam-task-row">
+      <div class="exam-task-main">
+        <div class="exam-task-icon"><i class="bi bi-file-earmark-check"></i></div>
+        <div><div class="exam-task-title">K-TYPE繞線年度考核</div><div class="exam-task-note">尚未完成本年度考核</div></div>
+      </div>
+      <div class="exam-task-status"></div>
+      <div class="exam-task-action"><button class="btn btn-sm btn-primary" data-go="take-exam">開始作答</button></div>
+    </div>
+
+    <div class="exam-task-row">
+      <div class="exam-task-main">
+        <div class="exam-task-icon"><i class="bi bi-file-earmark-check"></i></div>
+        <div><div class="exam-task-title">焊接理論年度考核</div><div class="exam-task-note">尚未完成本年度考核</div></div>
+      </div>
+      <div class="exam-task-status"></div>
+      <div class="exam-task-action"><button class="btn btn-sm btn-primary" data-go="take-exam">開始作答</button></div>
+    </div>
+
+    <div class="exam-task-row">
+      <div class="exam-task-main">
+        <div class="exam-task-icon" style="background:var(--gs);color:#176d50"><i class="bi bi-check2-circle"></i></div>
+        <div><div class="exam-task-title">電動起子與扭力年度考核</div><div class="exam-task-note">本年度考核已完成</div></div>
+      </div>
+      <div class="exam-task-status"></div>
+      <div class="exam-task-action"><button class="btn btn-sm btn-light" disabled>已完成</button></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="page" id="take-exam">
+<div class="exam-taking">
+  <div class="taking-head"><div><div class="d-flex align-items-center gap-2"><h4 class="fw-bold mb-0">K-TYPE繞線年度考核</h4><span class="version">2026</span></div><div class="text-secondary small mt-1">請依題目內容完成作答</div></div></div>
+  <div class="taking-q"><span class="badge-soft b-primary mb-2">第 1 題｜是非題</span><h5 class="fw-bold mb-3">啟動設備前必須先確認安全裝置是否正常。</h5><label class="choice"><input class="form-check-input" type="radio" name="empq1"> <span>是</span></label><label class="choice"><input class="form-check-input" type="radio" name="empq1"> <span>否</span></label></div>
+  <div class="taking-q"><span class="badge-soft b-primary mb-2">第 2 題｜多選題</span><h5 class="fw-bold mb-3">下列哪些為正確操作？</h5><div class="mock-img"><div class="text-center"><i class="bi bi-image fs-3 d-block"></i>題目圖片</div></div><label class="choice"><input class="form-check-input" type="checkbox"><span><strong>A.</strong> 確認治具固定 <span class="badge-soft b-muted ms-2">選項圖片</span></span></label><label class="choice"><input class="form-check-input" type="checkbox"><span><strong>B.</strong> 跳過安全檢查</span></label></div>
+  <div class="taking-q"><span class="badge-soft b-primary mb-2">第 3 題｜簡答題</span><h5 class="fw-bold mb-3">請輸入正確操作順序代號。</h5><div class="mock-img"><div class="text-center"><i class="bi bi-image fs-3 d-block"></i>題目圖片</div></div><textarea class="form-control" rows="5" placeholder="請輸入答案"></textarea></div>
+  <div class="d-flex justify-content-end"><button class="btn btn-primary demo-action"><i class="bi bi-send-check me-1"></i>送出考卷</button></div>
+</div>
+</section>
+</div></main>
+
+
+<div class="modal fade" id="peopleModal" tabindex="-1">
+<div class="modal-dialog modal-xl modal-dialog-centered"><div class="modal-content border-0 rounded-4 shadow">
+  <div class="modal-header border-0 px-4 pt-4"><div><h5 class="modal-title fw-bold">管理應考人員</h5><div class="text-secondary small">K-TYPE繞線｜2026</div></div><button class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body px-4 pb-4">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr><th style="width:45px"></th><th>姓名</th><th>工號</th><th>職能</th><th>考試安排</th><th>目前狀態</th></tr>
+          <tr class="filter-row"><th></th><th><input class="form-control" placeholder="搜尋姓名"></th><th><input class="form-control" placeholder="搜尋工號"></th><th><input class="form-control" placeholder="搜尋職能"></th><th><select class="form-select"><option>全部</option><option>一般考試</option><option>補考</option></select></th><th><select class="form-select"><option>全部</option><option>已加入</option><option>未加入</option></select></th></tr>
+        </thead>
+        <tbody>
+          <tr class="skill-match-row"><td><input class="form-check-input" type="checkbox" checked></td><td class="fw-bold">王小明 <span class="skill-match-label">符合此職能</span></td><td>PD0015</td><td><span class="skill-chip">K-TYPE繞線</span><span class="skill-chip">焊接理論</span></td><td><select class="form-select reexam-select"><option selected>一般考試</option><option>補考</option></select></td><td><span class="badge-soft b-success">已加入</span></td></tr>
+          <tr class="skill-match-row"><td><input class="form-check-input" type="checkbox" checked></td><td class="fw-bold">陳美玲 <span class="skill-match-label">符合此職能</span></td><td>PD0023</td><td><span class="skill-chip">K-TYPE繞線</span><span class="skill-chip">P-TYPE繞線</span></td><td><select class="form-select reexam-select"><option>一般考試</option><option selected>補考</option></select></td><td><div class="d-flex flex-wrap gap-1"><span class="badge-soft b-success">已考</span><span class="badge-soft b-danger">補考</span></div></td></tr>
+          <tr class="skill-match-row"><td><input class="form-check-input" type="checkbox"></td><td class="fw-bold">林志豪 <span class="skill-match-label">符合此職能</span></td><td>PD0160</td><td><span class="skill-chip">K-TYPE繞線</span><span class="skill-chip">點膠機</span></td><td><select class="form-select reexam-select"><option selected>一般考試</option><option>補考</option></select></td><td><span class="badge-soft b-muted">未加入</span></td></tr>
+          <tr><td><input class="form-check-input" type="checkbox"></td><td class="fw-semibold">黃怡君</td><td>PD0188</td><td><span class="skill-chip">點膠機</span></td><td><select class="form-select reexam-select"><option selected>一般考試</option><option>補考</option></select></td><td><span class="badge-soft b-muted">未加入</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="modal-footer border-0 px-4 pb-4"><button class="btn btn-light" data-bs-dismiss="modal">取消</button><button class="btn btn-primary" data-bs-dismiss="modal">儲存應考名單</button></div>
+</div></div>
+</div>
+
+
+<div class="modal fade" id="employeeModal" tabindex="-1">
+<div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable"><div class="modal-content border-0 rounded-4 shadow">
+  <div class="modal-header border-0 px-4 pt-4"><div><h5 class="modal-title fw-bold">新增／編輯員工</h5></div><button class="btn-close" data-bs-dismiss="modal"></button></div>
+  <div class="modal-body px-4 pb-4">
+    <div class="row g-3">
+      <div class="col-md-6"><label class="form-label fw-semibold">員工姓名</label><input class="form-control" value="王小明"></div>
+      <div class="col-md-6"><label class="form-label fw-semibold">工號／登入帳號</label><input class="form-control" value="PD0015"></div>
+      <div class="col-md-6"><label class="form-label fw-semibold">密碼</label><input class="form-control" type="password" value="12345678"></div>
+      <div class="col-md-6 d-flex align-items-end"><button class="btn btn-outline-secondary w-100">重設密碼</button></div>
+
+      <div class="col-12"><label class="form-label fw-semibold">具備職能</label>
+        <div class="skill-box row g-2">
+          <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" checked> K-TYPE繞線</label></div>
+          <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox"> P-TYPE繞線</label></div>
+          <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox"> 有機溶劑</label></div>
+          <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox"> 焊接1</label></div>
+          <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox"> 焊接2</label></div>
+          <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" checked> 焊接理論</label></div>
+          <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox" checked> 電動起子與扭力</label></div>
+          <div class="col-md-6"><label class="form-check"><input class="form-check-input" type="checkbox"> 點膠機</label></div>
+        </div>
+      </div>
+
+      <div class="col-12"><label class="form-label fw-semibold">指定考卷 <span class="text-secondary fw-normal small">（只顯示使用中）</span></label>
+        <div class="skill-box">
+          <label class="form-check mb-2"><input class="form-check-input" type="checkbox" checked> K-TYPE繞線年度考核 <span class="version ms-1">2026</span></label>
+          <label class="form-check mb-2"><input class="form-check-input" type="checkbox" checked> 焊接理論年度考核 <span class="version ms-1">2026</span></label>
+          <label class="form-check"><input class="form-check-input" type="checkbox" checked> 電動起子與扭力年度考核 <span class="version ms-1">2026</span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer border-0 px-4 pb-4"><button class="btn btn-light" data-bs-dismiss="modal">取消</button><button class="btn btn-primary" data-bs-dismiss="modal">儲存</button></div>
+</div></div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+function showPage(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===id));document.querySelectorAll('.sidebar .nav-link').forEach(n=>n.classList.remove('active'));const employeeMode=['employee-home','take-exam'].includes(id);document.body.classList.toggle('employee-mode',employeeMode);const nav=document.querySelector(`.sidebar .nav-link[data-page="${id}"]`);if(nav)nav.classList.add('active');document.querySelectorAll('#adminTopNav [data-go]').forEach(b=>b.classList.toggle('active-admin-nav',b.dataset.go===id));window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.go)));document.querySelectorAll('.sidebar .nav-link').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));document.querySelectorAll('.enter-exam').forEach(b=>b.addEventListener('click',()=>showPage('exam-detail')));
+document.querySelectorAll('.status-select').forEach(s=>s.addEventListener('change',()=>{s.classList.toggle('using',s.value==='使用中');s.classList.toggle('ended',s.value==='已結束')}));
+document.querySelectorAll('.tab-btn').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab-btn').forEach(x=>x.classList.toggle('active',x===b));document.querySelectorAll('.detail-tab').forEach(x=>x.classList.toggle('active',x.id===`tab-${b.dataset.tab}`))}));
+document.addEventListener('click',e=>{const d=e.target.closest('.delete-option');if(d){const c=d.closest('.multi-options');if(c.querySelectorAll('.option-row').length<=2){alert('多選題至少保留 2 個選項');return}d.closest('.option-row').remove()}const r=e.target.closest('.remove-answer');if(r)r.closest('.answer-chip').remove();const a=e.target.closest('.add-answer');if(a){const body=a.closest('.question-body'),input=body.querySelector('.answer-input'),v=input.value.trim();if(v){const chip=document.createElement('span');chip.className='answer-chip';chip.innerHTML=`${v} <button class="remove-answer"><i class="bi bi-x-circle"></i></button>`;body.querySelector('.accepted').appendChild(chip);input.value=''}}const ac=e.target.closest('.add-correct');if(ac){const item=ac.closest('.dynamic-answer');item.querySelector('.answer-note').textContent='已加入正確答案';const badge=item.querySelector('.state-badge');badge.textContent='正確';badge.className='badge-soft b-success state-badge';ac.remove()}});
+document.querySelectorAll('.add-option').forEach(btn=>btn.addEventListener('click',()=>{const c=btn.parentElement.querySelector('.multi-options');const count=c.querySelectorAll('.option-row').length;const letters='ABCDEFGHIJKLMNOPQRSTUVWXYZ';const row=document.createElement('div');row.className='option-row';row.innerHTML=`<input class="form-check-input" type="checkbox"><div class="option-letter">${letters[count]}</div><input class="form-control" placeholder="請輸入選項"><button class="btn btn-outline-secondary"><i class="bi bi-image"></i></button><button class="btn btn-outline-danger delete-option"><i class="bi bi-trash"></i></button>`;c.appendChild(row)}));
+document.querySelectorAll('.add-question').forEach(b=>b.addEventListener('click',()=>alert(`畫面示意：新增「${b.dataset.type}」`)));document.querySelectorAll('.demo-action').forEach(b=>b.addEventListener('click',()=>alert('目前為畫面原型，功能尚未串接。')));document.getElementById('addSkillAll').addEventListener('click',()=>alert('畫面示意：已加入所有具備 K-TYPE繞線 職能的員工'));
+
+const employeeSearch=document.getElementById('employeeSearch');
+const employeeExamFilter=document.getElementById('employeeExamFilter');
+function filterEmployees(){
+  const q=(employeeSearch?.value||'').trim().toLowerCase();
+  const status=employeeExamFilter?.value||'';
+  document.querySelectorAll('#employeeTable tbody tr').forEach(row=>{
+    const text=row.textContent.toLowerCase();
+    const rowStatus=row.dataset.examStatus||'';
+    row.style.display=(!q||text.includes(q))&&(!status||rowStatus===status)?'':'none';
+  });
+}
+employeeSearch?.addEventListener('input',filterEmployees);
+employeeExamFilter?.addEventListener('change',filterEmployees);
+
+</script>
+
+<script>
+(function(){
+  const originalShowPage = window.showPage;
+  if(typeof originalShowPage === 'function'){
+    window.showPage = function(id){
+      originalShowPage(id);
+
+      const employeeInfo = document.getElementById('employeeBarInfo');
+      const createBtn = document.querySelector('.topbar .btn-primary');
+
+      document.body.classList.toggle('exam-mode', id === 'take-exam');
+
+      if(employeeInfo){
+        employeeInfo.classList.toggle('d-none', id !== 'employee-home');
+      }
+
+      if(createBtn){
+        createBtn.classList.toggle('d-none', id === 'employee-home' || id === 'take-exam');
+      }
+
+      if(id === 'employee-home'){
+        const title = document.getElementById('pageTitle');
+        if(title) title.textContent = '我的考試';
+      }
+    };
+  }
+
+  // 初始頁若剛好是員工總覽
+  const active = document.querySelector('.page.active');
+  if(active && active.id === 'employee-home' && window.showPage){
+    window.showPage('employee-home');
+  }
+})();
+</script>
+
+</body></html>
