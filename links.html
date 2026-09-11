@@ -68,7 +68,7 @@ function openTab(id='',groupId=''){const t=tabs.find(x=>x.id===id),gid=t?.groupI
 $('saveTabBtn').onclick=async()=>{const id=$('tabId').value,groupId=$('tabGroupId').value,title=$('tabTitle').value.trim(),url=normUrl($('tabUrl').value),description=$('tabDescription').value.trim(),tg=tags($('tabTags').value);if(!title||!url)return msg('名稱和網址都要填');try{const data={groupId,title,url,description,tags:tg};id?await tabsRef().doc(id).update(data):await tabsRef().add({...data,sortOrder:tabs.filter(x=>x.groupId===groupId).length,createdAt:firebase.firestore.FieldValue.serverTimestamp()});tabModal.hide();await loadData()}catch(e){msg('儲存失敗：'+e.message)}};
 $('deleteTabBtn').onclick=async()=>{const id=$('tabId').value;if(!id||!confirm('刪除這個頁簽？'))return;try{await tabsRef().doc(id).delete();tabModal.hide();await loadData()}catch(e){msg('刪除失敗：'+e.message)}};
 
-// Toby 匯入：一個檔案代表一個 Toby 群組，lists[0].title 是群組名，cards 是頁簽。
+// Toby 匯入：一個檔案代表一個 Toby 群組；非 Toby JSON（例如 setting.json）直接略過。
 $('tobyFiles').addEventListener('change',async e=>{
  const files=[...(e.target.files||[])];e.target.value='';if(!files.length)return;
  $('importBtn').disabled=true;let newGroups=0,newTabs=0,failed=[];
@@ -76,9 +76,9 @@ $('tobyFiles').addEventListener('change',async e=>{
   const file=files[i];$('importState').textContent=`匯入中 ${i+1}/${files.length}：${file.name}`;
   try{
    const data=JSON.parse(await file.text());
-   if(!data||!Array.isArray(data.lists)||!data.lists.length)throw new Error('找不到 lists[0]');
+   if(!data||!Array.isArray(data.lists)||!data.lists.length)continue;
    const list=data.lists[0];
-   if(!list||typeof list.title!=='string'||!Array.isArray(list.cards))throw new Error('Toby 群組格式不正確');
+   if(!list||typeof list.title!=='string'||!Array.isArray(list.cards))continue;
    const groupName=list.title.trim()||file.name.replace(/\.json$/i,'');
    let group=groups.find(g=>g.name.trim().toLowerCase()===groupName.toLowerCase());
    if(!group){const ref=await groupsRef().add({name:groupName,sortOrder:groups.length+newGroups,createdAt:firebase.firestore.FieldValue.serverTimestamp()});group={id:ref.id,name:groupName};groups.push(group);newGroups++}
@@ -90,7 +90,7 @@ $('tobyFiles').addEventListener('change',async e=>{
   }catch(err){console.error('[Toby Import]',file.name,err);failed.push(`${file.name}: ${err.message}`)}
  }
  await loadData();$('importBtn').disabled=false;
- if(failed.length){$('importState').textContent=`完成：${newGroups} 群組、${newTabs} 頁簽；失敗 ${failed.length} 檔`;msg(`部分匯入失敗：${failed[0]}`)}else{$('importState').textContent=`完成：${newGroups} 個新群組、${newTabs} 個頁簽`;msg(`匯入完成 🎉 ${newGroups} 個新群組、${newTabs} 個頁簽`)}
+ if(failed.length){$('importState').textContent=`完成：${newGroups} 個新群組、${newTabs} 個頁簽`;msg(`有 ${failed.length} 個檔案讀取失敗`)}else{$('importState').textContent=`完成：${newGroups} 個新群組、${newTabs} 個頁簽`;msg(`匯入完成 🎉 ${newGroups} 個新群組、${newTabs} 個頁簽`)}
 });
 init();
 </script>
