@@ -1,67 +1,57 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>魚魚の收藏夾 🔖</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔖</text></svg>">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
-    <style>
-        :root{--bg:#fff7fb;--card:rgba(255,255,255,.9);--stroke:rgba(16,24,40,.08);--text:#1f2937;--muted:#6b7280;--pink-bg:rgba(255,111,177,.12);--pink-bd:rgba(255,111,177,.28);--pink-tx:#7a284f;--blue-bg:rgba(107,199,255,.14);--blue-bd:rgba(107,199,255,.32);--blue-tx:#0f3a56;--yellow-bg:rgba(255,211,77,.20);--yellow-bd:rgba(255,211,77,.45);--yellow-tx:#6b4b00;--shadow:0 10px 30px rgba(16,24,40,.08)}
-        *{box-sizing:border-box}body{min-height:100vh;margin:0;color:var(--text);font-family:"Helvetica Neue","Segoe UI",Arial,sans-serif;background:radial-gradient(1200px 600px at 10% 0%,rgba(255,111,177,.14),transparent 50%),radial-gradient(900px 500px at 90% 10%,rgba(107,199,255,.16),transparent 50%),radial-gradient(1000px 600px at 50% 100%,rgba(255,211,77,.14),transparent 50%),var(--bg)}a{color:inherit}.app-shell{max-width:1180px;margin:24px auto 64px;padding:0 14px}
-        .hero{position:relative;overflow:hidden;border:1px solid var(--stroke);border-radius:22px;background:rgba(255,255,255,.72);backdrop-filter:blur(10px);box-shadow:var(--shadow)}.hero:before{content:"";position:absolute;inset:-2px;background:linear-gradient(90deg,rgba(255,111,177,.22),rgba(107,199,255,.22),rgba(255,211,77,.22));filter:blur(18px)}.hero-inner{position:relative;padding:20px;background:rgba(255,255,255,.78)}.title-wrap{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.sparkle{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:24px;border:1px solid var(--stroke);background:linear-gradient(135deg,rgba(255,111,177,.18),rgba(107,199,255,.18))}.hero-title{margin:0;font-size:clamp(1.45rem,4vw,2rem);font-weight:900}.hero-sub{margin:3px 0 0;color:var(--muted);font-size:.95rem}
-        .hero-tools,.stat-row,.filter-row,.tag-row{display:flex;flex-wrap:wrap;gap:8px}.hero-tools{margin-top:16px}.stat-row{margin-top:13px}.soft-btn{border:1px solid var(--stroke);border-radius:999px;padding:8px 13px;background:rgba(255,255,255,.82);color:var(--text);font-size:.9rem;display:inline-flex;align-items:center;gap:7px;transition:.18s}.soft-btn:hover{transform:translateY(-1px);box-shadow:0 7px 16px rgba(16,24,40,.08)}.soft-btn.pink{border-color:var(--pink-bd);background:var(--pink-bg);color:var(--pink-tx)}.soft-btn.blue{border-color:var(--blue-bd);background:var(--blue-bg);color:var(--blue-tx)}.soft-btn.yellow{border-color:var(--yellow-bd);background:var(--yellow-bg);color:var(--yellow-tx)}.soft-btn.gray{background:rgba(16,24,40,.04);color:#374151}
-        .chip{border:1px dashed var(--pink-bd);background:rgba(255,240,247,.72);color:var(--pink-tx);border-radius:999px;padding:6px 10px;font-size:.85rem;display:inline-flex;gap:6px;align-items:center}.chip.blue{border-color:var(--blue-bd);background:var(--blue-bg);color:var(--blue-tx)}.chip.yellow{border-color:var(--yellow-bd);background:var(--yellow-bg);color:var(--yellow-tx)}
-        .status-card,.toolbar-card,.group-card{border:1px solid var(--stroke);border-radius:18px;background:var(--card);backdrop-filter:blur(10px);box-shadow:0 10px 26px rgba(16,24,40,.06)}.status-card{padding:18px;margin-top:14px}.status-title{margin:0 0 6px;font-weight:850;font-size:1.05rem}.status-text{margin:0;color:var(--muted);font-size:.92rem}.toolbar-card{padding:14px;margin-top:14px}.toolbar-top{display:grid;grid-template-columns:minmax(200px,1fr) auto;gap:10px;align-items:center}.search-wrap{position:relative}.search-wrap i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted)}.search-wrap input{padding-left:38px}.form-control{border-radius:13px;border-color:rgba(16,24,40,.12);padding:9px 12px}.form-control:focus{border-color:rgba(255,111,177,.38);box-shadow:0 0 0 .2rem rgba(255,111,177,.10)}
-        .filter-row{margin-top:12px}.filter-btn{border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,.76);color:var(--muted);padding:7px 11px;font-size:.86rem}.filter-btn.active{background:linear-gradient(135deg,var(--pink-bg),var(--blue-bg));color:var(--text);border-color:var(--pink-bd)}
-        .groups-wrap{margin-top:14px;display:grid;gap:14px}.group-card{overflow:hidden}.group-head{padding:14px 16px;border-bottom:1px solid var(--stroke);background:linear-gradient(90deg,rgba(255,111,177,.10),rgba(107,199,255,.10),rgba(255,211,77,.10));display:flex;justify-content:space-between;align-items:center;gap:10px}.group-title{margin:0;font-weight:900;font-size:1.05rem}.group-count{color:var(--muted);font-size:.82rem;margin-top:2px}.group-actions{display:flex;gap:7px;align-items:center}.add-tab-btn{border:1px solid var(--blue-bd);border-radius:999px;padding:7px 10px;background:var(--blue-bg);color:var(--blue-tx);font-size:.82rem;font-weight:700}.icon-btn{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;border:1px solid var(--stroke);background:rgba(255,255,255,.78);color:#4b5563}.icon-btn:hover,.add-tab-btn:hover{background:#fff}
-        .tab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px}.tab-card{position:relative;min-width:0;border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.84);padding:12px 44px 12px 12px;display:grid;grid-template-columns:38px minmax(0,1fr);gap:10px;transition:.18s}.tab-card:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(16,24,40,.08)}.tab-main{display:contents;text-decoration:none}.favicon-box{width:38px;height:38px;border-radius:12px;border:1px solid var(--stroke);background:#fff;display:grid;place-items:center;overflow:hidden;font-weight:800;color:var(--pink-tx)}.favicon-box img{width:22px;height:22px;object-fit:contain}.tab-info{min-width:0}.tab-title{margin:0;font-size:.95rem;line-height:1.35;font-weight:800;overflow-wrap:anywhere}.tab-domain{color:var(--muted);font-size:.78rem;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tab-desc{color:#596273;font-size:.83rem;margin:6px 0 0;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.tag-row{gap:5px;margin-top:7px}.tag{border-radius:999px;padding:3px 7px;font-size:.72rem;color:var(--blue-tx);background:var(--blue-bg);border:1px solid var(--blue-bd)}.tab-edit{position:absolute;top:10px;right:10px}.empty-box{padding:28px 16px;text-align:center;color:var(--muted)}.empty-add{margin-top:10px}.modal-content{border:1px solid var(--stroke);border-radius:20px;box-shadow:var(--shadow)}.modal-header{border-bottom-color:var(--stroke);background:linear-gradient(90deg,var(--pink-bg),var(--blue-bg),var(--yellow-bg))}.modal-footer{border-top-color:var(--stroke)}.help-text{color:var(--muted);font-size:.8rem}.hidden{display:none!important}.toast-container{z-index:2000}.import-state{font-size:.82rem;color:var(--muted);align-self:center}
-        @media(max-width:760px){.app-shell{margin-top:12px}.tab-grid{grid-template-columns:1fr}.toolbar-top{grid-template-columns:1fr}.hero-inner{padding:16px}.group-head{align-items:flex-start}.group-actions{flex-wrap:wrap;justify-content:flex-end}.add-tab-btn{order:2}}
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>魚魚の收藏夾 🔖</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔖</text></svg>">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+<style>
+:root{--bg:#fff7fb;--card:rgba(255,255,255,.9);--stroke:rgba(16,24,40,.08);--text:#1f2937;--muted:#6b7280;--pink-bg:rgba(255,111,177,.12);--pink-bd:rgba(255,111,177,.28);--pink-tx:#7a284f;--blue-bg:rgba(107,199,255,.14);--blue-bd:rgba(107,199,255,.32);--blue-tx:#0f3a56;--yellow-bg:rgba(255,211,77,.20);--yellow-bd:rgba(255,211,77,.45);--yellow-tx:#6b4b00;--shadow:0 10px 30px rgba(16,24,40,.08)}
+*{box-sizing:border-box}body{min-height:100vh;margin:0;color:var(--text);font-family:"Helvetica Neue","Segoe UI",Arial,sans-serif;background:radial-gradient(1200px 600px at 10% 0%,rgba(255,111,177,.14),transparent 50%),radial-gradient(900px 500px at 90% 10%,rgba(107,199,255,.16),transparent 50%),radial-gradient(1000px 600px at 50% 100%,rgba(255,211,77,.14),transparent 50%),var(--bg)}a{color:inherit}.app-shell{max-width:1180px;margin:24px auto 64px;padding:0 14px}
+.hero{position:relative;overflow:hidden;border:1px solid var(--stroke);border-radius:22px;background:rgba(255,255,255,.72);backdrop-filter:blur(10px);box-shadow:var(--shadow)}.hero:before{content:"";position:absolute;inset:-2px;background:linear-gradient(90deg,rgba(255,111,177,.22),rgba(107,199,255,.22),rgba(255,211,77,.22));filter:blur(18px)}.hero-inner{position:relative;padding:20px;background:rgba(255,255,255,.78)}.title-wrap{display:flex;gap:12px;align-items:center;flex-wrap:wrap}.sparkle{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;font-size:24px;border:1px solid var(--stroke);background:linear-gradient(135deg,rgba(255,111,177,.18),rgba(107,199,255,.18))}.hero-title{margin:0;font-size:clamp(1.45rem,4vw,2rem);font-weight:900}.hero-sub{margin:3px 0 0;color:var(--muted);font-size:.95rem}
+.hero-tools,.stat-row,.filter-row,.tag-row{display:flex;flex-wrap:wrap;gap:8px}.hero-tools{margin-top:16px}.stat-row{margin-top:13px}.soft-btn{border:1px solid var(--stroke);border-radius:999px;padding:8px 13px;background:rgba(255,255,255,.82);color:var(--text);font-size:.9rem;display:inline-flex;align-items:center;gap:7px;transition:.18s}.soft-btn:hover{transform:translateY(-1px);box-shadow:0 7px 16px rgba(16,24,40,.08)}.soft-btn.pink{border-color:var(--pink-bd);background:var(--pink-bg);color:var(--pink-tx)}.soft-btn.blue{border-color:var(--blue-bd);background:var(--blue-bg);color:var(--blue-tx)}.soft-btn.yellow{border-color:var(--yellow-bd);background:var(--yellow-bg);color:var(--yellow-tx)}.soft-btn.gray{background:rgba(16,24,40,.04);color:#374151}.soft-btn:disabled{opacity:.55;transform:none;box-shadow:none}
+.chip{border:1px dashed var(--pink-bd);background:rgba(255,240,247,.72);color:var(--pink-tx);border-radius:999px;padding:6px 10px;font-size:.85rem;display:inline-flex;gap:6px;align-items:center}.chip.blue{border-color:var(--blue-bd);background:var(--blue-bg);color:var(--blue-tx)}.chip.yellow{border-color:var(--yellow-bd);background:var(--yellow-bg);color:var(--yellow-tx)}
+.status-card,.toolbar-card,.group-card{border:1px solid var(--stroke);border-radius:18px;background:var(--card);backdrop-filter:blur(10px);box-shadow:0 10px 26px rgba(16,24,40,.06)}.status-card{padding:18px;margin-top:14px}.status-title{margin:0 0 6px;font-weight:850;font-size:1.05rem}.status-text{margin:0;color:var(--muted);font-size:.92rem}.toolbar-card{padding:14px;margin-top:14px}.toolbar-top{display:grid;grid-template-columns:minmax(200px,1fr) auto;gap:10px;align-items:center}.search-wrap{position:relative}.search-wrap i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted)}.search-wrap input{padding-left:38px}.form-control{border-radius:13px;border-color:rgba(16,24,40,.12);padding:9px 12px}.form-control:focus{border-color:rgba(255,111,177,.38);box-shadow:0 0 0 .2rem rgba(255,111,177,.10)}
+.filter-row{margin-top:12px}.filter-btn{border-radius:999px;border:1px solid var(--stroke);background:rgba(255,255,255,.76);color:var(--muted);padding:7px 11px;font-size:.86rem}.filter-btn.active{background:linear-gradient(135deg,var(--pink-bg),var(--blue-bg));color:var(--text);border-color:var(--pink-bd)}
+.groups-wrap{margin-top:14px;display:grid;gap:14px}.group-card{overflow:hidden}.group-head{padding:14px 16px;border-bottom:1px solid var(--stroke);background:linear-gradient(90deg,rgba(255,111,177,.10),rgba(107,199,255,.10),rgba(255,211,77,.10));display:flex;justify-content:space-between;align-items:center;gap:10px}.group-title{margin:0;font-weight:900;font-size:1.05rem}.group-count{color:var(--muted);font-size:.82rem;margin-top:2px}.group-actions{display:flex;gap:7px;align-items:center}.add-tab-btn{border:1px solid var(--blue-bd);border-radius:999px;padding:7px 10px;background:var(--blue-bg);color:var(--blue-tx);font-size:.82rem;font-weight:700}.icon-btn{width:34px;height:34px;display:grid;place-items:center;border-radius:11px;border:1px solid var(--stroke);background:rgba(255,255,255,.78);color:#4b5563}.icon-btn:hover,.add-tab-btn:hover{background:#fff}
+.tab-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:12px}.tab-card{position:relative;min-width:0;border:1px solid var(--stroke);border-radius:16px;background:rgba(255,255,255,.84);padding:12px 44px 12px 12px;display:grid;grid-template-columns:38px minmax(0,1fr);gap:10px;transition:.18s}.tab-card:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(16,24,40,.08)}.tab-main{display:contents;text-decoration:none}.favicon-box{width:38px;height:38px;border-radius:12px;border:1px solid var(--stroke);background:#fff;display:grid;place-items:center;overflow:hidden;font-weight:800;color:var(--pink-tx)}.favicon-box img{width:22px;height:22px;object-fit:contain}.tab-info{min-width:0}.tab-title{margin:0;font-size:.95rem;line-height:1.35;font-weight:800;overflow-wrap:anywhere}.tab-domain{color:var(--muted);font-size:.78rem;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.tab-desc{color:#596273;font-size:.83rem;margin:6px 0 0;line-height:1.45;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.tag-row{gap:5px;margin-top:7px}.tag{border-radius:999px;padding:3px 7px;font-size:.72rem;color:var(--blue-tx);background:var(--blue-bg);border:1px solid var(--blue-bd)}.tab-edit{position:absolute;top:10px;right:10px}.empty-box{padding:28px 16px;text-align:center;color:var(--muted)}.empty-add{margin-top:10px}.modal-content{border:1px solid var(--stroke);border-radius:20px;box-shadow:var(--shadow)}.modal-header{border-bottom-color:var(--stroke);background:linear-gradient(90deg,var(--pink-bg),var(--blue-bg),var(--yellow-bg))}.modal-footer{border-top-color:var(--stroke)}.help-text{color:var(--muted);font-size:.8rem}.hidden{display:none!important}.toast-container{z-index:2000}.import-state{font-size:.82rem;color:var(--muted);align-self:center}
+@media(max-width:760px){.app-shell{margin-top:12px}.tab-grid{grid-template-columns:1fr}.toolbar-top{grid-template-columns:1fr}.hero-inner{padding:16px}.group-head{align-items:flex-start}.group-actions{flex-wrap:wrap;justify-content:flex-end}.add-tab-btn{order:2}}
+</style>
 </head>
 <body>
 <div class="app-shell">
-    <section class="hero"><div class="hero-inner">
-        <div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
-            <div class="title-wrap"><div class="sparkle">🐟</div><div><h1 class="hero-title">魚魚の收藏夾 🔖</h1><p class="hero-sub">分組收好常用頁簽｜簡單一點就很好用</p></div></div>
-            <div class="d-flex gap-2 flex-wrap"><a class="soft-btn gray text-decoration-none" href="./index.html"><i class="bi bi-house"></i> 回首頁</a><button id="logoutBtn" class="soft-btn gray hidden" type="button"><i class="bi bi-box-arrow-right"></i> 登出</button></div>
-        </div>
-        <div id="mainActions" class="hero-tools hidden">
-            <button class="soft-btn pink" type="button" onclick="openGroupModal()"><i class="bi bi-folder-plus"></i> 新增群組</button>
-            <button id="importBtn" class="soft-btn yellow" type="button" onclick="document.getElementById('tobyFiles').click()"><i class="bi bi-box-arrow-in-down"></i> 匯入 Toby JSON</button>
-            <input id="tobyFiles" class="hidden" type="file" accept="application/json,.json" multiple>
-            <span id="importState" class="import-state"></span>
-        </div>
-        <div id="stats" class="stat-row hidden"><span class="chip"><i class="bi bi-folder2"></i><span id="groupStat">0 個群組</span></span><span class="chip blue"><i class="bi bi-window"></i><span id="tabStat">0 個頁簽</span></span><span class="chip yellow"><i class="bi bi-tags"></i><span id="tagStat">0 個標籤</span></span></div>
-    </div></section>
-
-    <section id="loginPanel" class="status-card hidden"><h2 class="status-title">🔐 私人收藏</h2><p class="status-text">只有你的帳號可以使用這個收藏頁。</p><div class="mt-3"><button id="googleLoginBtn" class="soft-btn pink" type="button"><i class="bi bi-google"></i> 使用 Google 登入</button></div></section>
-    <section id="deniedPanel" class="status-card hidden"><h2 class="status-title">⛔ 無法使用</h2><p class="status-text">這個 Google 帳號沒有這個私人收藏頁的使用權限。</p></section>
-
-    <section id="toolbar" class="toolbar-card hidden"><div class="toolbar-top"><div class="search-wrap"><i class="bi bi-search"></i><input id="searchInput" class="form-control" type="search" placeholder="搜尋頁簽、網址、說明或標籤..."></div><button id="refreshBtn" class="soft-btn gray" type="button"><i class="bi bi-arrow-clockwise"></i> 重新整理</button></div><div id="groupFilters" class="filter-row"></div></section>
-    <main id="groupsWrap" class="groups-wrap"></main>
+<section class="hero"><div class="hero-inner">
+<div class="d-flex justify-content-between align-items-start gap-3 flex-wrap">
+<div class="title-wrap"><div class="sparkle">🐟</div><div><h1 class="hero-title">魚魚の收藏夾 🔖</h1><p class="hero-sub">分組收好常用頁簽｜簡單一點就很好用</p></div></div>
+<div class="d-flex gap-2 flex-wrap"><a class="soft-btn gray text-decoration-none" href="./index.html"><i class="bi bi-house"></i> 回首頁</a><button id="logoutBtn" class="soft-btn gray hidden" type="button"><i class="bi bi-box-arrow-right"></i> 登出</button></div>
 </div>
-
-<!-- 群組編輯 -->
+<div id="mainActions" class="hero-tools hidden">
+<button class="soft-btn pink" type="button" onclick="openGroupModal()"><i class="bi bi-folder-plus"></i> 新增群組</button>
+<button id="importBtn" class="soft-btn yellow" type="button" onclick="document.getElementById('tobyFiles').click()"><i class="bi bi-box-arrow-in-down"></i> 匯入 Toby JSON</button>
+<input id="tobyFiles" class="hidden" type="file" accept="application/json,.json" multiple>
+<span id="importState" class="import-state"></span>
+</div>
+<div id="stats" class="stat-row hidden"><span class="chip"><i class="bi bi-folder2"></i><span id="groupStat">0 個群組</span></span><span class="chip blue"><i class="bi bi-window"></i><span id="tabStat">0 個頁簽</span></span><span class="chip yellow"><i class="bi bi-tags"></i><span id="tagStat">0 個標籤</span></span></div>
+</div></section>
+<section id="loginPanel" class="status-card hidden"><h2 class="status-title">🔐 私人收藏</h2><p class="status-text">只有你的帳號可以使用這個收藏頁。</p><div class="mt-3"><button id="googleLoginBtn" class="soft-btn pink" type="button"><i class="bi bi-google"></i> 使用 Google 登入</button></div></section>
+<section id="deniedPanel" class="status-card hidden"><h2 class="status-title">⛔ 無法使用</h2><p class="status-text">這個 Google 帳號沒有這個私人收藏頁的使用權限。</p></section>
+<section id="toolbar" class="toolbar-card hidden"><div class="toolbar-top"><div class="search-wrap"><i class="bi bi-search"></i><input id="searchInput" class="form-control" type="search" placeholder="搜尋頁簽、網址、說明或標籤..."></div><button id="refreshBtn" class="soft-btn gray" type="button"><i class="bi bi-arrow-clockwise"></i> 重新整理</button></div><div id="groupFilters" class="filter-row"></div></section>
+<main id="groupsWrap" class="groups-wrap"></main>
+</div>
 <div class="modal fade" id="groupModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 id="groupModalTitle" class="modal-title fw-bold">新增群組</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><input id="groupId" type="hidden"><label class="form-label fw-bold" for="groupName">群組名稱</label><input id="groupName" class="form-control" maxlength="80" placeholder="例如：CSS、工作、旅遊"></div><div class="modal-footer justify-content-between"><button id="deleteGroupBtn" class="btn btn-outline-danger hidden" type="button">刪除群組</button><div class="ms-auto d-flex gap-2"><button class="btn btn-light" type="button" data-bs-dismiss="modal">取消</button><button id="saveGroupBtn" class="btn btn-dark" type="button">儲存</button></div></div></div></div></div>
-
-<!-- 頁簽編輯：頁簽一定綁定群組，所以不再讓使用者另外選群組 -->
 <div class="modal fade" id="tabModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 id="tabModalTitle" class="modal-title fw-bold">新增頁簽</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><input id="tabId" type="hidden"><input id="tabGroupId" type="hidden"><div id="tabGroupName" class="chip blue mb-3"></div><div class="mb-3"><label class="form-label fw-bold" for="tabTitle">名稱</label><input id="tabTitle" class="form-control" maxlength="180" placeholder="網站名稱"></div><div class="mb-3"><label class="form-label fw-bold" for="tabUrl">網址</label><input id="tabUrl" class="form-control" type="url" placeholder="https://..."></div><div class="mb-3"><label class="form-label fw-bold" for="tabDescription">說明</label><textarea id="tabDescription" class="form-control" rows="3" maxlength="500" placeholder="可以留空"></textarea></div><div><label class="form-label fw-bold" for="tabTags">標籤</label><input id="tabTags" class="form-control" placeholder="例如：CSS, 教學, 常用"><div class="help-text mt-1">多個標籤用逗號分隔。</div></div></div><div class="modal-footer justify-content-between"><button id="deleteTabBtn" class="btn btn-outline-danger hidden" type="button">刪除頁簽</button><div class="ms-auto d-flex gap-2"><button class="btn btn-light" type="button" data-bs-dismiss="modal">取消</button><button id="saveTabBtn" class="btn btn-dark" type="button">儲存</button></div></div></div></div></div>
-
 <div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="appToast" class="toast border-0 shadow"><div class="d-flex"><div id="toastText" class="toast-body">完成</div><button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button></div></div></div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore-compat.js"></script>
 <script>
-// Firebase 前端設定不是密碼，真正存取權限由 Firestore Security Rules 控制。
 const firebaseConfig={apiKey:"AIzaSyDD6qyMvRJI714bMq54jQjUeaU25BjU5B0",authDomain:"eateatfish-d8207.firebaseapp.com",projectId:"eateatfish-d8207",storageBucket:"eateatfish-d8207.firebasestorage.app",messagingSenderId:"497313231668",appId:"1:497313231668:web:e4340b9ac59e2abf0c2b61",measurementId:"G-WRBLFF04SF"};
-const ALLOWED_UID='zK8b0EzOBzbioXBqbgnRaF5uJJ22'; // 前端先擋非本人帳號，資料庫規則仍要另外鎖定。
+const ALLOWED_UID='zK8b0EzOBzbioXBqbgnRaF5uJJ22'; // 只有本人的帳號能使用。
 let auth=null,db=null,user=null,groups=[],tabs=[],activeGroup='all',keyword='';
-const $=id=>document.getElementById(id),groupModal=new bootstrap.Modal($('groupModal')),tabModal=new bootstrap.Modal($('tabModal')),appToast=new bootstrap.Toast($('appToast'),{delay:3000});
-
+const $=id=>document.getElementById(id),groupModal=new bootstrap.Modal($('groupModal')),tabModal=new bootstrap.Modal($('tabModal')),appToast=new bootstrap.Toast($('appToast'),{delay:3400});
 function showToast(message){$('toastText').textContent=message;appToast.show();}
 function setVisible(id,visible){$(id).classList.toggle('hidden',!visible);}
 function escapeHtml(value=''){return String(value).replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));}
@@ -72,97 +62,66 @@ function parseTags(value){return[...new Set(String(value||'').split(/[,，]/).ma
 function normalizeLabels(labels){if(!Array.isArray(labels))return[];return labels.map(v=>typeof v==='string'?v.trim():String(v?.title||v?.name||v?.label||'').trim()).filter(Boolean);}
 function groupsRef(){return db.collection('users').doc(user.uid).collection('groups');}
 function tabsRef(){return db.collection('users').doc(user.uid).collection('bookmarks');}
-
-function init(){
-    try{
-        firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();
-        auth.onAuthStateChanged(async current=>{
-            user=current;
-            if(user&&user.uid!==ALLOWED_UID){setVisible('loginPanel',false);setVisible('deniedPanel',true);setVisible('logoutBtn',true);setVisible('mainActions',false);setVisible('stats',false);setVisible('toolbar',false);$('groupsWrap').innerHTML='';return;}
-            setVisible('deniedPanel',false);updateAuthUI();if(user)await loadData();
-        });
-    }catch(error){console.error(error);showToast('Firebase 連線失敗：'+error.message);}
-}
+function init(){try{firebase.initializeApp(firebaseConfig);auth=firebase.auth();db=firebase.firestore();auth.onAuthStateChanged(async current=>{user=current;if(user&&user.uid!==ALLOWED_UID){setVisible('loginPanel',false);setVisible('deniedPanel',true);setVisible('logoutBtn',true);setVisible('mainActions',false);setVisible('stats',false);setVisible('toolbar',false);$('groupsWrap').innerHTML='';return;}setVisible('deniedPanel',false);updateAuthUI();if(user)await loadData();});}catch(error){console.error(error);showToast('Firebase 連線失敗：'+error.message);}}
 function updateAuthUI(){const ok=!!user;setVisible('loginPanel',!ok);setVisible('mainActions',ok);setVisible('stats',ok);setVisible('toolbar',ok);setVisible('logoutBtn',ok);if(!ok)$('groupsWrap').innerHTML='';}
 $('googleLoginBtn').onclick=async()=>{const provider=new firebase.auth.GoogleAuthProvider();try{await auth.signInWithPopup(provider);}catch(error){console.error(error);if(error.code==='auth/popup-blocked')return auth.signInWithRedirect(provider);showToast('Google 登入失敗：'+error.message);}};
 $('logoutBtn').onclick=()=>auth.signOut();
-
-async function loadData(){
-    if(!user||user.uid!==ALLOWED_UID)return;
-    try{
-        const[gSnap,tSnap]=await Promise.all([groupsRef().orderBy('sortOrder').get(),tabsRef().orderBy('sortOrder').get()]);
-        groups=gSnap.docs.map(doc=>({id:doc.id,...doc.data()}));
-        tabs=tSnap.docs.map(doc=>({id:doc.id,...doc.data()})).filter(tab=>tab.groupId); // 舊資料若沒有群組就不顯示。
-        render();
-    }catch(error){console.error(error);showToast('讀取失敗：'+error.message);}
-}
+async function loadData(){if(!user||user.uid!==ALLOWED_UID)return;try{const[gSnap,tSnap]=await Promise.all([groupsRef().orderBy('sortOrder').get(),tabsRef().orderBy('sortOrder').get()]);groups=gSnap.docs.map(doc=>({id:doc.id,...doc.data()}));tabs=tSnap.docs.map(doc=>({id:doc.id,...doc.data()})).filter(tab=>tab.groupId);render();}catch(error){console.error(error);showToast('讀取失敗：'+error.message);}}
 function render(){renderStats();renderFilters();renderGroups();}
 function renderStats(){const tags=new Set(tabs.flatMap(v=>v.tags||[]));$('groupStat').textContent=`${groups.length} 個群組`;$('tabStat').textContent=`${tabs.length} 個頁簽`;$('tagStat').textContent=`${tags.size} 個標籤`;}
-function renderFilters(){const buttons=[`<button class="filter-btn ${activeGroup==='all'?'active':''}" data-id="all">全部</button>`];groups.forEach(g=>buttons.push(`<button class="filter-btn ${activeGroup===g.id?'active':''}" data-id="${g.id}">${escapeHtml(g.name)}</button>`));$('groupFilters').innerHTML=buttons.join('');$('groupFilters').querySelectorAll('.filter-btn').forEach(btn=>btn.onclick=()=>{activeGroup=btn.dataset.id;renderGroups();renderFilters();});}
+function renderFilters(){const buttons=[`<button class="filter-btn ${activeGroup==='all'?'active':''}" data-id="all">全部</button>`];groups.forEach(g=>buttons.push(`<button class="filter-btn ${activeGroup===g.id?'active':''}" data-id="${g.id}">${escapeHtml(g.name)}</button>`));$('groupFilters').innerHTML=buttons.join('');$('groupFilters').querySelectorAll('.filter-btn').forEach(btn=>btn.onclick=()=>{activeGroup=btn.dataset.id;renderFilters();renderGroups();});}
 function matchesSearch(tab,groupName){if(!keyword)return true;return[tab.title,tab.url,tab.description,...(tab.tags||[]),groupName].join(' ').toLowerCase().includes(keyword);}
-function renderGroups(){
-    if(!groups.length){$('groupsWrap').innerHTML='<div class="group-card"><div class="empty-box"><div class="empty-icon">📁</div><strong>還沒有群組</strong><div class="mt-1">新增群組，或直接匯入 Toby JSON。</div></div></div>';return;}
-    let html='';
-    groups.filter(g=>activeGroup==='all'||activeGroup===g.id).forEach(g=>{
-        const items=tabs.filter(tab=>tab.groupId===g.id&&matchesSearch(tab,g.name));
-        if(keyword&&!items.length)return;
-        html+=`<section class="group-card"><header class="group-head"><div><h2 class="group-title">📁 ${escapeHtml(g.name)}</h2><div class="group-count">${items.length} 個頁簽</div></div><div class="group-actions"><button class="add-tab-btn" onclick="openTabModal('', '${g.id}')"><i class="bi bi-plus-lg"></i> 加頁簽</button><button class="icon-btn" title="編輯群組" onclick="openGroupModal('${g.id}')"><i class="bi bi-pencil"></i></button></div></header>${items.length?`<div class="tab-grid">${items.map(renderTabCard).join('')}</div>`:`<div class="empty-box">這個群組還沒有頁簽<div class="empty-add"><button class="soft-btn blue" onclick="openTabModal('', '${g.id}')"><i class="bi bi-plus-lg"></i> 加第一個頁簽</button></div></div>`}</section>`;
-    });
-    $('groupsWrap').innerHTML=html||`<div class="group-card"><div class="empty-box">🔎 找不到符合「${escapeHtml(keyword)}」的頁簽</div></div>`;
-}
+function renderGroups(){if(!groups.length){$('groupsWrap').innerHTML='<div class="group-card"><div class="empty-box"><strong>📁 還沒有群組</strong><div class="mt-1">新增群組，或直接匯入 Toby JSON。</div></div></div>';return;}let html='';groups.filter(g=>activeGroup==='all'||activeGroup===g.id).forEach(g=>{const items=tabs.filter(tab=>tab.groupId===g.id&&matchesSearch(tab,g.name));if(keyword&&!items.length)return;html+=`<section class="group-card"><header class="group-head"><div><h2 class="group-title">📁 ${escapeHtml(g.name)}</h2><div class="group-count">${items.length} 個頁簽</div></div><div class="group-actions"><button class="add-tab-btn" onclick="openTabModal('', '${g.id}')"><i class="bi bi-plus-lg"></i> 加頁簽</button><button class="icon-btn" title="編輯群組" onclick="openGroupModal('${g.id}')"><i class="bi bi-pencil"></i></button></div></header>${items.length?`<div class="tab-grid">${items.map(renderTabCard).join('')}</div>`:`<div class="empty-box">這個群組還沒有頁簽<div class="empty-add"><button class="soft-btn blue" onclick="openTabModal('', '${g.id}')"><i class="bi bi-plus-lg"></i> 加第一個頁簽</button></div></div>`}</section>`;});$('groupsWrap').innerHTML=html||`<div class="group-card"><div class="empty-box">🔎 找不到符合「${escapeHtml(keyword)}」的頁簽</div></div>`;}
 function renderTabCard(tab){const domain=getDomain(tab.url),favicon=getFavicon(tab.url),tags=(tab.tags||[]).map(t=>`<span class="tag">#${escapeHtml(t)}</span>`).join('');return`<article class="tab-card"><a class="tab-main" href="${escapeHtml(tab.url)}" target="_blank" rel="noopener noreferrer"><div class="favicon-box">${favicon?`<img src="${escapeHtml(favicon)}" alt="" onerror="this.style.display='none';this.parentNode.textContent='${escapeHtml((tab.title||'?').charAt(0).toUpperCase())}'">`:escapeHtml((tab.title||'?').charAt(0).toUpperCase())}</div><div class="tab-info"><h3 class="tab-title">${escapeHtml(tab.title||domain)}</h3><div class="tab-domain">${escapeHtml(domain)}</div>${tab.description?`<p class="tab-desc">${escapeHtml(tab.description)}</p>`:''}${tags?`<div class="tag-row">${tags}</div>`:''}</div></a><button class="icon-btn tab-edit" title="編輯" onclick="event.preventDefault();event.stopPropagation();openTabModal('${tab.id}')"><i class="bi bi-three-dots"></i></button></article>`;}
 $('searchInput').addEventListener('input',e=>{keyword=e.target.value.trim().toLowerCase();renderGroups();});$('refreshBtn').onclick=loadData;
-
-// 群組新增、修改、刪除。
 function openGroupModal(id=''){const group=groups.find(v=>v.id===id);$('groupId').value=group?.id||'';$('groupName').value=group?.name||'';$('groupModalTitle').textContent=group?'編輯群組':'新增群組';setVisible('deleteGroupBtn',!!group);groupModal.show();setTimeout(()=>$('groupName').focus(),180);}
 $('saveGroupBtn').onclick=async()=>{const id=$('groupId').value,name=$('groupName').value.trim();if(!name)return showToast('請輸入群組名稱');try{if(id)await groupsRef().doc(id).update({name,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});else await groupsRef().add({name,sortOrder:groups.length,createdAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});groupModal.hide();await loadData();showToast(id?'群組已更新':'群組已新增');}catch(error){showToast('儲存失敗：'+error.message);}};
 $('deleteGroupBtn').onclick=async()=>{const id=$('groupId').value,group=groups.find(v=>v.id===id);if(!group||!confirm(`確定刪除「${group.name}」？群組內的頁簽也會一起刪除。`))return;try{const related=tabs.filter(tab=>tab.groupId===id);for(let i=0;i<related.length;i+=400){const batch=db.batch();related.slice(i,i+400).forEach(tab=>batch.delete(tabsRef().doc(tab.id)));await batch.commit();}await groupsRef().doc(id).delete();if(activeGroup===id)activeGroup='all';groupModal.hide();await loadData();showToast('群組已刪除');}catch(error){showToast('刪除失敗：'+error.message);}};
-
-// 頁簽一定由某個群組的「加頁簽」進入，因此不會產生未分組頁簽。
-function openTabModal(id='',groupId=''){
-    const tab=tabs.find(v=>v.id===id);
-    const targetGroupId=tab?.groupId||groupId;
-    const group=groups.find(v=>v.id===targetGroupId);
-    if(!group)return showToast('找不到要加入的群組');
-    $('tabId').value=tab?.id||'';$('tabGroupId').value=targetGroupId;$('tabGroupName').innerHTML=`<i class="bi bi-folder2"></i> ${escapeHtml(group.name)}`;$('tabTitle').value=tab?.title||'';$('tabUrl').value=tab?.url||'';$('tabDescription').value=tab?.description||'';$('tabTags').value=(tab?.tags||[]).join(', ');$('tabModalTitle').textContent=tab?'編輯頁簽':'新增頁簽';setVisible('deleteTabBtn',!!tab);tabModal.show();setTimeout(()=>$('tabTitle').focus(),180);
-}
+function openTabModal(id='',groupId=''){const tab=tabs.find(v=>v.id===id),targetGroupId=tab?.groupId||groupId,group=groups.find(v=>v.id===targetGroupId);if(!group)return showToast('找不到要加入的群組');$('tabId').value=tab?.id||'';$('tabGroupId').value=targetGroupId;$('tabGroupName').innerHTML=`<i class="bi bi-folder2"></i> ${escapeHtml(group.name)}`;$('tabTitle').value=tab?.title||'';$('tabUrl').value=tab?.url||'';$('tabDescription').value=tab?.description||'';$('tabTags').value=(tab?.tags||[]).join(', ');$('tabModalTitle').textContent=tab?'編輯頁簽':'新增頁簽';setVisible('deleteTabBtn',!!tab);tabModal.show();setTimeout(()=>$('tabTitle').focus(),180);}
 $('saveTabBtn').onclick=async()=>{const id=$('tabId').value,groupId=$('tabGroupId').value,title=$('tabTitle').value.trim(),url=normalizeUrl($('tabUrl').value),description=$('tabDescription').value.trim(),tags=parseTags($('tabTags').value);if(!groupId)return showToast('頁簽必須屬於群組');if(!title)return showToast('請輸入名稱');if(!url)return showToast('請輸入網址');const data={groupId,title,url,description,tags,updatedAt:firebase.firestore.FieldValue.serverTimestamp()};try{if(id)await tabsRef().doc(id).update(data);else await tabsRef().add({...data,sortOrder:tabs.filter(v=>v.groupId===groupId).length,createdAt:firebase.firestore.FieldValue.serverTimestamp()});tabModal.hide();await loadData();showToast(id?'頁簽已更新':'頁簽已新增');}catch(error){showToast('儲存失敗：'+error.message);}};
 $('deleteTabBtn').onclick=async()=>{const id=$('tabId').value,tab=tabs.find(v=>v.id===id);if(!tab||!confirm(`確定刪除「${tab.title}」？`))return;try{await tabsRef().doc(id).delete();tabModal.hide();await loadData();showToast('頁簽已刪除');}catch(error){showToast('刪除失敗：'+error.message);}};
 
-// 每個 Toby JSON 視為一個群組；可一次選取多個 JSON 檔批次匯入。
+// 從一個 JSON 找出 Toby 群組。支援 Toby 標準 lists[0]，也支援直接輸出單一 list 的格式。
+function getTobyList(data,fileName){
+    if(data&&Array.isArray(data.lists)){const valid=data.lists.find(item=>item&&Array.isArray(item.cards));if(valid)return valid;}
+    if(data&&Array.isArray(data.cards))return data;
+    if(Array.isArray(data)&&data.every(item=>item&&typeof item==='object'&&('url' in item)))return{title:fileName.replace(/\.json$/i,''),cards:data,labels:[]};
+    return null;
+}
+
+// 一個 JSON 檔 = 一個群組；可以一次選多檔。不是 Toby 的 JSON 會略過，不會讓整批中斷。
 $('tobyFiles').addEventListener('change',async event=>{
     const files=[...(event.target.files||[])];event.target.value='';if(!files.length)return;
-    $('importBtn').disabled=true;$('importState').textContent=`匯入中 0 / ${files.length}`;
-    let importedGroups=0,importedTabs=0,failed=[];
-    try{
-        const groupMap=new Map(groups.map(g=>[g.name.trim().toLowerCase(),g]));
-        for(let fileIndex=0;fileIndex<files.length;fileIndex++){
-            const file=files[fileIndex];$('importState').textContent=`匯入中 ${fileIndex+1} / ${files.length}：${file.name}`;
-            try{
-                const data=JSON.parse(await file.text());
-                const list=Array.isArray(data.lists)?data.lists[0]:data;
-                if(!list||!Array.isArray(list.cards))throw new Error('不是可辨識的 Toby JSON');
-                const fallbackName=file.name.replace(/\.json$/i,'');
-                const groupName=String(list.title||fallbackName).trim();
-                const groupKey=groupName.toLowerCase();
-                let group=groupMap.get(groupKey);
-                if(!group){const ref=await groupsRef().add({name:groupName,sortOrder:groups.length+importedGroups,createdAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});group={id:ref.id,name:groupName};groupMap.set(groupKey,group);importedGroups++;}
-                const existingSnap=await tabsRef().where('groupId','==',group.id).get();
-                const existingUrls=new Set(existingSnap.docs.map(doc=>doc.data().url));
-                const groupTags=normalizeLabels(list.labels),rows=[];
-                list.cards.forEach((card,index)=>{const url=normalizeUrl(card.url);if(!url||existingUrls.has(url))return;rows.push({groupId:group.id,title:String(card.customTitle||card.title||getDomain(url)||'未命名').trim(),url,description:String(card.customDescription||'').trim(),tags:[...new Set([...groupTags,...normalizeLabels(card.labels)])],sortOrder:existingSnap.size+rows.length,createdAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});existingUrls.add(url);});
-                for(let i=0;i<rows.length;i+=400){const batch=db.batch();rows.slice(i,i+400).forEach(row=>batch.set(tabsRef().doc(),row));await batch.commit();}
-                importedTabs+=rows.length;
-            }catch(error){console.error(file.name,error);failed.push(file.name);}
-        }
-        await loadData();
-        const failText=failed.length?`，${failed.length} 個檔案失敗`:'';
-        $('importState').textContent=`完成：${importedGroups} 個新群組、${importedTabs} 個頁簽${failText}`;
-        showToast(`Toby 匯入完成 🎉 ${importedGroups} 個新群組、${importedTabs} 個頁簽${failText}`);
-    }catch(error){console.error(error);$('importState').textContent='匯入失敗';showToast('匯入失敗：'+error.message);}
-    finally{$('importBtn').disabled=false;}
+    $('importBtn').disabled=true;$('importState').textContent=`準備匯入 ${files.length} 個檔案…`;
+    let importedGroups=0,importedTabs=0,skipped=[],failed=[];
+    const groupMap=new Map(groups.map(g=>[g.name.trim().toLowerCase(),g]));
+    for(let fileIndex=0;fileIndex<files.length;fileIndex++){
+        const file=files[fileIndex];$('importState').textContent=`匯入中 ${fileIndex+1} / ${files.length}：${file.name}`;
+        try{
+            const data=JSON.parse(await file.text());
+            const list=getTobyList(data,file.name);
+            if(!list){skipped.push(file.name);console.warn('[Toby] 略過非 Toby JSON：',file.name);continue;}
+            const fallbackName=file.name.replace(/\.json$/i,'');
+            const groupName=String(list.title||fallbackName).trim()||fallbackName;
+            const groupKey=groupName.toLowerCase();
+            let group=groupMap.get(groupKey);
+            if(!group){const ref=await groupsRef().add({name:groupName,sortOrder:groups.length+importedGroups,createdAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});group={id:ref.id,name:groupName};groupMap.set(groupKey,group);importedGroups++;}
+            const existingSnap=await tabsRef().where('groupId','==',group.id).get();
+            const existingUrls=new Set(existingSnap.docs.map(doc=>doc.data().url));
+            const groupTags=normalizeLabels(list.labels),rows=[];
+            (list.cards||[]).forEach(card=>{const url=normalizeUrl(card?.url);if(!url||existingUrls.has(url))return;rows.push({groupId:group.id,title:String(card?.customTitle||card?.title||getDomain(url)||'未命名').trim(),url,description:String(card?.customDescription||'').trim(),tags:[...new Set([...groupTags,...normalizeLabels(card?.labels)])],sortOrder:existingSnap.size+rows.length,createdAt:firebase.firestore.FieldValue.serverTimestamp(),updatedAt:firebase.firestore.FieldValue.serverTimestamp()});existingUrls.add(url);});
+            for(let i=0;i<rows.length;i+=400){const batch=db.batch();rows.slice(i,i+400).forEach(row=>batch.set(tabsRef().doc(),row));await batch.commit();}
+            importedTabs+=rows.length;
+        }catch(error){console.error('[Toby] 匯入失敗：',file.name,error);failed.push(file.name);}
+    }
+    await loadData();
+    const parts=[`${importedGroups} 個新群組`,`${importedTabs} 個頁簽`];
+    if(skipped.length)parts.push(`略過 ${skipped.length} 個非 Toby JSON`);
+    if(failed.length)parts.push(`${failed.length} 個讀取失敗`);
+    $('importState').textContent=`完成：${parts.join('、')}`;
+    showToast(`匯入完成 🎉 ${parts.join('、')}`);
+    $('importBtn').disabled=false;
 });
-
 init();
 </script>
 </body>
