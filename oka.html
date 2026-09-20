@@ -333,6 +333,76 @@
             line-height: 1.25;
         }
 
+
+        /* KKday / Klook 預訂資訊 */
+        .booking-info {
+            margin: 12px 14px 0;
+            padding: 12px 14px;
+            border: 1px solid var(--stroke);
+            border-radius: 14px;
+            background: rgba(255, 255, 255, .72);
+            display: grid;
+            grid-template-columns: auto auto 1fr auto;
+            gap: 10px 18px;
+            align-items: center;
+        }
+
+        .booking-platform {
+            font-weight: 900;
+            white-space: nowrap;
+        }
+
+        .booking-platform.kkday {
+            color: #18a98c;
+        }
+
+        .booking-platform.klook {
+            color: #ff5b00;
+        }
+
+        .booking-price {
+            font-weight: 900;
+            white-space: nowrap;
+            color: #d94d7d;
+        }
+
+        .booking-desc {
+            color: var(--muted);
+            font-size: .9rem;
+            line-height: 1.45;
+        }
+
+        .booking-link {
+            text-decoration: none;
+            border-radius: 999px;
+            border: 1px solid var(--spot-bd);
+            background: var(--spot-bg);
+            color: var(--spot-tx);
+            padding: 7px 12px;
+            font-size: .86rem;
+            font-weight: 800;
+            white-space: nowrap;
+            transition: transform .15s ease, box-shadow .15s ease;
+        }
+
+        .booking-link:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 14px rgba(16, 24, 40, .08);
+        }
+
+        .booking-link.disabled {
+            pointer-events: none;
+            opacity: .45;
+        }
+
+        .booking-label {
+            display: none;
+            color: var(--muted);
+            font-size: .72rem;
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
         /* 平板尺寸 */
         @media (max-width: 992px) {
             .day-header {
@@ -358,6 +428,18 @@
                 width: 140px;
                 height: 140px;
             }
+
+            .booking-info {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .booking-desc {
+                grid-column: 1 / -1;
+            }
+
+            .booking-link {
+                justify-self: start;
+            }
         }
 
         /* 手機尺寸：圖片移到時間軸上方 */
@@ -380,6 +462,20 @@
             .timeline {
                 --time-col: 105px;
                 --time-text: 72px;
+            }
+
+            .booking-info {
+                margin: 10px 12px 0;
+                grid-template-columns: 1fr;
+                gap: 7px;
+            }
+
+            .booking-label {
+                display: inline;
+            }
+
+            .booking-desc {
+                grid-column: auto;
             }
         }
     </style>
@@ -420,7 +516,16 @@
                         </div>
                     </div>
 
-                    <div class="day-body">
+                    
+                    <!-- Day 1 預訂資訊 -->
+                    <div class="booking-info">
+                        <div class="booking-platform kkday"><span class="booking-label">平台</span>KKday</div>
+                        <div class="booking-price"><span class="booking-label">價格</span>💰 待補</div>
+                        <div class="booking-desc"><span class="booking-label">說明</span>行程方案說明待補</div>
+                        <a class="booking-link" href="https://www.kkday.com/zh-tw/product/579073" target="_blank" rel="noopener noreferrer">查看行程 ↗</a>
+                    </div>
+
+<div class="day-body">
                         <div class="timeline">
                             <div class="t-item">
                                 <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
@@ -464,7 +569,16 @@
                         </div>
                     </div>
 
-                    <div class="day-body">
+                    
+                    <!-- Day 2 預訂資訊 -->
+                    <div class="booking-info">
+                        <div class="booking-platform klook"><span class="booking-label">平台</span>Klook</div>
+                        <div class="booking-price"><span class="booking-label">價格</span>💰 待補</div>
+                        <div class="booking-desc"><span class="booking-label">說明</span>行程方案說明待補</div>
+                        <a class="booking-link" href="https://s.klook.com/c/mwEW8nvL1e" target="_blank" rel="noopener noreferrer">查看行程 ↗</a>
+                    </div>
+
+<div class="day-body">
                         <div class="timeline">
                             <div class="t-item">
                                 <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
@@ -508,7 +622,16 @@
                         </div>
                     </div>
 
-                    <div class="day-body">
+                    
+                    <!-- Day 3 預訂資訊 -->
+                    <div class="booking-info">
+                        <div class="booking-platform kkday"><span class="booking-label">平台</span>KKday</div>
+                        <div class="booking-price"><span class="booking-label">價格</span>💰 待補</div>
+                        <div class="booking-desc"><span class="booking-label">說明</span>沖繩接駁巴士行程，可由那霸市區往返瀨長島、美國村等地</div>
+                        <a class="booking-link" href="https://www.kkday.com/zh-tw/product/22733?cid=4904&amp;ud1=detail-share&amp;ud2=app-ios" target="_blank" rel="noopener noreferrer">查看行程 ↗</a>
+                    </div>
+
+<div class="day-body">
                         <div class="timeline">
                             <div class="t-item">
                                 <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
@@ -552,7 +675,16 @@
                         </div>
                     </div>
 
-                    <div class="day-body">
+                    
+                    <!-- Day 4 預訂資訊 -->
+                    <div class="booking-info">
+                        <div class="booking-platform"><span class="booking-label">平台</span>尚未安排</div>
+                        <div class="booking-price"><span class="booking-label">價格</span>💰 —</div>
+                        <div class="booking-desc"><span class="booking-label">說明</span>Day 4 若有 KKday / Klook 行程可再補上</div>
+                        <a class="booking-link disabled" href="#" aria-disabled="true">尚無連結</a>
+                    </div>
+
+<div class="day-body">
                         <div class="timeline">
                             <div class="t-item">
                                 <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
