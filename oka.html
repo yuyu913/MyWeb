@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="zh-Hant">
+
+<head>
+    <!-- 網頁基本設定 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>沖繩 4 日行程 🌺</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌺</text></svg>">
+
+    <!-- Bootstrap（Bootstrap Framework）只用來輔助排版 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #fff8fb;
+            --card: rgba(255, 255, 255, .9);
+            --stroke: rgba(16, 24, 40, .08);
+            --text: #1f2937;
+            --muted: #6b7280;
+
+            --food-bg: rgba(255, 111, 177, .12);
+            --food-bd: rgba(255, 111, 177, .28);
+            --food-tx: #7a284f;
+
+            --spot-bg: rgba(107, 199, 255, .14);
+            --spot-bd: rgba(107, 199, 255, .32);
+            --spot-tx: #0f3a56;
+
+            --shop-bg: rgba(255, 211, 77, .2);
+            --shop-bd: rgba(255, 211, 77, .45);
+            --shop-tx: #6b4b00;
+
+            --note-bg: rgba(16, 24, 40, .05);
+            --note-bd: rgba(16, 24, 40, .1);
+            --note-tx: #374151;
+
+            --shadow: 0 10px 30px rgba(16, 24, 40, .08);
+        }
+
+        body {
+            background:
+                radial-gradient(1100px 550px at 10% 0%, rgba(255, 111, 177, .14), transparent 50%),
+                radial-gradient(900px 500px at 90% 8%, rgba(107, 199, 255, .16), transparent 50%),
+                radial-gradient(1000px 600px at 50% 100%, rgba(255, 211, 77, .14), transparent 50%),
+                var(--bg);
+            color: var(--text);
+        }
+
+        /* 整頁最大寬度 */
+        .app-shell {
+            max-width: 1100px;
+            margin: 24px auto 60px;
+            padding: 0 14px;
+        }
+
+        /* 最上方標題區 */
+        .hero {
+            border: 1px solid var(--stroke);
+            background: rgba(255, 255, 255, .72);
+            backdrop-filter: blur(10px);
+            border-radius: 22px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(90deg, rgba(255, 111, 177, .22), rgba(107, 199, 255, .22), rgba(255, 211, 77, .22));
+            filter: blur(18px);
+            z-index: 0;
+        }
+
+        .hero-inner {
+            position: relative;
+            padding: 18px;
+            background: rgba(255, 255, 255, .78);
+        }
+
+        .title {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .sparkle {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, rgba(255, 111, 177, .18), rgba(107, 199, 255, .18));
+            border: 1px solid var(--stroke);
+            font-size: 22px;
+        }
+
+        .hero-sub {
+            color: var(--muted);
+            font-size: .92rem;
+        }
+
+        /* 每一天的卡片 */
+        .day-card {
+            border: 1px solid var(--stroke);
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            border-radius: 18px;
+            box-shadow: 0 10px 26px rgba(16, 24, 40, .06);
+            overflow: hidden;
+        }
+
+        .day-header {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--stroke);
+            background: linear-gradient(90deg, rgba(255, 111, 177, .1), rgba(107, 199, 255, .1), rgba(255, 211, 77, .1));
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .day-title {
+            min-width: 260px;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .day-title h5 {
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: .2px;
+        }
+
+        .day-sub {
+            color: var(--muted);
+            font-size: .92rem;
+        }
+
+        .day-meta {
+            flex: 0 0 auto;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .meta-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: flex-end;
+        }
+
+        .pill {
+            border-radius: 999px;
+            border: 1px solid var(--stroke);
+            background: rgba(255, 255, 255, .8);
+            color: #374151;
+            padding: 6px 10px;
+            font-size: .86rem;
+            white-space: nowrap;
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .pill.blue {
+            border-color: var(--spot-bd);
+            background: var(--spot-bg);
+            color: var(--spot-tx);
+        }
+
+        .pill.gray {
+            border-color: var(--note-bd);
+            background: var(--note-bg);
+            color: var(--note-tx);
+        }
+
+        /* 左側時間軸＋右側圖片 */
+        .day-body {
+            display: grid;
+            grid-template-columns: 1fr 220px;
+            gap: 12px;
+            align-items: start;
+        }
+
+        .day-aside {
+            padding: 12px 12px 14px;
+        }
+
+        .day-thumb {
+            width: 200px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid var(--stroke);
+            background: rgba(255, 255, 255, .75);
+            box-shadow: 0 10px 22px rgba(16, 24, 40, .1);
+        }
+
+        /* 圖片還沒放進 oka 資料夾時顯示這個替代框 */
+        .image-fallback {
+            width: 200px;
+            height: 140px;
+            border-radius: 16px;
+            border: 1px dashed rgba(16, 24, 40, .16);
+            background: rgba(255, 255, 255, .7);
+            color: var(--muted);
+            display: none;
+            place-items: center;
+            text-align: center;
+            font-size: .86rem;
+        }
+
+        /* 時間軸 */
+        .timeline {
+            position: relative;
+            --time-col: 140px;
+            --time-text: 104px;
+            --bullet: 8px;
+            --line-x: calc(var(--time-col) - (var(--bullet) / 2) - 1px);
+            padding: 10px 0;
+        }
+
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: var(--line-x);
+            top: 20px;
+            bottom: 20px;
+            width: 2px;
+            opacity: .55;
+            background: repeating-linear-gradient(
+                180deg,
+                rgba(16, 24, 40, .12) 0,
+                rgba(16, 24, 40, .12) 6px,
+                transparent 6px,
+                transparent 12px
+            );
+        }
+
+        .t-item {
+            display: grid;
+            grid-template-columns: var(--time-col) 1fr;
+            gap: 10px;
+            padding: 2px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .t-time {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            min-width: 0;
+        }
+
+        .time-pill {
+            display: inline-block;
+            width: var(--time-text);
+            text-align: right;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: .78rem;
+            font-weight: 900;
+            color: rgba(107, 114, 128, .75);
+            line-height: 1.1;
+        }
+
+        .t-bullet {
+            width: var(--bullet);
+            height: var(--bullet);
+            border-radius: 999px;
+            background: rgba(16, 24, 40, .12);
+        }
+
+        .t-content {
+            border-radius: 14px;
+            padding: 2px 10px;
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        /* 行程分類標籤 */
+        .tag {
+            border-radius: 999px;
+            padding: 7px 11px;
+            font-size: .98rem;
+            border: 1px solid var(--stroke);
+            background: rgba(255, 255, 255, .8);
+            color: var(--text);
+            display: inline-flex;
+            align-items: center;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .tag.food {
+            border-color: var(--food-bd);
+            background: var(--food-bg);
+            color: var(--food-tx);
+        }
+
+        .tag.spot {
+            border-color: var(--spot-bd);
+            background: var(--spot-bg);
+            color: var(--spot-tx);
+        }
+
+        .tag.shop {
+            border-color: var(--shop-bd);
+            background: var(--shop-bg);
+            color: var(--shop-tx);
+        }
+
+        .tag.note {
+            border-color: var(--note-bd);
+            background: var(--note-bg);
+            color: var(--note-tx);
+        }
+
+        .t-note {
+            color: var(--muted);
+            font-size: .92rem;
+            line-height: 1.25;
+        }
+
+        /* 平板尺寸 */
+        @media (max-width: 992px) {
+            .day-header {
+                flex-direction: column;
+            }
+
+            .day-meta {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .meta-stack {
+                align-items: flex-start;
+            }
+
+            .day-body {
+                grid-template-columns: 1fr 170px;
+                gap: 10px;
+            }
+
+            .day-thumb,
+            .image-fallback {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        /* 手機尺寸：圖片移到時間軸上方 */
+        @media (max-width: 576px) {
+            .day-body {
+                grid-template-columns: 1fr;
+            }
+
+            .day-aside {
+                order: -1;
+                padding: 10px 12px 0;
+            }
+
+            .day-thumb,
+            .image-fallback {
+                width: 100%;
+                height: 160px;
+            }
+
+            .timeline {
+                --time-col: 105px;
+                --time-text: 72px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-shell">
+
+        <!-- 沖繩行程主標題 -->
+        <div class="hero mb-4">
+            <div class="hero-inner">
+                <div class="title">
+                    <div class="sparkle">🌺</div>
+                    <div>
+                        <h2 class="mb-1 fw-bold">沖繩 4 日行程</h2>
+                        <div class="hero-sub">Okinawa｜Day 1 - Day 4</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 一頁式：四天行程全部直接顯示，不使用分頁 -->
+        <div class="row g-3">
+
+            <!-- Day 1 -->
+            <div class="col-12">
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-title">
+                            <h5>🗓 沖繩 Day 1｜行程待補</h5>
+                            <div class="day-sub">抵達沖繩的第一天</div>
+                        </div>
+                        <div class="day-meta">
+                            <div class="meta-stack">
+                                <div class="pill blue">🧭 路線：待補</div>
+                                <div class="pill gray">👣 步數：待補</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-body">
+                        <div class="timeline">
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag note">✈️ 抵達</span><span class="t-note">時間與航班待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag spot">📍 景點</span><span class="t-note">行程待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag food">🍴 美食</span><span class="t-note">餐廳待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag note">🛏 飯店</span><span class="t-note">住宿待補</span></div>
+                            </div>
+                        </div>
+
+                        <div class="day-aside">
+                            <img class="day-thumb" src="./oka/oka1.jpg" alt="Okinawa Day 1" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+                            <div class="image-fallback">Day 1<br>./oka/oka1.jpg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 2 -->
+            <div class="col-12">
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-title">
+                            <h5>🗓 沖繩 Day 2｜行程待補</h5>
+                            <div class="day-sub">第二天行程</div>
+                        </div>
+                        <div class="day-meta">
+                            <div class="meta-stack">
+                                <div class="pill blue">🧭 路線：待補</div>
+                                <div class="pill gray">👣 步數：待補</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-body">
+                        <div class="timeline">
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag food">🍴 早餐</span><span class="t-note">待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag spot">📍 景點</span><span class="t-note">待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag shop">🛍 購物</span><span class="t-note">待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag food">🍴 晚餐</span><span class="t-note">待補</span></div>
+                            </div>
+                        </div>
+
+                        <div class="day-aside">
+                            <img class="day-thumb" src="./oka/oka2.jpg" alt="Okinawa Day 2" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+                            <div class="image-fallback">Day 2<br>./oka/oka2.jpg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 3 -->
+            <div class="col-12">
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-title">
+                            <h5>🗓 沖繩 Day 3｜行程待補</h5>
+                            <div class="day-sub">第三天行程</div>
+                        </div>
+                        <div class="day-meta">
+                            <div class="meta-stack">
+                                <div class="pill blue">🧭 路線：待補</div>
+                                <div class="pill gray">👣 步數：待補</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-body">
+                        <div class="timeline">
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag food">🍴 早餐</span><span class="t-note">待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag spot">📍 景點</span><span class="t-note">待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag food">🍴 午餐</span><span class="t-note">待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag shop">🛍 購物</span><span class="t-note">待補</span></div>
+                            </div>
+                        </div>
+
+                        <div class="day-aside">
+                            <img class="day-thumb" src="./oka/oka3.jpg" alt="Okinawa Day 3" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+                            <div class="image-fallback">Day 3<br>./oka/oka3.jpg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Day 4 -->
+            <div class="col-12">
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-title">
+                            <h5>🗓 沖繩 Day 4｜行程待補</h5>
+                            <div class="day-sub">最後一天＋回程</div>
+                        </div>
+                        <div class="day-meta">
+                            <div class="meta-stack">
+                                <div class="pill blue">🧭 路線：待補 → 機場</div>
+                                <div class="pill gray">👣 步數：待補</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="day-body">
+                        <div class="timeline">
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag food">🍴 早餐</span><span class="t-note">待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag shop">🛍 最後採買</span><span class="t-note">待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag note">🧳 前往機場</span><span class="t-note">交通待補</span></div>
+                            </div>
+                            <div class="t-item">
+                                <div class="t-time"><span class="time-pill">--:--</span><span class="t-bullet"></span></div>
+                                <div class="t-content"><span class="tag note">✈️ 回台</span><span class="t-note">航班待補</span></div>
+                            </div>
+                        </div>
+
+                        <div class="day-aside">
+                            <img class="day-thumb" src="./oka/oka4.jpg" alt="Okinawa Day 4" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
+                            <div class="image-fallback">Day 4<br>./oka/oka4.jpg</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
