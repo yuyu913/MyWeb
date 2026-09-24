@@ -38,33 +38,1177 @@ const foodGroups=[
 ];
 
 const mapData={
-'新月梧桐':{district:'西區',rating:'4.2',reviews:'1,814',price:'',category:'滬菜館'},
-'阿坤麵':{district:'中區',rating:'4.2',reviews:'2,213',price:'$1–200',category:'麵店'},
-'竹之鄉':{district:'北屯區',rating:'4.4',reviews:'1,773',price:'$200–400',category:'台灣餐廳'},
-'陳明統爌肉飯':{district:'東區',rating:'4.0',reviews:'2,763',price:'$1–200',category:'台灣餐廳'},
-'鳳記鵝肉老店':{district:'沙鹿區',rating:'4.1',reviews:'1,595',price:'$200–400',category:'台灣餐廳'},
-'鮮魚鱻':{district:'北區',rating:'3.8',reviews:'2,189',price:'$1–200',category:'台灣餐廳'},
-'富鼎旺':{district:'中區',rating:'4.2',reviews:'3,415',price:'',category:'台灣餐廳'},
-'富狀元豬腳':{district:'西區',rating:'3.6',reviews:'3,918',price:'',category:'台灣餐廳'},
-'富貴亭':{district:'中區',rating:'4.3',reviews:'1,601',price:'',category:'台灣餐廳'},
-'越南你好':{district:'中區',rating:'4.3',reviews:'1,639',price:'',category:'越南餐廳'},
-'曙光居':{district:'西屯區',rating:'4.4',reviews:'599',price:'',category:'素食餐廳'},
-'陸園':{district:'西區',rating:'4.0',reviews:'1,607',price:'',category:'滬菜館'},
-'羅家古早味':{district:'南屯區',rating:'4.3',reviews:'1,815',price:'$200–400',category:'台灣餐廳'},
-'菇神（新社）':{district:'新社區',rating:'4.3',reviews:'3,793',price:'',category:'台灣餐廳'},
-'京華煙雲':{district:'西區',rating:'4.0',reviews:'1,368',price:'$400–1,200',category:'中菜館'},
-'醉月樓':{district:'中區',rating:'4.4',reviews:'1,363',price:'$400–1,200',category:'台灣餐廳'},
-'好先生':{district:'西區',rating:'3.7',reviews:'307',price:'',category:'中菜館'},
-'木公麥面':{district:'東區',rating:'4.3',reviews:'666',price:'$1–400',category:'麵店'},
-'牛稼莊':{district:'東勢區',rating:'4.0',reviews:'2,468',price:'',category:'中菜館'},
-'上海未名麵點':{district:'中區',rating:'4.0',reviews:'2,272',price:'$1–200',category:'麵店'},
-'東方龍':{district:'南屯區',rating:'4.5',reviews:'2,861',price:'',category:'中菜館'},
-'三喜食堂':{district:'南屯區',rating:'4.1',reviews:'75',price:'',category:'中菜館'},
-'饕之鄉':{district:'西區',rating:'4.0',reviews:'6,308',price:'',category:'中菜館'},
-'溫叨':{district:'北屯區',rating:'4.7',reviews:'4,401',price:'$400–600',category:'餐廳'},
-'沙卡':{district:'大雅區',rating:'4.2',reviews:'819',price:'$400–600',category:'台灣餐廳'},
-'彭城堂':{district:'太平區',rating:'4.5',reviews:'4,976',price:'$400–800',category:'台灣餐廳'},
-'飛花落院':{district:'新社區',rating:'4.3',reviews:'1,573',price:'超過 $2,000',category:'日本餐廳'}
+  "新月梧桐": {
+    "district": "西區",
+    "rating": "4.2",
+    "reviews": "1,814",
+    "price": "",
+    "category": "滬菜館"
+  },
+  "阿坤麵": {
+    "district": "中區",
+    "rating": "4.2",
+    "reviews": "2,213",
+    "price": "$1–200",
+    "category": "麵店"
+  },
+  "竹之鄉": {
+    "district": "北屯區",
+    "rating": "4.4",
+    "reviews": "1,773",
+    "price": "$200–400",
+    "category": "台灣餐廳"
+  },
+  "陳明統爌肉飯": {
+    "district": "東區",
+    "rating": "4.0",
+    "reviews": "2,763",
+    "price": "$1–200",
+    "category": "台灣餐廳"
+  },
+  "鳳記鵝肉老店": {
+    "district": "沙鹿區",
+    "rating": "4.1",
+    "reviews": "1,595",
+    "price": "$200–400",
+    "category": "台灣餐廳"
+  },
+  "鮮魚鱻": {
+    "district": "北區",
+    "rating": "3.8",
+    "reviews": "2,189",
+    "price": "$1–200",
+    "category": "台灣餐廳"
+  },
+  "富鼎旺": {
+    "district": "中區",
+    "rating": "4.2",
+    "reviews": "3,415",
+    "price": "",
+    "category": "台灣餐廳"
+  },
+  "富狀元豬腳": {
+    "district": "西區",
+    "rating": "3.6",
+    "reviews": "3,918",
+    "price": "",
+    "category": "台灣餐廳"
+  },
+  "富貴亭": {
+    "district": "中區",
+    "rating": "4.3",
+    "reviews": "1,601",
+    "price": "",
+    "category": "台灣餐廳"
+  },
+  "越南你好": {
+    "district": "中區",
+    "rating": "4.3",
+    "reviews": "1,639",
+    "price": "",
+    "category": "越南餐廳"
+  },
+  "曙光居": {
+    "district": "西屯區",
+    "rating": "4.4",
+    "reviews": "599",
+    "price": "",
+    "category": "素食餐廳"
+  },
+  "陸園": {
+    "district": "西區",
+    "rating": "4.0",
+    "reviews": "1,607",
+    "price": "",
+    "category": "滬菜館"
+  },
+  "羅家古早味": {
+    "district": "南屯區",
+    "rating": "4.3",
+    "reviews": "1,815",
+    "price": "$200–400",
+    "category": "台灣餐廳"
+  },
+  "菇神（新社）": {
+    "district": "新社區",
+    "rating": "4.3",
+    "reviews": "3,793",
+    "price": "",
+    "category": "台灣餐廳"
+  },
+  "京華煙雲": {
+    "district": "西區",
+    "rating": "4.0",
+    "reviews": "1,368",
+    "price": "$400–1,200",
+    "category": "中菜館"
+  },
+  "醉月樓": {
+    "district": "中區",
+    "rating": "4.4",
+    "reviews": "1,363",
+    "price": "$400–1,200",
+    "category": "台灣餐廳"
+  },
+  "好先生": {
+    "district": "西區",
+    "rating": "3.7",
+    "reviews": "307",
+    "price": "",
+    "category": "中菜館"
+  },
+  "木公麥面": {
+    "district": "東區",
+    "rating": "4.3",
+    "reviews": "666",
+    "price": "$1–400",
+    "category": "麵店"
+  },
+  "牛稼莊": {
+    "district": "東勢區",
+    "rating": "4.0",
+    "reviews": "2,468",
+    "price": "",
+    "category": "中菜館"
+  },
+  "上海未名麵點": {
+    "district": "中區",
+    "rating": "4.0",
+    "reviews": "2,272",
+    "price": "$1–200",
+    "category": "麵店"
+  },
+  "東方龍": {
+    "district": "南屯區",
+    "rating": "4.5",
+    "reviews": "2,861",
+    "price": "",
+    "category": "中菜館"
+  },
+  "三喜食堂": {
+    "district": "南屯區",
+    "rating": "4.1",
+    "reviews": "75",
+    "price": "",
+    "category": "中菜館"
+  },
+  "饕之鄉": {
+    "district": "西區",
+    "rating": "4.0",
+    "reviews": "6,308",
+    "price": "",
+    "category": "中菜館"
+  },
+  "溫叨": {
+    "district": "北屯區",
+    "rating": "4.7",
+    "reviews": "4,401",
+    "price": "$400–600",
+    "category": "餐廳"
+  },
+  "沙卡": {
+    "district": "大雅區",
+    "rating": "4.2",
+    "reviews": "819",
+    "price": "$400–600",
+    "category": "台灣餐廳"
+  },
+  "彭城堂": {
+    "district": "太平區",
+    "rating": "4.5",
+    "reviews": "4,976",
+    "price": "$400–800",
+    "category": "台灣餐廳"
+  },
+  "飛花落院": {
+    "district": "新社區",
+    "rating": "4.3",
+    "reviews": "1,573",
+    "price": "超過 $2,000",
+    "category": "日本餐廳"
+  },
+  "咕嚕咕嚕原住民音樂餐廳": {
+    "district": "西區",
+    "rating": "4.0",
+    "reviews": "33",
+    "category": "原住民料理"
+  },
+  "繡球": {
+    "district": "西區",
+    "rating": "4.2",
+    "reviews": "812",
+    "category": "中式麵食店"
+  },
+  "頂粵吉品": {
+    "district": "西屯區",
+    "rating": "4.6",
+    "reviews": "2,597",
+    "price": "超過 $2,000",
+    "category": "粵菜館"
+  },
+  "湖南味": {
+    "district": "北區",
+    "rating": "4.1",
+    "reviews": "1,552",
+    "category": "麵店"
+  },
+  "与玥樓": {
+    "district": "南屯區",
+    "rating": "4.3",
+    "reviews": "7,939",
+    "category": "粵菜館"
+  },
+  "小樂沐": {
+    "district": "西區",
+    "rating": "4.3",
+    "reviews": "328",
+    "category": "法國餐廳"
+  },
+  "Mariposa Bistro 蝴蝶餐廳": {
+    "district": "中區",
+    "rating": "4.7",
+    "reviews": "307",
+    "price": "$800–1,600",
+    "category": "歐陸餐廳"
+  },
+  "滿堂": {
+    "district": "西區",
+    "rating": "4.5",
+    "reviews": "340",
+    "category": "高級餐廳"
+  },
+  "元 YUAN": {
+    "district": "西區",
+    "rating": "4.4",
+    "reviews": "338",
+    "price": "超過 $2,000",
+    "category": "餐廳"
+  },
+  "金悅軒": {
+    "district": "南屯區",
+    "rating": "4.1",
+    "reviews": "2,898",
+    "category": "中菜館"
+  },
+  "醉鴛鴦啤酒廣場": {
+    "district": "南屯區",
+    "rating": "4.0",
+    "reviews": "2,329",
+    "price": "$400–600",
+    "category": "台灣餐廳"
+  },
+  "DNA 西班牙餐廳": {
+    "district": "西屯區",
+    "rating": "4.6",
+    "reviews": "325",
+    "category": "西班牙餐廳"
+  },
+  "Enrich restaurant & café": {
+    "district": "西屯區",
+    "rating": "4.6",
+    "reviews": "1,629",
+    "category": "素食餐廳"
+  },
+  "Vima House 維摩舍": {
+    "district": "大里區",
+    "rating": "4.7",
+    "reviews": "141",
+    "category": "藝術中心"
+  },
+  "小夏天 petit été": {
+    "district": "中區",
+    "rating": "4.2",
+    "reviews": "513",
+    "category": "越南餐廳"
+  },
+  "虹夕諾雅谷關": {
+    "district": "和平區",
+    "rating": "4.4",
+    "reviews": "2,415",
+    "category": "度假酒店"
+  },
+  "魚麗共同廚房": {
+    "district": "北區",
+    "rating": "4.3",
+    "reviews": "465",
+    "category": "餐廳"
+  },
+  "enPure 瀞": {
+    "district": "北區",
+    "rating": "4.7",
+    "reviews": "50",
+    "price": "超過 $2,000",
+    "category": "融合菜式餐廳"
+  },
+  "TROIS 三一": {
+    "district": "北屯區",
+    "rating": "4.9",
+    "reviews": "320",
+    "price": "超過 $2,000",
+    "category": "餐廳"
+  },
+  "春日宴": {
+    "district": "北屯區",
+    "rating": "4.8",
+    "reviews": "5,016",
+    "category": "中菜館"
+  },
+  "燒肉本氣": {
+    "district": "西區",
+    "rating": "4.5",
+    "reviews": "978",
+    "category": "日式燒肉餐廳"
+  },
+  "阿助鵝肉攤": {
+    "district": "南屯區",
+    "rating": "4.3",
+    "reviews": "330",
+    "category": "餐廳"
+  },
+  "Brass Hana 銅錵日式涮涮鍋": {
+    "district": "南屯區",
+    "rating": "4.6",
+    "reviews": "1,440",
+    "category": "涮涮鍋餐廳"
+  },
+  "Glou Suru": {
+    "district": "西區",
+    "rating": "4.3",
+    "reviews": "195",
+    "price": "$400–600",
+    "category": "小餐館"
+  },
+  "水赤床": {
+    "district": "北屯區",
+    "rating": "4.1",
+    "reviews": "442",
+    "category": "餐廳"
+  },
+  "明娟樓": {
+    "district": "西區",
+    "rating": "4.8",
+    "reviews": "536",
+    "price": "超過 $2,000",
+    "category": "中菜館"
+  },
+  "香・寓": {
+    "district": "西屯區",
+    "rating": "4.4",
+    "reviews": "25",
+    "category": "中菜館"
+  },
+  "梅子活海鮮餐廳": {
+    "district": "沙鹿區",
+    "rating": "4.2",
+    "reviews": "1,643",
+    "category": "海鮮餐廳"
+  },
+  "龍富 天婦羅": {
+    "district": "南屯區",
+    "rating": "4.5",
+    "reviews": "81",
+    "price": "超過 $2,000",
+    "category": "日本餐廳"
+  },
+  "Petit Petit": {
+    "district": "西區",
+    "rating": "4.9",
+    "reviews": "418",
+    "price": "$400–600",
+    "category": "小餐館"
+  },
+  "Zài cuisine": {
+    "district": "西區",
+    "rating": "4.6",
+    "reviews": "147",
+    "price": "超過 $2,000",
+    "category": "餐廳"
+  },
+  "布洛思廚": {
+    "district": "沙鹿區",
+    "rating": "4.6",
+    "reviews": "743",
+    "category": "義大利餐廳"
+  },
+  "全鴨坊市政總店": {
+    "district": "西屯區",
+    "rating": "4.4",
+    "reviews": "3,380",
+    "category": "中菜館"
+  },
+  "自在天昆布水つけ麵": {
+    "district": "南區",
+    "rating": "4.6",
+    "reviews": "184",
+    "category": "日本餐廳"
+  },
+  "弄堂－江浙一味": {
+    "district": "西區",
+    "rating": "4.5",
+    "reviews": "378",
+    "category": "餐廳"
+  },
+  "東引釣客野生海產店": {
+    "district": "西區",
+    "rating": "4.3",
+    "reviews": "641",
+    "price": "$400–1,200",
+    "category": "海鮮餐廳"
+  },
+  "真好記海鮮料理": {
+    "district": "大里區",
+    "rating": "4.3",
+    "reviews": "449",
+    "price": "$400–1,000",
+    "category": "海鮮餐廳"
+  },
+  "惠中蔬食滴水坊": {
+    "district": "西屯區",
+    "rating": "4.7",
+    "reviews": "757",
+    "category": "素食餐廳"
+  },
+  "菩薩寺維摩舍": {
+    "district": "大里區",
+    "rating": "4.7",
+    "reviews": "141",
+    "category": "複合式空間"
+  },
+  "萬月樓": {
+    "district": "西區",
+    "rating": "4.4",
+    "reviews": "533",
+    "price": "$800–2,000",
+    "category": "日本餐廳"
+  },
+  "鮨承": {
+    "district": "南屯區",
+    "rating": "4.6",
+    "reviews": "72",
+    "price": "超過 $2,000",
+    "category": "日本餐廳"
+  },
+  "三時茶房": {
+    "district": "北區",
+    "rating": "4.3",
+    "reviews": "1,013",
+    "category": "甜品餐廳"
+  },
+  "鹿行艸地": {
+    "district": "后里區",
+    "rating": "4.6",
+    "reviews": "1,029",
+    "price": "$1–200",
+    "category": "冰品飲料店"
+  },
+  "五市肉包": {
+    "district": "西區",
+    "rating": "3.9",
+    "reviews": "431",
+    "category": "中式包點店"
+  },
+  "松葉壽司": {
+    "district": "西區",
+    "rating": "4.4",
+    "reviews": "1,545",
+    "category": "壽司店"
+  },
+  "大智路蕭爌肉飯": {
+    "district": "東區",
+    "rating": "4.2",
+    "reviews": "3,542",
+    "category": "台灣餐廳"
+  },
+  "旱溪觀光夜市酥皮春捲": {
+    "district": "東區",
+    "rating": "5.0",
+    "reviews": "2",
+    "category": "中菜館"
+  },
+  "珍品小吃": {
+    "district": "西區",
+    "rating": "4.2",
+    "reviews": "1,169",
+    "price": "$1–200",
+    "category": "台灣餐廳"
+  },
+  "嵐肉燥專賣店": {
+    "district": "中區",
+    "rating": "4.2",
+    "reviews": "2,236",
+    "price": "$1–200",
+    "category": "台灣餐廳"
+  },
+  "翁記泡沫廣場": {
+    "district": "北區",
+    "rating": "3.7",
+    "reviews": "3,408",
+    "price": "$200–400",
+    "category": "台灣餐廳"
+  },
+  "城市奶冰樂台中中華店": {
+    "district": "中區",
+    "rating": "4.2",
+    "reviews": "391",
+    "price": "$1–200",
+    "category": "冰品飲料店"
+  },
+  "丁記炸粿": {
+    "district": "南區",
+    "rating": "3.2",
+    "reviews": "72",
+    "price": "$1–200",
+    "category": "餐廳"
+  },
+  "三回": {
+    "district": "西區",
+    "rating": "4.8",
+    "reviews": "321",
+    "price": "$200–400",
+    "category": "早午餐餐廳"
+  },
+  "上海灘租界地": {
+    "district": "南屯區",
+    "rating": "4.6",
+    "reviews": "1,017",
+    "category": "餐廳"
+  },
+  "大雅無名麵攤臭豆腐": {
+    "district": "大雅區",
+    "rating": "4.1",
+    "reviews": "197",
+    "category": "中菜館"
+  },
+  "大雅萬丹紅豆餅豐仁冰": {
+    "district": "大雅區",
+    "rating": "3.7",
+    "reviews": "62",
+    "price": "$1–200",
+    "category": "甜品餐廳"
+  },
+  "天津苟不理湯包": {
+    "district": "東區",
+    "rating": "4.4",
+    "reviews": "6,927",
+    "category": "中式包點店"
+  },
+  "台南蘇無刺虱目魚": {
+    "district": "西屯區",
+    "rating": "4.0",
+    "reviews": "1,357",
+    "price": "$1–200",
+    "category": "魚料理餐廳"
+  },
+  "四季春甜食店": {
+    "district": "中區",
+    "rating": "4.4",
+    "reviews": "403",
+    "category": "甜品店"
+  },
+  "旬魚": {
+    "district": "南屯區",
+    "rating": "4.6",
+    "reviews": "397",
+    "price": "$800–1,000",
+    "category": "餐廳"
+  },
+  "東佳牛肉麵館": {
+    "district": "西區",
+    "rating": "4.1",
+    "reviews": "990",
+    "price": "$1–200",
+    "category": "中式麵食店"
+  },
+  "阿川鵝肉": {
+    "district": "西區",
+    "rating": "4.0",
+    "reviews": "1,314",
+    "price": "$200–400",
+    "category": "餐廳"
+  },
+  "品味香麵攤": {
+    "district": "南屯區",
+    "rating": "4.3",
+    "reviews": "1,309",
+    "category": "麵店"
+  },
+  "乾麵酸菜湯老店": {
+    "district": "西區",
+    "rating": "4.4",
+    "reviews": "495",
+    "price": "$1–200",
+    "category": "麵店"
+  },
+  "現採炭烤玉米": {
+    "district": "潭子區",
+    "rating": "4.5",
+    "reviews": "90",
+    "price": "$1–200",
+    "category": "小吃攤"
+  },
+  "蚵仔粥": {
+    "district": "西區",
+    "rating": "4.1",
+    "reviews": "4,564",
+    "category": "粥餐廳"
+  },
+  "陳記蚵仔麵線": {
+    "district": "西區",
+    "rating": "4.1",
+    "reviews": "1,172",
+    "price": "$1–200",
+    "category": "熟食店"
+  },
+  "頂好炸雞": {
+    "district": "大雅區",
+    "rating": "4.3",
+    "reviews": "29",
+    "price": "$1–200",
+    "category": "炸雞外帶"
+  },
+  "鵝城": {
+    "district": "中區",
+    "rating": "4.4",
+    "reviews": "355",
+    "price": "$1–400",
+    "category": "小吃店"
+  },
+  "麵哥麵嫂": {
+    "district": "西區",
+    "rating": "3.9",
+    "reviews": "541",
+    "price": "$1–200",
+    "category": "麵店"
+  },
+  "饕食館": {
+    "district": "北屯區",
+    "rating": "4.1",
+    "reviews": "1,029",
+    "price": "$1–200",
+    "category": "中式麵食店"
+  },
+  "「傳」台中正老牌香菇肉羹（綠川店）": {
+    "district": "中區",
+    "rating": "4.1",
+    "reviews": "3,072",
+    "price": "$1–200",
+    "category": "熟食店"
+  },
+  "大慈天然素食": {
+    "district": "北屯區",
+    "rating": "4.6",
+    "reviews": "1,484",
+    "category": "素食餐廳"
+  },
+  "子梧桐 日本傳統手工烏龍麵": {
+    "district": "西區",
+    "rating": "4.7",
+    "reviews": "283",
+    "category": "日本餐廳"
+  },
+  "小山西館": {
+    "district": "北區",
+    "rating": "4.2",
+    "reviews": "528",
+    "category": "中菜館"
+  },
+  "小林雞肉飯": {
+    "district": "北屯區",
+    "rating": "3.9",
+    "reviews": "1,455",
+    "category": "熟食店"
+  },
+  "六豊": {
+    "district": "西區",
+    "rating": "4.5",
+    "reviews": "364",
+    "category": "餐廳"
+  },
+  "水湳台中肉圓": {
+    "district": "北屯區",
+    "rating": "4.1",
+    "reviews": "462",
+    "category": "台灣餐廳"
+  },
+  "弘水煎包": {
+    "district": "西區",
+    "rating": "4.1",
+    "reviews": "149",
+    "price": "$1–200",
+    "category": "熟食店"
+  },
+  "民生嘉義米糕": {
+    "district": "西區",
+    "rating": "4.2",
+    "reviews": "1,114",
+    "category": "熟食店"
+  },
+  "你最蒸粿": {
+    "district": "大肚區",
+    "rating": "4.9",
+    "reviews": "436",
+    "category": "健康食品店"
+  },
+  "吳記脆皮肉圓": {
+    "district": "北區",
+    "rating": "4.0",
+    "reviews": "4,067",
+    "category": "熟食店"
+  },
+  "沙鹿肉圓福（沙田店）": {
+    "district": "沙鹿區",
+    "rating": "4.1",
+    "reviews": "319",
+    "price": "$1–200",
+    "category": "熟食店"
+  },
+  "阿棋三代福州意麵老店": {
+    "district": "中區",
+    "rating": "4.1",
+    "reviews": "2,636",
+    "price": "$1–200",
+    "category": "小吃店"
+  },
+  "南陽路炒麵豬血湯": {
+    "district": "豐原區",
+    "rating": "4.2",
+    "reviews": "93",
+    "category": "餐廳"
+  },
+  "柳川大麵焿水晶餃": {
+    "district": "西區",
+    "rating": "4.4",
+    "reviews": "487",
+    "price": "$1–200",
+    "category": "餐廳"
+  },
+  "美蓁小吃店": {
+    "district": "北區",
+    "rating": "4.1",
+    "reviews": "456",
+    "price": "$1–200",
+    "category": "麵店"
+  },
+  "風鼓崎豬血湯老店": {
+    "district": "后里區",
+    "rating": "4.3",
+    "reviews": "383",
+    "price": "$1–200",
+    "category": "小食/零食吧"
+  },
+  "烏日水煎包": {
+    "district": "烏日區",
+    "rating": "4.3",
+    "reviews": "372",
+    "category": "熟食店"
+  },
+  "租界": {
+    "district": "南屯區",
+    "rating": "4.6",
+    "reviews": "1,017",
+    "category": "餐廳"
+  },
+  "清水燒炸粿": {
+    "district": "清水區",
+    "rating": "4.3",
+    "reviews": "1,105",
+    "price": "$1–200",
+    "category": "熟食店"
+  },
+  "許愿 飲食空間": {
+    "district": "西區",
+    "rating": "4.7",
+    "reviews": "304",
+    "price": "$200–400",
+    "category": "有機餐廳"
+  },
+  "無招牌自治街乾麵": {
+    "district": "西區",
+    "rating": "4.4",
+    "reviews": "877",
+    "price": "$1–200",
+    "category": "麵店"
+  },
+  "鈞苰牛肉麵": {
+    "district": "北區",
+    "rating": "4.3",
+    "reviews": "334",
+    "category": "餐廳"
+  },
+  "新豐源排骨麵店": {
+    "district": "北區",
+    "rating": "4.0",
+    "reviews": "2,207",
+    "price": "$1–200",
+    "category": "麵店"
+  },
+  "董媽涼麵": {
+    "district": "北區",
+    "rating": "4.1",
+    "reviews": "1,102",
+    "category": "冷麵店"
+  },
+  "聚眾緣麵館": {
+    "district": "西屯區",
+    "rating": "4.6",
+    "reviews": "320",
+    "price": "$1–200",
+    "category": "素食餐廳"
+  },
+  "聞湘小館": {
+    "district": "西區",
+    "rating": "4.6",
+    "reviews": "402",
+    "category": "素食餐廳"
+  },
+  "寬華薑母鴨": {
+    "district": "太平區",
+    "rating": "4.5",
+    "reviews": "207",
+    "category": "火鍋餐廳"
+  },
+  "鄭記上海蟹殼黃碳烤小酥餅": {
+    "district": "西區",
+    "rating": "4.3",
+    "reviews": "277",
+    "price": "$1–200",
+    "category": "中式糕餅店"
+  },
+  "顏正原燒烤／串燒（北平店）": {
+    "district": "北區",
+    "rating": "4.3",
+    "reviews": "383",
+    "category": "燒烤"
+  },
+  "日棧飯糰": {
+    "district": "西區",
+    "rating": "4.5",
+    "reviews": "1,187",
+    "price": "$1–200",
+    "category": "熟食店"
+  },
+  "合作街大麵羹": {
+    "district": "南區",
+    "rating": "4.5",
+    "reviews": "704",
+    "category": "熟食店"
+  },
+  "TAKU 牛丼專賣": {
+    "district": "西區",
+    "rating": "4.5",
+    "reviews": "1,460",
+    "category": "牛丼餐廳"
+  },
+  "三鮮湯包": {
+    "district": "北區",
+    "rating": "4.4",
+    "reviews": "1,519",
+    "category": "餐廳"
+  },
+  "大雅牛肉麵": {
+    "district": "大雅區",
+    "rating": "4.0",
+    "reviews": "1,281",
+    "category": "餐廳"
+  },
+  "大雅炸雞": {
+    "district": "大雅區",
+    "rating": "4.7",
+    "reviews": "375",
+    "price": "$1–200",
+    "category": "炸雞外帶"
+  },
+  "水湳臭豆腐": {
+    "district": "西區",
+    "rating": "4.4",
+    "reviews": "212",
+    "category": "豆腐餐廳"
+  },
+  "旱溪肉圓": {
+    "district": "東區",
+    "rating": "4.1",
+    "reviews": "1,099",
+    "category": "台灣餐廳"
+  },
+  "北屯佳賓黑白切": {
+    "district": "北屯區",
+    "rating": "4.0",
+    "reviews": "222",
+    "price": "$200–400",
+    "category": "餐廳"
+  },
+  "台南本產阿文溫體牛肉湯": {
+    "district": "北區",
+    "rating": "3.6",
+    "reviews": "274",
+    "category": "餐廳"
+  },
+  "阿彰飯担": {
+    "district": "西區",
+    "rating": "3.9",
+    "reviews": "1,789",
+    "category": "台灣餐廳"
+  },
+  "阿靜の潤餅－向上店": {
+    "district": "西區",
+    "rating": "3.0",
+    "reviews": "308",
+    "category": "健康食品店"
+  },
+  "南屯豬腳麵線": {
+    "district": "南屯區",
+    "rating": "4.2",
+    "reviews": "4,181",
+    "category": "麵店"
+  },
+  "炸粿生三代老店": {
+    "district": "后里區",
+    "rating": "4.0",
+    "reviews": "274",
+    "category": "熟食店"
+  },
+  "紅樹腳香菇肉羹": {
+    "district": "西區",
+    "rating": "4.1",
+    "reviews": "511",
+    "price": "$1–200",
+    "category": "熟食店"
+  },
+  "風飛沙小吃店": {
+    "district": "神岡區",
+    "rating": "4.1",
+    "reviews": "1,336",
+    "category": "熟食店"
+  },
+  "鹿港扁食": {
+    "district": "中區",
+    "rating": "4.5",
+    "reviews": "56",
+    "category": "熟食店"
+  },
+  "新社老街豆腐宗": {
+    "district": "新社區",
+    "rating": "4.2",
+    "reviews": "785",
+    "category": "熟食店"
+  },
+  "萬順羹麵創始店": {
+    "district": "東勢區",
+    "rating": "4.6",
+    "reviews": "145",
+    "category": "麵店"
+  },
+  "曉明湯包": {
+    "district": "西屯區",
+    "rating": "3.6",
+    "reviews": "1,467",
+    "category": "早餐店"
+  },
+  "翰德正老牌蚵仔粥": {
+    "district": "西區",
+    "rating": "4.1",
+    "reviews": "4,564",
+    "price": "$1–200",
+    "category": "粥餐廳"
+  },
+  "藍山牛肉麵": {
+    "district": "西區",
+    "rating": "4.3",
+    "reviews": "—",
+    "category": "牛肉麵店"
+  },
+  "正老牌豐原肉丸": {
+    "district": "豐原區",
+    "rating": "4.3",
+    "reviews": "1,644",
+    "category": "台灣餐廳"
+  },
+  "坂神本舖長崎蛋糕": {
+    "district": "中區",
+    "rating": "4.2",
+    "reviews": "2,397",
+    "price": "$200–400",
+    "category": "糕餅店"
+  },
+  "National Park bakery 國家公園餅店": {
+    "district": "線上",
+    "rating": "4.7",
+    "reviews": "21",
+    "category": "糕餅店"
+  },
+  "戰豆冰": {
+    "district": "北區",
+    "rating": "4.6",
+    "reviews": "457",
+    "category": "冰品飲料店"
+  },
+  "陳記涼茶本舖": {
+    "district": "中區",
+    "rating": "4.1",
+    "reviews": "523",
+    "price": "$1–200",
+    "category": "冰品飲料店"
+  },
+  "美村點頭冰": {
+    "district": "西區",
+    "rating": "4.0",
+    "reviews": "2,281",
+    "category": "冰品飲料店"
+  },
+  "奉咖啡": {
+    "district": "西區",
+    "rating": "4.8",
+    "reviews": "519",
+    "category": "咖啡店"
+  },
+  "不二糕餅": {
+    "district": "南屯區",
+    "rating": "4.6",
+    "reviews": "5,599",
+    "category": "糕餅店"
+  },
+  "硬翰拔絲米血": {
+    "district": "南區",
+    "rating": "4.8",
+    "reviews": "12",
+    "category": "夜市"
+  },
+  "純植烘焙所": {
+    "district": "中區",
+    "rating": "4.7",
+    "reviews": "158",
+    "category": "甜品店"
+  },
+  "APRIL 植物系甜點": {
+    "district": "南區",
+    "rating": "4.8",
+    "reviews": "60",
+    "category": "甜品店"
+  },
+  "甜寓17烘焙所": {
+    "district": "東區",
+    "rating": "5.0",
+    "reviews": "45",
+    "category": "甜品店"
+  },
+  "28 Bake House": {
+    "district": "西屯區",
+    "rating": "4.8",
+    "reviews": "167",
+    "category": "餅店"
+  },
+  "烏婆傳統甜品店": {
+    "district": "沙鹿區",
+    "rating": "4.6",
+    "reviews": "968",
+    "price": "$1–200",
+    "category": "甜品餐廳"
+  },
+  "沙鹿豆花": {
+    "district": "沙鹿區",
+    "rating": "4.0",
+    "reviews": "356",
+    "category": "甜品店"
+  },
+  "樹下阿婆粉圓": {
+    "district": "清水區",
+    "rating": "4.2",
+    "reviews": "1,566",
+    "category": "甜品店"
+  },
+  "喜豐香餅舖": {
+    "district": "沙鹿區",
+    "rating": "4.3",
+    "reviews": "918",
+    "category": "糕餅店"
+  },
+  "日錦製造所": {
+    "district": "西區",
+    "rating": "4.5",
+    "reviews": "44",
+    "category": "甜品店"
+  },
+  "順口味豆花": {
+    "district": "東區",
+    "rating": "4.6",
+    "reviews": "78",
+    "price": "$200–400",
+    "category": "餅店"
+  },
+  "七賢紅麴米糕": {
+    "district": "大里區",
+    "rating": "4.5",
+    "reviews": "299",
+    "category": "食品生產商"
+  },
+  "阿銘伯花生捲冰淇淋": {
+    "district": "豐原區",
+    "rating": "4.9",
+    "reviews": "792",
+    "category": "甜品店"
+  },
+  "Huii 達克瓦茲專賣店": {
+    "district": "西區",
+    "rating": "4.7",
+    "reviews": "24",
+    "category": "甜品店"
+  },
+  "咖啡葉": {
+    "district": "豐原區",
+    "rating": "4.7",
+    "reviews": "1,088",
+    "price": "$200–400",
+    "category": "咖啡店"
+  },
+  "IBS 菩薩寺": {
+    "district": "大里區",
+    "rating": "4.6",
+    "reviews": "4,591",
+    "category": "寺廟"
+  },
+  "豐原義華鹹蛋糕": {
+    "district": "豐原區",
+    "rating": "4.3",
+    "reviews": "470",
+    "category": "餅店"
+  },
+  "羅拉典藏蛋糕": {
+    "district": "西區",
+    "rating": "4.5",
+    "reviews": "293",
+    "category": "甜品店"
+  },
+  "愛莉兒手作烘焙坊": {
+    "district": "北屯區",
+    "rating": "4.6",
+    "reviews": "336",
+    "category": "餅店"
+  },
+  "Domochew Lab 多麼秋生活食驗室": {
+    "district": "北區",
+    "rating": "4.4",
+    "reviews": "51",
+    "category": "甜品店"
+  },
+  "LULU's Choice": {
+    "district": "西區",
+    "rating": "4.3",
+    "reviews": "402",
+    "price": "$200–400",
+    "category": "咖啡店"
+  },
+  "Miss B Drink & Food": {
+    "district": "西區",
+    "rating": "4.9",
+    "reviews": "228",
+    "category": "甜品店"
+  },
+  "AGIO Chocolates 愛其歐巧克力": {
+    "district": "西屯區",
+    "rating": "4.6",
+    "reviews": "268",
+    "category": "巧克力店"
+  }
 };
 
 const districtRules=[['沙鹿','沙鹿區'],['大雅','大雅區'],['豐原','豐原區'],['烏日','烏日區'],['清水','清水區'],['新社','新社區'],['北屯','北屯區'],['南屯','南屯區'],['東勢','東勢區'],['逢甲','西屯區'],['水湳','北屯區'],['旱溪','東區'],['大智路','東區'],['中華','中區']];
@@ -74,7 +1218,7 @@ const $=id=>document.getElementById(id);
 function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function mapUrl(name){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(name+' 台中')}
 function districtOf(name){if(mapData[name]?.district)return mapData[name].district;for(const [key,val] of districtRules)if(name.includes(key))return val;return '—'}
-function mapSummary(name){const d=mapData[name];if(!d)return '<span class="map-rating"><i class="bi bi-geo-alt-fill"></i> Google Maps</span><span class="map-detail"> · 查看最新資訊</span>';const detail=[d.price,d.category].filter(Boolean).join(' · ');return '<span class="map-rating">★ '+esc(d.rating)+' ('+esc(d.reviews)+')</span>'+(detail?'<span class="map-detail"> · '+esc(detail)+'</span>':'')}
+function mapSummary(name){const d=mapData[name];if(!d)return '<span class="map-rating">Google Maps 資料未公開</span>';const reviewText=d.reviews&&d.reviews!=='—'?' ('+esc(d.reviews)+')':'';const detail=[d.price,d.category].filter(Boolean).join(' · ');return '<span class="map-rating">★ '+esc(d.rating)+reviewText+'</span>'+(detail?'<span class="map-detail"> · '+esc(detail)+'</span>':'')}
 function sortByDistrict(items){return [...items].sort((a,b)=>{const da=districtOf(a),db=districtOf(b),ia=districtOrder.indexOf(da),ib=districtOrder.indexOf(db);if(ia!==ib)return ia-ib;return a.localeCompare(b,'zh-Hant')})}
 function render(){
 const keyword=$('searchInput').value.trim().toLowerCase();let html='';
