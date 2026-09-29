@@ -22,18 +22,16 @@
 <div class="hero-top"><div class="brand"><div class="brand-icon">🐟</div><h1>魚魚の收藏夾</h1></div><div><a class="soft-btn text-decoration-none" href="./index.html"><i class="bi bi-house"></i> 回首頁</a> <button id="logoutBtn" class="soft-btn hidden"><i class="bi bi-box-arrow-right"></i> 登出</button></div></div>
 <div id="mainActions" class="hero-actions hidden"><button id="newGroupBtn" class="soft-btn primary"><i class="bi bi-folder-plus"></i> 新增群組</button><span class="stat" id="groupStat">0 個群組</span><span class="stat" id="pageStat">0 個分頁</span></div>
 </section>
-<section id="loginPanel" class="panel hidden"><h2 class="status-title">🔐 私人收藏</h2><p class="status-text">只有你的 Google 帳號能使用。</p><button id="googleLoginBtn" class="soft-btn primary mt-2"><i class="bi bi-google"></i> 使用 Google 登入</button></section>
+<section id="loginPanel" class="panel hidden"><h2 class="status-title">🔐 私人收藏</h2><p class="status-text">只有你的 Google 帳號能使用。</p><div id="googleLoginBtn" class="mt-2"></div></section>
 <section id="toolbar" class="panel hidden"><div class="toolbar"><div class="search"><i class="bi bi-search"></i><input id="searchInput" class="form-control" placeholder="搜尋名稱、網站標題或備註..."></div><div class="toolbar-actions"><button id="titleRefreshBtn" class="soft-btn" title="只重抓看起來異常的網站標題"><i class="bi bi-type"></i><span>重抓標題</span></button><button id="collapseAllBtn" class="soft-btn"><i class="bi bi-arrows-collapse"></i><span>全部收合</span></button><button id="refreshBtn" class="soft-btn"><i class="bi bi-arrow-clockwise"></i> 重新整理</button></div></div></section>
 <main id="groupsWrap" class="groups"></main>
 </div>
 <div class="toast-container position-fixed bottom-0 end-0 p-3"><div id="appToast" class="toast"><div class="d-flex"><div id="toastText" class="toast-body">完成</div><button class="btn-close me-2 m-auto" data-bs-dismiss="toast"></button></div></div></div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/12.18.0/firebase-firestore-compat.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
 <script>
-const ALLOWED_UID='zK8b0EzOBzbioXBqbgnRaF5uJJ22',COLLAPSE_KEY='yuyuBookmarkCollapsedGroups';
-let auth,db,user=null,groups=[],pages=[],keyword='',editingPageId='',editingGroupId='',addingPageGroupId='',addingGroup=false,draggingGroupId='',draggingPageId='',refreshingTitles=false;
+const GOOGLE_CLIENT_ID='950115107076-o51fm3q7l494ka3mqh7t5v5rce2vdhuj.apps.googleusercontent.com',COLLAPSE_KEY='yuyuBookmarkCollapsedGroups',TOKEN_KEY='yuyuGoogleIdToken';
+let idToken=sessionStorage.getItem(TOKEN_KEY)||'',user=null,groups=[],pages=[],keyword='',editingPageId='',editingGroupId='',addingPageGroupId='',addingGroup=false,draggingGroupId='',draggingPageId='',refreshingTitles=false;
 let collapsedGroups=new Set();try{collapsedGroups=new Set(JSON.parse(localStorage.getItem(COLLAPSE_KEY)||'[]'))}catch{}
 const $=id=>document.getElementById(id),toast=new bootstrap.Toast($('appToast'),{delay:2800});
 function visible(id,on){$(id).classList.toggle('hidden',!on)}
@@ -48,18 +46,83 @@ function pageIdentity(url){const clean=normUrl(url),yt=youtubeVideoId(clean);if(
 function fallbackTitle(url,hint=''){const h=String(hint||'').replace(/\s+/g,' ').trim(),yt=youtubeVideoId(url);if(h&&!/^https?:\/\//i.test(h)&&!/^youtube(?:\.com)?$/i.test(h))return h;if(yt)return `YouTube · ${yt}`;try{const u=new URL(url);return `${u.hostname.replace(/^www\./,'')}${u.pathname==='/'?'':u.pathname}`}catch{return url}}
 function isPrivateUrl(url){try{const h=new URL(url).hostname.toLowerCase();if(h==='localhost'||h==='0.0.0.0'||h==='::1'||h.endsWith('.local'))return true;if(/^127\./.test(h)||/^10\./.test(h)||/^192\.168\./.test(h)||/^169\.254\./.test(h))return true;const m=h.match(/^172\.(\d+)\./);return !!(m&&Number(m[1])>=16&&Number(m[1])<=31)}catch{return true}}
 function weakTitle(p){const t=String(p.title||'').replace(/\s+/g,' ').trim();if(!t||/^https?:\/\//i.test(t)||/^YouTube\s*·/i.test(t))return true;try{const u=new URL(p.url),host=u.hostname.replace(/^www\./,'').toLowerCase(),low=t.toLowerCase(),path=(host+(u.pathname==='/'?'':u.pathname)).toLowerCase();return low===host||low===path||low===u.href.toLowerCase()||low===u.origin.toLowerCase()}catch{return false}}
-function groupsRef(){return db.collection('users').doc(user.uid).collection('groups')}
-function pagesRef(){return db.collection('users').doc(user.uid).collection('bookmarks')}
+const GAS_URL='https://script.google.com/macros/s/AKfycbwVzHA8FOhiNYjOZzB5NLepZr9NSont5aU3HXcIGpwteu126NmAr42KUwBWayz5wg8/exec';
+
+async function sheetsApi(payload){
+    if(!idToken)throw new Error('尚未登入');
+    const r=await fetch(GAS_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...payload,token:idToken})});
+    const data=await r.json();
+    if(!data.ok)throw new Error(data.error||'Google Sheets API 操作失敗');
+    return data;
+}
+function newId(){return crypto.randomUUID?crypto.randomUUID():'id_'+Date.now()+'_'+Math.random().toString(36).slice(2)}
+class SheetsDoc{
+    constructor(type,id){this.type=type;this.id=id||newId()}
+    async update(data){return sheetsApi({action:'update',type:this.type,id:this.id,data})}
+    async delete(){return sheetsApi({action:'delete',type:this.type,id:this.id})}
+}
+class SheetsCollection{
+    constructor(type){this.type=type}
+    async get(){
+        const r=await sheetsApi({action:'list',type:this.type});
+        return{docs:(r.items||[]).map(x=>({id:String(x.id),data:()=>({...x})}))}
+    }
+    async add(data){
+        const id=newId();
+        await sheetsApi({action:'add',type:this.type,id,data});
+        return{id}
+    }
+    doc(id){return new SheetsDoc(this.type,id)}
+}
+class SheetsBatch{
+    constructor(){this.ops=[]}
+    delete(ref){this.ops.push({op:'delete',type:ref.type,id:ref.id})}
+    update(ref,data){this.ops.push({op:'update',type:ref.type,id:ref.id,data})}
+    set(ref,data){this.ops.push({op:'set',type:ref.type,id:ref.id,data})}
+    async commit(){if(this.ops.length)await sheetsApi({action:'batch',ops:this.ops})}
+}
+const db={batch:()=>new SheetsBatch()};
+function groupsRef(){return new SheetsCollection('groups')}
+function pagesRef(){return new SheetsCollection('bookmarks')}
 function saveCollapsed(){try{localStorage.setItem(COLLAPSE_KEY,JSON.stringify([...collapsedGroups]))}catch{}}
 function clearDropMarks(){document.querySelectorAll('.drag-over,.group-drop-before,.group-drop-after,.page-drop-before,.page-drop-after').forEach(el=>el.classList.remove('drag-over','group-drop-before','group-drop-after','page-drop-before','page-drop-after'))}
-async function getFirebaseConfig(){const r=await fetch('./links_legacy.html',{cache:'force-cache'});if(!r.ok)throw new Error('讀不到 Firebase 設定');const text=await r.text(),get=k=>{const m=text.match(new RegExp(`${k}:"([^"]+)"`));if(!m)throw new Error(`缺少 ${k}`);return m[1]};return{apiKey:get('apiKey'),authDomain:get('authDomain'),projectId:get('projectId'),storageBucket:get('storageBucket'),messagingSenderId:get('messagingSenderId'),appId:get('appId'),measurementId:get('measurementId')}}
-async function fetchPageTitleResult(url,hint=''){const fallback=fallbackTitle(url,hint),yt=youtubeVideoId(url);if(yt){try{const watchUrl=`https://www.youtube.com/watch?v=${encodeURIComponent(yt)}`,r=await fetch(`https://www.youtube.com/oembed?url=${encodeURIComponent(watchUrl)}&format=json`,{credentials:'omit'});if(r.ok){const data=await r.json(),title=String(data?.title||'').replace(/\s+/g,' ').trim();if(title)return{title,reliable:true}}}catch(e){console.warn('[Title] YouTube oEmbed failed',e)}}if(isPrivateUrl(url))return{title:fallback,reliable:false};const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),4000);try{const r=await fetch(url,{method:'GET',mode:'cors',credentials:'omit',redirect:'follow',signal:controller.signal});if(!r.ok)throw new Error('fetch failed');const html=await r.text(),doc=new DOMParser().parseFromString(html,'text/html'),title=String(doc.querySelector('title')?.textContent||'').replace(/\s+/g,' ').trim();return title?{title,reliable:true}:{title:fallback,reliable:false}}catch{return{title:fallback,reliable:false}}finally{clearTimeout(timer)}}
-async function fetchPageTitle(url,hint=''){return(await fetchPageTitleResult(url,hint)).title}
-async function startFirebase(){try{const cfg=await getFirebaseConfig();firebase.initializeApp(cfg);auth=firebase.auth();db=firebase.firestore();auth.onAuthStateChanged(async u=>{if(u&&u.uid!==ALLOWED_UID){msg('這個 Google 帳號沒有使用權限');await auth.signOut();return}user=u;const ok=!!u;visible('loginPanel',!ok);visible('logoutBtn',ok);visible('mainActions',ok);visible('toolbar',ok);if(ok)await loadData();else $('groupsWrap').innerHTML=''})}catch(e){console.error(e);msg('Firebase 初始化失敗：'+e.message)}}
-startFirebase();
-$('googleLoginBtn').onclick=async()=>{try{await auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())}catch(e){console.error(e);msg('登入失敗：'+e.message)}};
-$('logoutBtn').onclick=()=>auth.signOut();
-async function loadData(){try{const[g,p]=await Promise.all([groupsRef().get(),pagesRef().get()]);groups=g.docs.map((d,i)=>({id:d.id,...d.data(),_fallback:i})).sort((a,b)=>orderOf(a,a._fallback)-orderOf(b,b._fallback));pages=p.docs.map((d,i)=>({id:d.id,...d.data(),_fallback:i})).filter(x=>x.groupId).sort((a,b)=>orderOf(a,a._fallback)-orderOf(b,b._fallback));render()}catch(e){console.error(e);msg('讀取失敗：'+e.message)}}
+function decodeJwt(token){
+    try{
+        const base64=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');
+        return JSON.parse(decodeURIComponent(atob(base64).split('').map(c=>'%' + ('00'+c.charCodeAt(0).toString(16)).slice(-2)).join('')));
+    }catch{return null}
+}
+function setLoginState(loggedIn){
+    visible('loginPanel',!loggedIn);visible('logoutBtn',loggedIn);visible('mainActions',loggedIn);visible('toolbar',loggedIn);
+    if(!loggedIn)$('groupsWrap').innerHTML='';
+}
+async function handleGoogleCredential(response){
+    idToken=response.credential||'';
+    const payload=decodeJwt(idToken);
+    if(!idToken||!payload){msg('Google 登入失敗');return}
+    sessionStorage.setItem(TOKEN_KEY,idToken);
+    user={email:payload.email||'',name:payload.name||''};
+    setLoginState(true);
+    try{await loadData()}catch(e){logoutGoogle();throw e}
+}
+function initGoogleLogin(){
+    if(!window.google?.accounts?.id){setTimeout(initGoogleLogin,120);return}
+    google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:handleGoogleCredential,auto_select:false,cancel_on_tap_outside:true});
+    google.accounts.id.renderButton($('googleLoginBtn'),{theme:'outline',size:'large',shape:'pill',text:'signin_with',width:220});
+    setLoginState(false); // 預設先顯示登入區塊
+    if(idToken){
+        const payload=decodeJwt(idToken),expired=!payload||Number(payload.exp||0)*1000<=Date.now();
+        if(expired){sessionStorage.removeItem(TOKEN_KEY);idToken='';setLoginState(false)}
+        else{user={email:payload.email||'',name:payload.name||''};setLoginState(true);loadData().catch(()=>logoutGoogle())}
+    }
+}
+function logoutGoogle(){
+    if(user?.email&&window.google?.accounts?.id)google.accounts.id.disableAutoSelect();
+    sessionStorage.removeItem(TOKEN_KEY);idToken='';user=null;groups=[];pages=[];setLoginState(false);
+}
+window.addEventListener('load',initGoogleLogin);
+$('logoutBtn').onclick=logoutGoogle;
+async function loadData(){try{$('refreshBtn')&&( $('refreshBtn').disabled=true );const[g,p]=await Promise.all([groupsRef().get(),pagesRef().get()]);groups=g.docs.map((d,i)=>({id:d.id,...d.data(),_fallback:i})).sort((a,b)=>orderOf(a,a._fallback)-orderOf(b,b._fallback));pages=p.docs.map((d,i)=>({id:d.id,...d.data(),_fallback:i})).filter(x=>x.groupId).sort((a,b)=>orderOf(a,a._fallback)-orderOf(b,b._fallback));render()}catch(e){console.error(e);msg('讀取失敗：'+e.message);throw e}finally{$('refreshBtn')&&( $('refreshBtn').disabled=false )}}
 function syncCollapseButton(){const allCollapsed=groups.length&&groups.every(g=>collapsedGroups.has(g.id));$('collapseAllBtn').innerHTML=allCollapsed?'<i class="bi bi-arrows-expand"></i><span>全部展開</span>':'<i class="bi bi-arrows-collapse"></i><span>全部收合</span>'}
 function render(){$('groupStat').textContent=`${groups.length} 個群組`;$('pageStat').textContent=`${pages.length} 個分頁`;syncCollapseButton();renderGroups()}
 function hit(p){if(!keyword)return true;return[displayName(p),p.title||'',p.note||''].join(' ').toLowerCase().includes(keyword)}
@@ -68,7 +131,7 @@ function normalRow(p){const name=displayName(p),title=String(p.title||'').trim()
 function editRow(p){const f=favicon(p.url);return `<div class="page-row"><div class="favicon">${f?`<img src="${esc(f)}" alt="" loading="lazy" decoding="async">`:'<i class="bi bi-globe2"></i>'}</div><div class="inline-edit"><input id="editName_${p.id}" class="form-control" value="${esc(p.name||'')}" placeholder="名稱（留空沿用網站標題）"><input id="editNote_${p.id}" class="form-control" value="${esc(p.note||'')}" placeholder="備註"><div class="edit-actions"><button class="mini-btn primary" onclick="savePageEdit('${p.id}')"><i class="bi bi-check-lg"></i> 儲存</button><button class="mini-btn" onclick="cancelPageEdit()">取消</button><button class="mini-btn danger" onclick="deletePage('${p.id}')"><i class="bi bi-trash3"></i></button></div></div></div>`}
 function addRow(groupId){return `<div class="page-row"><div class="add-editor"><input id="newUrl_${groupId}" class="form-control" placeholder="網址"><input id="newName_${groupId}" class="form-control" placeholder="名稱（可留空）"><input id="newNote_${groupId}" class="form-control" placeholder="備註（可留空）"><div class="edit-actions"><button class="mini-btn primary" onclick="saveNewPage('${groupId}')"><i class="bi bi-check-lg"></i> 儲存</button><button class="mini-btn" onclick="cancelPageEdit()">取消</button></div></div></div>`}
 function renderGroups(){if(!groups.length&&!addingGroup){$('groupsWrap').innerHTML='<section class="group"><div class="empty">目前還沒有群組</div></section>';return}let h='';if(addingGroup)h+=`<section class="group"><header class="group-head"><div class="group-edit-inline"><i class="bi bi-folder-plus group-folder"></i><input id="newGroupName" class="form-control" placeholder="群組名稱"><button class="mini-btn primary" onclick="saveNewGroup()"><i class="bi bi-check-lg"></i> 新增</button><button class="mini-btn" onclick="cancelNewGroup()">取消</button></div></header></section>`;for(const g of groups){const allItems=pages.filter(p=>p.groupId===g.id),items=allItems.filter(hit);if(keyword&&!items.length)continue;const collapsed=!keyword&&collapsedGroups.has(g.id);let body='';if(!collapsed){body+=addingPageGroupId===g.id?addRow(g.id):'';body+=items.length?items.map(p=>editingPageId===p.id?editRow(p):normalRow(p)).join(''):(addingPageGroupId===g.id?'':'<div class="empty">這個群組還沒有分頁</div>')}h+=`<section class="group" data-group-id="${g.id}" ondragover="groupDragOver(event,'${g.id}')" ondragleave="groupDragLeave(event)" ondrop="groupDrop(event,'${g.id}')">${groupHeader(g,allItems.length,collapsed)}${body}</section>`}$('groupsWrap').innerHTML=h||'<section class="group"><div class="empty">找不到符合的分頁</div></section>'}
-$('searchInput').oninput=e=>{keyword=e.target.value.trim().toLowerCase();renderGroups()};
+let searchTimer=null;$('searchInput').oninput=e=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{keyword=e.target.value.trim().toLowerCase();renderGroups()},120)};
 $('refreshBtn').onclick=loadData;
 $('collapseAllBtn').onclick=()=>{const allCollapsed=groups.length&&groups.every(g=>collapsedGroups.has(g.id));collapsedGroups=allCollapsed?new Set():new Set(groups.map(g=>g.id));saveCollapsed();render()};
 $('titleRefreshBtn').onclick=()=>refreshWeakTitles();
@@ -76,7 +139,7 @@ $('newGroupBtn').onclick=()=>{addingGroup=true;editingGroupId='';renderGroups();
 window.toggleGroup=id=>{collapsedGroups.has(id)?collapsedGroups.delete(id):collapsedGroups.add(id);saveCollapsed();render()};
 window.openGroupPages=id=>{const list=pages.filter(p=>p.groupId===id);if(!list.length)return msg('這個群組沒有分頁');let opened=0;for(const p of list){const w=window.open(p.url,'_blank');if(w){try{w.opener=null}catch{}opened++}}if(opened<list.length)msg(`瀏覽器只開啟 ${opened}/${list.length} 個，請允許這個網站的彈出式視窗`)};
 window.cancelNewGroup=()=>{addingGroup=false;renderGroups()};
-window.saveNewGroup=async()=>{const name=$('newGroupName')?.value.trim();if(!name)return msg('請輸入群組名稱');const minOrder=groups.length?Math.min(...groups.map((g,i)=>orderOf(g,i))):0;try{await groupsRef().add({name,sortOrder:minOrder-1,createdAt:firebase.firestore.FieldValue.serverTimestamp()});addingGroup=false;await loadData()}catch(e){msg('新增失敗：'+e.message)}};
+window.saveNewGroup=async()=>{const name=$('newGroupName')?.value.trim();if(!name)return msg('請輸入群組名稱');const minOrder=groups.length?Math.min(...groups.map((g,i)=>orderOf(g,i))):0;try{await groupsRef().add({name,sortOrder:minOrder-1,createdAt:new Date().toISOString()});addingGroup=false;await loadData()}catch(e){msg('新增失敗：'+e.message)}};
 window.startGroupEdit=id=>{editingGroupId=id;addingGroup=false;renderGroups();setTimeout(()=>$(`groupName_${id}`)?.focus(),30)};
 window.cancelGroupEdit=()=>{editingGroupId='';renderGroups()};
 window.saveGroup=async id=>{const name=$(`groupName_${id}`)?.value.trim();if(!name)return msg('群組名稱不能空白');try{await groupsRef().doc(id).update({name});editingGroupId='';await loadData()}catch(e){msg('儲存失敗：'+e.message)}};
@@ -85,7 +148,7 @@ window.startAddPage=groupId=>{collapsedGroups.delete(groupId);saveCollapsed();ad
 window.startPageEdit=id=>{editingPageId=id;addingPageGroupId='';renderGroups();setTimeout(()=>$(`editName_${id}`)?.focus(),30)};
 window.cancelPageEdit=()=>{editingPageId='';addingPageGroupId='';renderGroups()};
 window.savePageEdit=async id=>{const p=pages.find(x=>x.id===id);if(!p)return;const name=($(`editName_${id}`)?.value||'').trim(),note=($(`editNote_${id}`)?.value||'').trim();try{await pagesRef().doc(id).update({name,note});editingPageId='';await loadData()}catch(e){msg('儲存失敗：'+e.message)}};
-async function addPageToGroup(groupId,url,name='',note='',titleHint=''){const cleanUrl=normUrl(url);if(!cleanUrl)return msg('請輸入網址');const identity=pageIdentity(cleanUrl);if(pages.some(p=>p.groupId===groupId&&pageIdentity(p.url)===identity))return msg('這個群組已經有這個網址');msg('正在抓網站標題…');const title=await fetchPageTitle(cleanUrl,titleHint);const order=pages.filter(x=>x.groupId===groupId).length;try{await pagesRef().add({groupId,url:cleanUrl,title,name:String(name||'').trim(),note:String(note||'').trim(),sortOrder:order,createdAt:firebase.firestore.FieldValue.serverTimestamp()});collapsedGroups.delete(groupId);saveCollapsed();addingPageGroupId='';await loadData();msg('已新增分頁')}catch(e){msg('新增失敗：'+e.message)}}
+async function addPageToGroup(groupId,url,name='',note='',titleHint=''){const cleanUrl=normUrl(url);if(!cleanUrl)return msg('請輸入網址');const identity=pageIdentity(cleanUrl);if(pages.some(p=>p.groupId===groupId&&pageIdentity(p.url)===identity))return msg('這個群組已經有這個網址');msg('正在抓網站標題…');const title=await fetchPageTitle(cleanUrl,titleHint);const order=pages.filter(x=>x.groupId===groupId).length;try{await pagesRef().add({groupId,url:cleanUrl,title,name:String(name||'').trim(),note:String(note||'').trim(),sortOrder:order,createdAt:new Date().toISOString()});collapsedGroups.delete(groupId);saveCollapsed();addingPageGroupId='';await loadData();msg('已新增分頁')}catch(e){msg('新增失敗：'+e.message)}}
 window.saveNewPage=async groupId=>{const url=$(`newUrl_${groupId}`)?.value||'',name=$(`newName_${groupId}`)?.value||'',note=$(`newNote_${groupId}`)?.value||'';await addPageToGroup(groupId,url,name,note)};
 async function commitPageUpdates(updates){for(let i=0;i<updates.length;i+=400){const batch=db.batch();updates.slice(i,i+400).forEach(u=>batch.update(pagesRef().doc(u.id),u.data));await batch.commit()}}
 async function persistGroupOrder(){const batch=db.batch();groups.forEach((g,i)=>batch.update(groupsRef().doc(g.id),{sortOrder:i}));await batch.commit()}
