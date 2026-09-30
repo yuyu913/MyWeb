@@ -15,23 +15,38 @@
 .hero-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.brand{display:flex;gap:10px;align-items:center}.brand-icon{width:39px;height:39px;border-radius:11px;display:grid;place-items:center;font-size:20px;border:1px solid var(--pink-bd);background:linear-gradient(135deg,var(--pink),var(--blue))}
 .hero h1{font-size:1.38rem;font-weight:850;margin:0}.hero-sub{margin:5px 0 0;color:var(--muted);font-size:.78rem}
 .soft-btn{border:1px solid var(--line2);background:#fff;color:#5f5d69;border-radius:9px;padding:6px 9px;font-size:.8rem;display:inline-flex;gap:5px;align-items:center;line-height:1.2}.soft-btn:hover{background:#fffafd}
-.panel{border-radius:14px;padding:10px 12px;margin-top:11px;background:rgba(255,255,255,.92)}.search{position:relative}.search i{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#aaa3af;font-size:.84rem}.form-control{border-color:var(--line2);border-radius:8px;font-size:.8rem;padding:7px 8px}.search .form-control{padding-left:32px}.form-control:focus{border-color:#d7bfd0;box-shadow:0 0 0 .15rem rgba(230,170,200,.10)}
+.panel{border-radius:14px;padding:10px 12px;margin-top:11px;background:rgba(255,255,255,.92)}.search{position:relative}.search i{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:#aaa3af;font-size:.84rem}.form-control,.form-select{border-color:var(--line2);border-radius:8px;font-size:.8rem;padding:7px 8px}.search .form-control{padding-left:32px}.form-control:focus,.form-select:focus{border-color:#d7bfd0;box-shadow:0 0 0 .15rem rgba(230,170,200,.10)}
+.time-filter{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:8px}.time-label{font-size:.75rem;color:#77717e;font-weight:700;white-space:nowrap}.day-select{width:118px}.time-input{width:112px}.now-hint{font-size:.7rem;color:#aaa3af;white-space:nowrap}
 .groups{display:grid;gap:10px;margin-top:11px}.group{border-radius:14px;overflow:hidden}.group-head{min-height:44px;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 11px;background:linear-gradient(90deg,#fcf8fd,#f8fbfe);border-bottom:1px solid var(--lav-bd)}.group-meta{display:flex;align-items:center;gap:8px;min-width:0}.group-icon{color:#9a88aa;font-size:.92rem}.group-title{margin:0;font-size:.94rem;font-weight:800;color:#665d70}.group-count{color:#a29aa8;font-size:.7rem;white-space:nowrap}
-.food-row{display:grid;grid-template-columns:minmax(180px,1fr) 78px minmax(270px,.9fr);gap:12px;align-items:center;min-height:54px;padding:7px 11px;border-bottom:1px solid #f3eef3}.food-row:last-child{border-bottom:0}.food-row:hover{background:#fffcfe}
-.food-name{font-size:.8rem;font-weight:730;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.food-district{font-size:.74rem;color:#7f7987;white-space:nowrap}
+.food-row{display:grid;grid-template-columns:minmax(180px,1fr) 72px 94px minmax(250px,.9fr);gap:10px;align-items:center;min-height:54px;padding:7px 11px;border-bottom:1px solid #f3eef3}.food-row:last-child{border-bottom:0}.food-row:hover{background:#fffcfe}
+.food-name{font-size:.8rem;font-weight:730;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.food-district{font-size:.74rem;color:#7f7987;white-space:nowrap}.status{justify-self:start;border-radius:999px;padding:4px 7px;font-size:.67rem;font-weight:800;white-space:nowrap;border:1px solid transparent}.status-open{background:#edf9f1;color:#43835a;border-color:#cfe9d8}.status-soon{background:#fff7e7;color:#a87522;border-color:#f1dfb8}.status-close{background:#fff1eb;color:#a65e46;border-color:#edd2c8}.status-off{background:#f4f2f5;color:#88818d;border-color:#e6e1e8}.status-online{background:#eef6ff;color:#567c9a;border-color:#d5e6f4}.status-unknown{background:#f7f6f2;color:#8e8979;border-color:#e8e4d8}
 .map-info{text-decoration:none;justify-self:stretch;border:1px solid var(--blue-bd);background:var(--blue);color:#55758b;border-radius:9px;padding:7px 10px;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:.74rem}.map-info:hover{background:#eaf5fc;color:#416579}.map-rating{font-weight:800;color:#4f6577}.map-detail{font-weight:500;color:#7e8790}.empty{padding:18px;text-align:center;color:#9e97a4;font-size:.8rem}
-@media(max-width:620px){.app{margin-top:10px}.hero{padding:12px}.food-row{grid-template-columns:minmax(0,1fr) 62px;padding:7px 8px;gap:7px}.map-info{grid-column:1/-1}.group-count{display:none}.food-name{font-size:.76rem}}
+@media(max-width:720px){.app{margin-top:10px}.hero{padding:12px}.time-filter{align-items:stretch}.day-select,.time-input{width:auto;flex:1;min-width:110px}.now-hint{width:100%}.food-row{grid-template-columns:minmax(0,1fr) 60px 88px;padding:7px 8px;gap:7px}.map-info{grid-column:1/-1}.group-count{display:none}.food-name{font-size:.76rem}}
 </style>
 </head>
 <body>
 <div class="app">
 <section class="hero"><div class="hero-top"><div class="brand"><div class="brand-icon">🍴</div><div><h1>魚魚の台中美食清單</h1><p class="hero-sub">必比登・500盤・500碗・500甜</p></div></div><a class="soft-btn text-decoration-none" href="./index.html"><i class="bi bi-house"></i> 回首頁</a></div></section>
-<section class="panel"><div class="d-flex gap-2 align-items-center"><div class="search flex-grow-1"><i class="bi bi-search"></i><input id="searchInput" class="form-control" placeholder="搜尋餐廳或店家名稱、區域、類型..."></div><button id="refreshBtn" class="soft-btn" type="button"><i class="bi bi-arrow-clockwise"></i> 重新整理</button></div></section>
+<section class="panel">
+  <div class="time-filter">
+    <span class="time-label"><i class="bi bi-clock"></i> 查看時間</span>
+    <select id="daySelect" class="form-select day-select">
+      <option value="">今天</option><option value="1">週一</option><option value="2">週二</option><option value="3">週三</option><option value="4">週四</option><option value="5">週五</option><option value="6">週六</option><option value="0">週日</option>
+    </select>
+    <input id="timeInput" class="form-control time-input" type="time">
+    <button id="resetTimeBtn" class="soft-btn" type="button"><i class="bi bi-arrow-counterclockwise"></i> 現在</button>
+    <span id="nowHint" class="now-hint"></span>
+  </div>
+  <div class="d-flex gap-2 align-items-center"><div class="search flex-grow-1"><i class="bi bi-search"></i><input id="searchInput" class="form-control" placeholder="搜尋餐廳或店家名稱、區域、類型..."></div><button id="refreshBtn" class="soft-btn" type="button"><i class="bi bi-arrow-clockwise"></i> 重新整理</button></div>
+</section>
 <main id="groupsWrap" class="groups"></main>
 </div>
 <script>
 const GAS_URL='https://script.google.com/macros/s/AKfycbwVzHA8FOhiNYjOZzB5NLepZr9NSont5aU3HXcIGpwteu126NmAr42KUwBWayz5wg8/exec';
 const districtOrder=['中區','東區','西區','南區','北區','西屯區','南屯區','北屯區','豐原區','東勢區','大甲區','清水區','沙鹿區','梧棲區','后里區','神岡區','潭子區','大雅區','新社區','石岡區','外埔區','大安區','烏日區','大肚區','龍井區','霧峰區','太平區','大里區','和平區','線上','—'];
+const dayMap={'日':0,'一':1,'二':2,'三':3,'四':4,'五':5,'六':6};
+const dayNames=['週日','週一','週二','週三','週四','週五','週六'];
+const pageLoadedAt=new Date();
 let foods=[],keyword='',searchTimer=null;
 const $=id=>document.getElementById(id);
 function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
@@ -43,22 +58,77 @@ function mapSummary(x){
   return '<span class="map-rating">★ '+esc(x.rating)+review+'</span>'+(detail?'<span class="map-detail"> · '+esc(detail)+'</span>':'');
 }
 function districtIndex(v){const i=districtOrder.indexOf(v);return i<0?districtOrder.length:i}
-function hit(x){
-  if(!keyword)return true;
-  return [x.name,x.district,x.category,x.group].join(' ').toLowerCase().includes(keyword);
+function hit(x){if(!keyword)return true;return [x.name,x.district,x.category,x.group,x.awardDish].join(' ').toLowerCase().includes(keyword)}
+function hmToMin(s){const m=String(s).match(/(\d{1,2}):(\d{2})/);return m?Number(m[1])*60+Number(m[2]):null}
+function parseDays(text){
+  if(text==='平日')return [1,2,3,4,5];
+  if(text==='六日')return [6,0];
+  const t=text.replace(/^週/,'');
+  const out=[];
+  t.split('、').forEach(part=>{
+    if(part.includes('–')||part.includes('-')){
+      const [a,b]=part.split(/[–-]/);let d=dayMap[a],end=dayMap[b];if(d==null||end==null)return;
+      out.push(d);while(d!==end){d=(d+1)%7;out.push(d);if(out.length>14)break}
+    }else if(dayMap[part]!=null)out.push(dayMap[part]);
+  });
+  return [...new Set(out)];
 }
+function parseHours(raw){
+  const text=String(raw||'').trim();
+  if(!text)return {type:'unknown'};
+  if(text.includes('已歇業')||text.includes('結束營業'))return {type:'closed'};
+  if(text.includes('線上販售'))return {type:'online'};
+  if(text.includes('依店家最新公告'))return {type:'unknown'};
+  const byDay=Array.from({length:7},()=>[]),closedDays=new Set();
+  const parts=text.split(/[；;]/).map(s=>s.trim()).filter(Boolean);
+  for(const part0 of parts){
+    const part=part0.replace(/（.*?）/g,'').trim();
+    const rest=part.match(/^週([日一二三四五六、–-]+)休$/);
+    if(rest){parseDays('週'+rest[1]).forEach(d=>closedDays.add(d));continue}
+    let days=[0,1,2,3,4,5,6],body=part;
+    const pref=part.match(/^(平日|六日|週[日一二三四五六、–-]+)\s+(.+)$/);
+    if(pref){days=parseDays(pref[1]);body=pref[2]}
+    const ranges=[...body.matchAll(/(\d{1,2}:\d{2})\s*[–-]\s*(\d{1,2}:\d{2})/g)];
+    for(const r of ranges){let a=hmToMin(r[1]),b=hmToMin(r[2]);if(a==null||b==null)continue;if(b<a)b+=1440;days.forEach(d=>byDay[d].push([a,b]))}
+  }
+  closedDays.forEach(d=>byDay[d]=[]);
+  return {type:'hours',byDay};
+}
+function selectedMoment(){
+  const dayValue=$('daySelect').value,timeValue=$('timeInput').value;
+  const day=dayValue===''?pageLoadedAt.getDay():Number(dayValue);
+  const min=timeValue?hmToMin(timeValue):pageLoadedAt.getHours()*60+pageLoadedAt.getMinutes();
+  return {day,min};
+}
+function statusOf(x){
+  const parsed=parseHours(x.hours),{day,min}=selectedMoment();
+  if(parsed.type==='closed')return {key:'off',label:'已歇業',rank:3};
+  if(parsed.type==='online')return {key:'online',label:'線上販售',rank:2};
+  if(parsed.type==='unknown')return {key:'unknown',label:'時間未知',rank:2};
+  const ranges=(parsed.byDay[day]||[]).slice().sort((a,b)=>a[0]-b[0]);
+  for(const [start,end] of ranges){
+    const cur=min<start&&end>1440?min+1440:min;
+    if(cur>=start&&cur<end){const left=end-cur;return left<=60?{key:'close',label:'即將關閉',rank:0}:{key:'open',label:'營業中',rank:0}}
+    if(start>=min&&start-min<=60)return {key:'soon',label:'即將營業',rank:0};
+  }
+  return {key:'off',label:'已關閉',rank:1};
+}
+function statusHtml(s){return '<span class="status status-'+s.key+'">'+esc(s.label)+'</span>'}
+function updateHint(){const {day,min}=selectedMoment(),h=String(Math.floor(min/60)%24).padStart(2,'0'),m=String(min%60).padStart(2,'0');$('nowHint').textContent='依 '+dayNames[day]+' '+h+':'+m+' 判斷'}
 function render(){
+  updateHint();
   const grouped=new Map();
   foods.filter(hit).forEach(x=>{
+    x._status=statusOf(x);
     if(!grouped.has(x.group))grouped.set(x.group,{name:x.group,icon:x.groupIcon||'bi-stars',order:Number(x.groupOrder)||0,items:[]});
     grouped.get(x.group).items.push(x);
   });
   const groups=[...grouped.values()].sort((a,b)=>a.order-b.order);
   let out='';
   for(const g of groups){
-    g.items.sort((a,b)=>districtIndex(a.district)-districtIndex(b.district)||String(a.name).localeCompare(String(b.name),'zh-Hant'));
+    g.items.sort((a,b)=>a._status.rank-b._status.rank||districtIndex(a.district)-districtIndex(b.district)||String(a.name).localeCompare(String(b.name),'zh-Hant'));
     out+='<section class="group"><header class="group-head"><div class="group-meta"><i class="bi '+esc(g.icon)+' group-icon"></i><h2 class="group-title">'+esc(g.name)+'</h2></div><span class="group-count">'+g.items.length+' 家</span></header>';
-    out+=g.items.map(x=>'<div class="food-row"><div class="food-name" title="'+esc(x.name)+'">'+esc(x.name)+'</div><div class="food-district">'+esc(x.district||'—')+'</div><a class="map-info" href="'+mapUrl(x.name)+'" target="_blank" rel="noopener" title="在 Google 地圖搜尋 '+esc(x.name)+'">'+mapSummary(x)+'</a></div>').join('');
+    out+=g.items.map(x=>'<div class="food-row"><div class="food-name" title="'+esc(x.name)+'">'+esc(x.name)+'</div><div class="food-district">'+esc(x.district||'—')+'</div>'+statusHtml(x._status)+'<a class="map-info" href="'+mapUrl(x.name)+'" target="_blank" rel="noopener" title="在 Google 地圖搜尋 '+esc(x.name)+'">'+mapSummary(x)+'</a></div>').join('');
     out+='</section>';
   }
   $('groupsWrap').innerHTML=out||'<section class="group"><div class="empty">找不到符合的店家</div></section>';
@@ -68,22 +138,17 @@ async function loadData(){
   $('groupsWrap').innerHTML='<section class="group"><div class="empty">正在讀取美食清單…</div></section>';
   try{
     const url=GAS_URL+'?action=list&type=food&t='+Date.now();
-    const r=await fetch(url,{cache:'no-store'});
-    const data=await r.json();
+    const r=await fetch(url,{cache:'no-store'});const data=await r.json();
     if(!data.ok)throw new Error(data.error||'讀取失敗');
-    foods=(data.items||[]).map(x=>({...x,groupOrder:Number(x.groupOrder)||0,itemOrder:Number(x.itemOrder)||0}));
-    render();
-  }catch(e){
-    console.error(e);
-    $('groupsWrap').innerHTML='<section class="group"><div class="empty">讀取失敗：'+esc(e.message)+'</div></section>';
-  }finally{btn.disabled=false}
+    foods=(data.items||[]).map(x=>({...x,groupOrder:Number(x.groupOrder)||0,itemOrder:Number(x.itemOrder)||0}));render();
+  }catch(e){console.error(e);$('groupsWrap').innerHTML='<section class="group"><div class="empty">讀取失敗：'+esc(e.message)+'</div></section>'}finally{btn.disabled=false}
 }
-$('searchInput').addEventListener('input',e=>{
-  clearTimeout(searchTimer);
-  searchTimer=setTimeout(()=>{keyword=e.target.value.trim().toLowerCase();render()},120);
-});
+$('searchInput').addEventListener('input',e=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{keyword=e.target.value.trim().toLowerCase();render()},120)});
+$('daySelect').addEventListener('change',render);
+$('timeInput').addEventListener('change',render);
+$('resetTimeBtn').addEventListener('click',()=>{$('daySelect').value='';$('timeInput').value='';render()});
 $('refreshBtn').addEventListener('click',loadData);
-loadData();
+updateHint();loadData();
 </script>
 </body>
 </html>
