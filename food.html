@@ -49,7 +49,7 @@ const dayNames=['週日','週一','週二','週三','週四','週五','週六'];
 const pageLoadedAt=new Date();
 let foods=[],keyword='',searchTimer=null;
 const $=id=>document.getElementById(id);
-function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]))}
 function mapUrl(name){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(name+' 台中')}
 function mapSummary(x){
   if(!x.rating)return '<span class="map-rating">Google Maps 資料未公開</span>';
@@ -74,13 +74,28 @@ function parseDays(text){
   return [...new Set(out)];
 }
 function parseHours(raw){
-  const text=String(raw||'').trim();
+  const text=String(raw||'').replace(/\r/g,'').replace(//g,'').trim();
   if(!text)return {type:'unknown'};
   if(text.includes('已歇業')||text.includes('結束營業'))return {type:'closed'};
   if(text.includes('線上販售'))return {type:'online'};
   if(text.includes('依店家最新公告'))return {type:'unknown'};
   const byDay=Array.from({length:7},()=>[]),closedDays=new Set();
+
+  // 支援直接貼上 Google Maps 的「星期X + 換行營業時間」格式。
+  const lines=text.split(/\n+/).map(s=>s.trim()).filter(Boolean);
+  let currentDay=null,mapFormat=false,mapRanges=0;
+  for(const line of lines){
+    const dayMatch=line.match(/^星期([一二三四五六日天])$/);
+    if(dayMatch){currentDay=dayMatch[1]==='日'||dayMatch[1]==='天'?0:dayMap[dayMatch[1]];mapFormat=true;continue}
+    if(!mapFormat||currentDay==null)continue;
+    if(line==='休息'||line==='公休'||line==='休'){closedDays.add(currentDay);continue}
+    const ranges=[...line.matchAll(/(\d{1,2}:\d{2})\s*[–~-]\s*(\d{1,2}:\d{2})/g)];
+    for(const r of ranges){let a=hmToMin(r[1]),b=hmToMin(r[2]);if(a==null||b==null)continue;if(b<a)b+=1440;byDay[currentDay].push([a,b]);mapRanges++}
+  }
+  if(mapFormat){closedDays.forEach(d=>byDay[d]=[]);return mapRanges||closedDays.size?{type:'hours',byDay}:{type:'unknown'}}
+
   const parts=text.split(/[；;]/).map(s=>s.trim()).filter(Boolean);
+  let parsedRangeCount=0;
   for(const part0 of parts){
     const part=part0.replace(/（.*?）/g,'').trim();
     const rest=part.match(/^週([日一二三四五六、–-]+)休$/);
@@ -88,11 +103,11 @@ function parseHours(raw){
     let days=[0,1,2,3,4,5,6],body=part;
     const pref=part.match(/^(平日|六日|週[日一二三四五六、–-]+)\s+(.+)$/);
     if(pref){days=parseDays(pref[1]);body=pref[2]}
-    const ranges=[...body.matchAll(/(\d{1,2}:\d{2})\s*[–-]\s*(\d{1,2}:\d{2})/g)];
-    for(const r of ranges){let a=hmToMin(r[1]),b=hmToMin(r[2]);if(a==null||b==null)continue;if(b<a)b+=1440;days.forEach(d=>byDay[d].push([a,b]))}
+    const ranges=[...body.matchAll(/(\d{1,2}:\d{2})\s*[–~-]\s*(\d{1,2}:\d{2})/g)];
+    for(const r of ranges){let a=hmToMin(r[1]),b=hmToMin(r[2]);if(a==null||b==null)continue;if(b<a)b+=1440;days.forEach(d=>byDay[d].push([a,b]));parsedRangeCount++}
   }
   closedDays.forEach(d=>byDay[d]=[]);
-  return {type:'hours',byDay};
+  return parsedRangeCount||closedDays.size?{type:'hours',byDay}:{type:'unknown'};
 }
 function selectedMoment(){
   const dayValue=$('daySelect').value,timeValue=$('timeInput').value;
