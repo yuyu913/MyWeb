@@ -49,7 +49,7 @@ const dayNames=['週日','週一','週二','週三','週四','週五','週六'];
 const pageLoadedAt=new Date();
 let foods=[],keyword='',searchTimer=null;
 const $=id=>document.getElementById(id);
-function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]))}
+function esc(v=''){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function mapUrl(name){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(name+' 台中')}
 function mapSummary(x){
   if(!x.rating)return '<span class="map-rating">Google Maps 資料未公開</span>';
